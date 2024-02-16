@@ -1,3 +1,11 @@
+.app__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+}
+
 .section__padding {
     padding: 4rem 6rem;
 }
@@ -14,7 +22,7 @@
 
 .app__wrapper {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
 
     min-height: 100vh;
@@ -65,7 +73,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: var(--color-golden);
+        background-color: var(--color-purple);
         color: var(--color-white);
     }
 }
@@ -103,7 +111,7 @@
 
 .headtext__playfair {
     font-family: var(--font-base);
-    color: var(--color-golden);
+    color: var(--color-gold);
     font-size: 64px;
     line-height: 83.2px;
     letter-spacing: 0.04em;
