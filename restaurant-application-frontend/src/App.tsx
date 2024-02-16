@@ -1,12 +1,13 @@
 import React from 'react';
 import { Navbar } from './components';
-import { HomePage } from './pages';
+import { BookingPage, HomePage } from './pages';
 
 function App() {
   return (
     <div className='app__container'>
         <Navbar />
         <HomePage/>
+        <BookingPage/>
       
     </div>
   );

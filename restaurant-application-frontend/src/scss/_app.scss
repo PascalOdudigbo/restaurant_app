@@ -22,10 +22,9 @@
 
 .app__wrapper {
     display: flex;
-    // justify-content: space-between;
-    align-items: center;
-
     min-height: 100vh;
+    overflow-y: scroll;
+    
 }
 
 .app__wrapper_info {

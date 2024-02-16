@@ -1,5 +1,5 @@
 .app__homepage{
-    margin-top: 110px;
+    // margin-top: 110px;
     .app__homepage_image_and_text_wrapper{
         display: flex;
         flex-direction: row;
@@ -238,7 +238,7 @@
 
 @media screen and (max-width: 450px) {
     .app__homepage{
-        margin-top: 98px;
+        // margin-top: 98px;
         .app__homepage_image_and_text_wrapper{
             flex-direction: column;
 
@@ -285,10 +285,9 @@
     }
 }
 
-
 @media screen and (max-width: 360px) {
     .app__homepage{
-        margin-top: 98px;
+        // margin-top: 98px;
 
         .app__homepage_image_and_text_wrapper{
             flex-direction: column;
