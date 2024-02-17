@@ -1,9 +1,17 @@
 import React from 'react'
 import welcomeImage from "../../assets/welcome_image_2.jpg";
+import { Route, Routes } from 'react-router-dom';
+import { Login } from '../../components';
 
 function HomePage() {
   return (
     <div className='app__homepage app__bg app__wrapper section_padding flex__center' id='home'>
+        <div className='app__homepage_login_and_register_wrapper flex__center'>
+            <Routes>
+              <Route path="/login" element={<Login/>}/>
+
+            </Routes>
+        </div>
         <div className='app__homepage_image_and_text_wrapper '>
             <section className='app__homepage_image_section'>
                 <img className="app__homepage_image" src={welcomeImage} alt='food platter'/>

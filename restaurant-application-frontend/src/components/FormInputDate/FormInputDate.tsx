@@ -29,8 +29,8 @@ function FormInputDate({ label, selectionLimit, setDate }: Props) {
 
     return (
         <div className='formInputDate_wrapper'>
-            <p className='p__inter FormInputDate_label'>{label}</p>
-            <input className="FormInputDate" type="date" min={minDate} max={maxDate} onChange={(e) => { setDate(e) }} />
+            <p className='p__inter formInputDate_label'>{label}</p>
+            <input className="formInputDate" type="date" min={minDate} max={maxDate} onChange={(e) => { setDate(e) }} />
 
         </div>
     )

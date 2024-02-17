@@ -1,0 +1,203 @@
+.login_wrapper{
+    flex-direction: column;
+    background-color: var(--color-grey);
+    width: 30%;
+
+    .login_header{
+        width: 100%;
+        padding: 0em 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: var(--color-purple);
+
+        .login_header_title{
+            font-size: 30px;
+        }
+
+        .login_header_close{
+            font-size: 20px;
+
+            &:hover{
+                color:red;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .login_form{
+        width: 90%;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+
+        .login_form_forgotpassword{
+            margin-top: -10px;
+            font-size: 12px;
+
+            &:hover{
+                cursor: pointer;
+                color: var(--color-purple);
+            }
+        }
+
+        .login_form_button{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    } 
+
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .login_wrapper{
+        width: 45%;
+    
+        .login_header{
+
+            .login_header_title{
+                font-size: 25px;
+            }
+    
+            .login_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .login_form{
+            width: 90%;
+    
+            .login_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .login_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 850px) {
+    .login_wrapper{
+        width: 45%;
+    
+        .login_header{
+
+            .login_header_title{
+                font-size: 25px;
+            }
+    
+            .login_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .login_form{
+            width: 90%;
+    
+            .login_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .login_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 650px) {
+    .login_wrapper{
+        width: 65%;
+    
+        .login_header{
+
+            .login_header_title{
+                font-size: 25px;
+            }
+    
+            .login_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .login_form{
+            width: 90%;
+    
+            .login_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .login_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 450px) {
+    .login_wrapper{
+        width: 85%;
+    
+        .login_header{
+
+            .login_header_title{
+                font-size: 25px;
+            }
+    
+            .login_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .login_form{
+            width: 90%;
+    
+            .login_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .login_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 360px) {
+    .login_wrapper{
+        width: 85%;
+    
+        .login_header{
+
+            .login_header_title{
+                font-size: 25px;
+            }
+    
+            .login_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .login_form{
+            width: 90%;
+    
+            .login_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .login_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    }
+}
