@@ -1,8 +1,8 @@
-.app__bookingpage_wrapper{
+.app__bookingpage_wrapper {
     flex-direction: column;
     align-items: center;
 
-    .app__bookingpage_heading_wrapper{
+    .app__bookingpage_heading_wrapper {
         width: 100%;
         height: fit-content;
         display: flex;
@@ -12,35 +12,35 @@
         margin-bottom: 5px;
     }
 
-    .app__bookingpage_about_and_booking_wrapper{
+    .app__bookingpage_about_and_booking_wrapper {
         flex-direction: row;
         height: 89vh;
         width: 96%;
         justify-content: space-between;
         // background-color: red;
 
-        .app__bookingpage_about_wrapper{
+        .app__bookingpage_about_wrapper {
             height: 100%;
             width: 45%;
             word-wrap: break-word;
 
             // background-color: blue;
 
-            .app__bookingpage_about_question{
+            .app__bookingpage_about_question {
                 flex-direction: row;
                 color: var(--color-white);
                 font-size: 24px;
                 font-weight: bold;
             }
 
-            .app__bookingpage_about_purple_line{
+            .app__bookingpage_about_purple_line {
                 height: 5px;
                 margin-bottom: 30px;
                 background-color: var(--color-purple);
                 width: 10%;
             }
 
-            .app__bookingpage_about_motto{
+            .app__bookingpage_about_motto {
                 color: var(--color-gold);
                 font-size: 42px;
                 font-weight: bold;
@@ -48,11 +48,11 @@
             }
 
             // .app__bookingpage_about{
-                
+
             // }
         }
 
-        .app__bookingpage_booking_wrapper{
+        .app__bookingpage_booking_wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -62,139 +62,378 @@
             word-wrap: break-word;
             overflow-y: scroll;
 
-            .app__bookingpage_booking_instructions_wrapper{
+            .app__bookingpage_booking_instructions_wrapper {
                 width: 90%;
 
-                .app__bookingpage_booking_instructions{
+                .app__bookingpage_booking_instructions {
                     font-size: 12px;
                 }
             }
 
+            .app__bookingpage_form_wrapper {
+                flex-direction: column;
+                width: 90%;
+                margin-top: 25px;
+
+                .app__bookingpage_form {
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    column-gap: 20px;
+
+                    .item1 {
+                        grid-column-start: 1;
+                        grid-column-end: 2;
+                    }
+
+                    .item2 {
+                        grid-column-start: 2;
+                        grid-column-end: 3;
+                    }
+
+                    .item3 {
+                        grid-column-start: 1;
+                        grid-column-end: 2;
+                    }
+
+                    .item4 {
+                        grid-column-start: 2;
+                        grid-column-end: 3;
+                    }
+
+                    .item5 {
+                        grid-column-start: 1;
+                        grid-column-end: 2;
+                    }
+
+                    .item6 {
+                        grid-column-start: 2;
+                        grid-column-end: 3;
+                    }
+
+                    .item7 {
+                        grid-column-start: 1;
+                        grid-column-end: 2;
+                    }
+
+                    .item8 {
+                        grid-column-start: 1;
+                        grid-column-end: 3;
+                    }
+
+                    .item9 {
+                        grid-column-start: 1;
+                        grid-column-end: 2;
+                    }
+
+                    .app__bookingpage_form_button {
+                        margin-top: 15px;
+                    }
+
+
+                }
+            }
+
+        }
+
+        .app__bookingpage_booking_wrapper::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+
+}
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {}
+
+@media screen and (max-width: 850px) {
+    .app__bookingpage_wrapper {
+
+        .app__bookingpage_heading_wrapper {
+
+            .app__bookingpage_heading {
+                font-size: 50px;
+
+            }
+        }
+
+        .app__bookingpage_about_and_booking_wrapper {
+            flex-direction: column;
+
+            .app__bookingpage_about_wrapper {
+                width: 100%;
+                height: 45%;
+
+                .app__bookingpage_about_question {
+                    font-size: 18px;
+                }
+
+                .app__bookingpage_about_purple_line {
+                    width: 20%;
+                    margin-bottom: 20px;
+                }
+
+                .app__bookingpage_about_motto {
+                    font-size: 35px;
+
+                }
+
+                .app__bookingpage_about {
+                    font-size: 12px;
+                }
+            }
+
+            .app__bookingpage_booking_wrapper {
+                width: 100%;
+                height: 54%;
+
+
+                .app__bookingpage_booking_instructions_wrapper {
+                    width: 96%;
+
+                    .app__bookingpage_booking_instructions {
+                        font-size: 10px;
+                    }
+                }
+
+                .app__bookingpage_form_wrapper {
+                    flex-direction: column;
+                    width: 85%;
+                    margin-top: 20px;
+
+                    .app__bookingpage_form {
+                        display: flex;
+                        flex-direction: column;
+
+                        .app__bookingpage_form_button {
+                            margin-top: 15px;
+                            margin-bottom: 15px;
+                        }
+
+
+                    }
+                }
+
+            }
         }
     }
 }
 
-@media screen and (min-width: 2000px) {
-    
-}
-
-@media screen and (max-width: 1150px) {
-
-}
-
-@media screen and (max-width: 850px) {
- 
-}
-
 @media screen and (max-width: 650px) {
+    .app__bookingpage_wrapper {
 
-}
+        .app__bookingpage_heading_wrapper {
 
-@media screen and (max-width: 450px) {
-      .app__bookingpage_wrapper{
-    
-        .app__bookingpage_heading_wrapper{
-
-            .app__bookingpage_heading{
+            .app__bookingpage_heading {
                 font-size: 35px;
 
             }
         }
-    
-        .app__bookingpage_about_and_booking_wrapper{
+
+        .app__bookingpage_about_and_booking_wrapper {
             flex-direction: column;
 
-            .app__bookingpage_about_wrapper{
+            .app__bookingpage_about_wrapper {
                 width: 100%;
                 height: 45%;
-               
-                .app__bookingpage_about_question{
+
+                .app__bookingpage_about_question {
                     font-size: 18px;
                 }
-    
-                .app__bookingpage_about_purple_line{
+
+                .app__bookingpage_about_purple_line {
                     width: 20%;
                     margin-bottom: 20px;
                 }
-    
-                .app__bookingpage_about_motto{
+
+                .app__bookingpage_about_motto {
                     font-size: 25px;
-                    
+
                 }
-    
-                .app__bookingpage_about{
+
+                .app__bookingpage_about {
                     font-size: 11px;
                 }
             }
-    
-            .app__bookingpage_booking_wrapper{
+
+            .app__bookingpage_booking_wrapper {
                 width: 100%;
                 height: 54%;
-                
-    
-                .app__bookingpage_booking_instructions_wrapper{
+
+
+                .app__bookingpage_booking_instructions_wrapper {
                     width: 96%;
-    
-                    .app__bookingpage_booking_instructions{
+
+                    .app__bookingpage_booking_instructions {
                         font-size: 8px;
                     }
                 }
-    
+
+                .app__bookingpage_form_wrapper {
+                    flex-direction: column;
+                    width: 90%;
+                    margin-top: 25px;
+
+                    .app__bookingpage_form {
+                        display: flex;
+                        flex-direction: column;
+
+                        .app__bookingpage_form_button {
+                            margin-top: 15px;
+                            margin-bottom: 15px;
+                        }
+
+
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .app__bookingpage_wrapper {
+
+        .app__bookingpage_heading_wrapper {
+
+            .app__bookingpage_heading {
+                font-size: 35px;
+
+            }
+        }
+
+        .app__bookingpage_about_and_booking_wrapper {
+            flex-direction: column;
+
+            .app__bookingpage_about_wrapper {
+                width: 100%;
+                height: 45%;
+
+                .app__bookingpage_about_question {
+                    font-size: 18px;
+                }
+
+                .app__bookingpage_about_purple_line {
+                    width: 20%;
+                    margin-bottom: 20px;
+                }
+
+                .app__bookingpage_about_motto {
+                    font-size: 25px;
+
+                }
+
+                .app__bookingpage_about {
+                    font-size: 11px;
+                }
+            }
+
+            .app__bookingpage_booking_wrapper {
+                width: 100%;
+                height: 54%;
+
+
+                .app__bookingpage_booking_instructions_wrapper {
+                    width: 96%;
+
+                    .app__bookingpage_booking_instructions {
+                        font-size: 8px;
+                    }
+                }
+
+                .app__bookingpage_form_wrapper {
+                    flex-direction: column;
+                    width: 90%;
+                    margin-top: 25px;
+
+                    .app__bookingpage_form {
+                        display: flex;
+                        flex-direction: column;
+
+                        .app__bookingpage_form_button {
+                            margin-top: 15px;
+                            margin-bottom: 15px;
+                        }
+
+
+                    }
+                }
+
             }
         }
     }
 }
 
 @media screen and (max-width: 360px) {
-    .app__bookingpage_wrapper{
-    
-        .app__bookingpage_heading_wrapper{
+    .app__bookingpage_wrapper {
 
-            .app__bookingpage_heading{
+        .app__bookingpage_heading_wrapper {
+
+            .app__bookingpage_heading {
                 font-size: 35px;
 
             }
         }
-    
-        .app__bookingpage_about_and_booking_wrapper{
+
+        .app__bookingpage_about_and_booking_wrapper {
             flex-direction: column;
 
-            .app__bookingpage_about_wrapper{
+            .app__bookingpage_about_wrapper {
                 width: 100%;
                 height: 45%;
-               
-                .app__bookingpage_about_question{
+
+                .app__bookingpage_about_question {
                     font-size: 18px;
                 }
-    
-                .app__bookingpage_about_purple_line{
+
+                .app__bookingpage_about_purple_line {
                     width: 20%;
                     margin-bottom: 20px;
                 }
-    
-                .app__bookingpage_about_motto{
+
+                .app__bookingpage_about_motto {
                     font-size: 25px;
-                    
+
                 }
-    
-                .app__bookingpage_about{
+
+                .app__bookingpage_about {
                     font-size: 11px;
                 }
             }
-    
-            .app__bookingpage_booking_wrapper{
+
+            .app__bookingpage_booking_wrapper {
                 width: 100%;
                 height: 54%;
-                
-    
-                .app__bookingpage_booking_instructions_wrapper{
+
+
+                .app__bookingpage_booking_instructions_wrapper {
                     width: 96%;
-    
-                    .app__bookingpage_booking_instructions{
+
+                    .app__bookingpage_booking_instructions {
                         font-size: 8px;
                     }
+
+                    .app__bookingpage_form_wrapper {
+                        flex-direction: column;
+                        width: 90%;
+                        margin-top: 25px;
+
+                        .app__bookingpage_form {
+                            display: flex;
+                            flex-direction: column;
+
+                            .app__bookingpage_form_button {
+                                margin-top: 15px;
+                                margin-bottom: 15px;
+                            }
+
+
+                        }
+                    }
                 }
-    
+
             }
         }
     }

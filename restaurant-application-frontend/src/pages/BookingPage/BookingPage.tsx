@@ -1,28 +1,31 @@
 import React, { useState } from 'react'
+import { Dropdown, FormInput, FormInputDate, TextArea } from '../../components';
 
 type BookingDetails = {
-  date: string;
-  preferedGuests: number;
+  date: string | number;
+  preferedGuests: number | string;
   name: string;
   email: string;
   mobilenumber: string;
   postcode: string;
-  occasion: string;
+  occasion: string | number;
   message: string;
 };
 
 function BookingPage() {
   const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
     date: "",
-    preferedGuests: 0,
+    preferedGuests: "Select",
     name: "",
     email: "",
     mobilenumber: "",
     postcode: "",
-    occasion: "",
+    occasion: "Select",
     message: "",
   })
-  
+
+
+
   return (
     <div className='app__bookingpage_wrapper app__bg app__wrapper section_padding' id='booking'>
       <section className='app__bookingpage_heading_wrapper'>
@@ -58,12 +61,95 @@ function BookingPage() {
               ACCEPTED (Acceptance email sent you) BY THE MANAGEMENT.
             </p>
 
-            <div>
-              <form>
+          </div>
 
-              </form>
-            </div>
+          <div className='app__bookingpage_form_wrapper'>
+            <form className='app__bookingpage_form'>
+              <div className='item1'>
+                <FormInputDate
+                  label="Prefered date  *"
+                  selectionLimit={30}
+                  setDate={(e)=>{setBookingDetails({...bookingDetails, date: e.target.value})}}
+                />
+              </div>
+              <div className='item2'>
+                <Dropdown
+                  label='Prefered guests  *'
+                  items={["select", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"]}
+                  buttonText={bookingDetails.preferedGuests}
+                  clickFunction={(data) => { setBookingDetails({ ...bookingDetails, preferedGuests: data }) }}
+                />
+              </div>
 
+              <div className='item 3'>
+                <FormInput
+                  label='Name  *'
+                  inputType='text'
+                  inputValue={bookingDetails.name}
+                  required={true}
+                  onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, name: e.target.value }) }}
+                />
+              </div>
+
+
+
+              <div className='item4'>
+                <FormInput
+                  label='Email  *'
+                  inputType='text'
+                  inputValue={bookingDetails.email}
+                  required={true}
+                  onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, email: e.target.value }) }}
+                />
+              </div>
+
+              <div className='item5'>
+                <FormInput
+                  label='Mobile Number  *'
+                  inputType='text'
+                  inputValue={bookingDetails.mobilenumber}
+                  required={true}
+                  onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, mobilenumber: e.target.value }) }}
+                />
+              </div>
+
+              <div className='item6'>
+                <FormInput
+                  label='Postcode  *'
+                  inputType='text'
+                  inputValue={bookingDetails.postcode}
+                  required={true}
+                  onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, postcode: e.target.value }) }}
+                />
+              </div>
+
+              <div className='item7'>
+                <Dropdown
+                  label='Occasion  *'
+                  items={["Select", "Birthday", "Anniversary", "Family Reunion", "Friends Party", "Special Occasion", "Business Related", "Other"]}
+                  buttonText={bookingDetails.occasion}
+                  clickFunction={(data) => { setBookingDetails({ ...bookingDetails, occasion: data }) }}
+                />
+              </div>
+
+              <div className='item8'>
+                <TextArea
+                  label='Message  *'
+                  inputValue={bookingDetails.message}
+                  required={true}
+                  rows={4}
+                  cols={50}
+                  onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, message: e.target.value }) }}
+
+                />
+              </div>
+
+              <div className='item9'>
+                <button className='custom__button app__bookingpage_form_button'>SUBMIT</button>
+              </div>
+
+
+            </form>
           </div>
 
         </section>

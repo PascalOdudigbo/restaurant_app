@@ -12,7 +12,7 @@ type Props = {
 function FormInput({label, inputType, inputValue, required, onChangeFunction}: Props) {
   return (
     <div className='forminput_wrapper'>
-        <p className='forminput_label'>{label}</p>
+        <p className='p__inter forminput_label'>{label}</p>
         <input className='formInput' type={inputType} required={required} value={inputValue} onChange={onChangeFunction}/>
     </div>
   )
