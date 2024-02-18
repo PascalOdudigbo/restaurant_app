@@ -5,8 +5,9 @@
         width: 100%;
         z-index: 2;
         position: absolute;
+        margin-top: -5%;
     }
-    
+
     .app__homepage_image_and_text_wrapper{
         display: flex;
         flex-direction: row;
@@ -295,6 +296,11 @@
 @media screen and (max-width: 360px) {
     .app__homepage{
         // margin-top: 98px;
+
+        .app__homepage_login_and_register_wrapper{
+            margin-top: 2%;
+        }
+
 
         .app__homepage_image_and_text_wrapper{
             flex-direction: column;

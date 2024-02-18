@@ -16,7 +16,7 @@ function Login() {
     return (
         <div className='login_wrapper flex__center'>
             <header className='login_header'>
-                <h3 className='headtext__playfair login_header_title'>Login</h3>
+                <h3 className='headtext__playfair login_header_title'>LOGIN</h3>
                 <Link to="/" className='headtext__playfair login_header_close'>X</Link>
             </header>
             <form className='login_form'>
@@ -38,7 +38,7 @@ function Login() {
 
                 <p className='p__inter login_form_forgotpassword'>forgot password?</p>
 
-                <button className='custom__button login_form_button'>Login</button>
+                <button className='custom__button login_form_button'>LOGIN</button>
             </form>
 
         </div>

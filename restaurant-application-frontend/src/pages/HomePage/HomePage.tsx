@@ -1,7 +1,7 @@
 import React from 'react'
 import welcomeImage from "../../assets/welcome_image_2.jpg";
 import { Route, Routes } from 'react-router-dom';
-import { Login } from '../../components';
+import { Login, Register } from '../../components';
 
 function HomePage() {
   return (
@@ -9,6 +9,7 @@ function HomePage() {
         <div className='app__homepage_login_and_register_wrapper flex__center'>
             <Routes>
               <Route path="/login" element={<Login/>}/>
+              <Route path="/register" element={<Register/>}/>
 
             </Routes>
         </div>
