@@ -16,14 +16,14 @@ function Navbar() {
         <div className='app_navbar_detail_wrapper'>
           <IconContext.Provider value={{ size: "20px", className: "app_navbar_detail_icon" }}>
             <MdLocationOn />
-            <p className='p__inter app_navbar_detail_text'>CV4 5XL, Old Rothman Road, Coventry</p>
+            <p className='p__inter app_navbar_detail_text'>19th St, Monrovia, Liberia</p>
           </IconContext.Provider>
         </div>
 
         <div className='app_navbar_detail_wrapper'>
           <IconContext.Provider value={{ size: "20px", className: "app_navbar_detail_icon" }}>
             <MdPhone />
-            <p className='p__inter app_navbar_detail_text'>+44793870248</p>
+            <p className='p__inter app_navbar_detail_text'>+231 88 677 7007</p>
           </IconContext.Provider>
         </div>
 

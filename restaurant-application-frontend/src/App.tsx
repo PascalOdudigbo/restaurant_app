@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from './components';
-import { BookingPage, HomePage } from './pages';
+import { BookingPage, ContactPage, HomePage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
             <Navbar />
             <HomePage />
             <BookingPage />
+            <ContactPage/>
           </>
         } />
       </Routes>
