@@ -15,6 +15,7 @@ const config = {
     password: process.env.PASSWORD,
     host: process.env.HOST,
     port: process.env.PORT,
+    database: "restaurant_application_db",
     ssl: {
         rejectUnauthorized: true,
         ca: process.env.CA_CERTIFICATE,
