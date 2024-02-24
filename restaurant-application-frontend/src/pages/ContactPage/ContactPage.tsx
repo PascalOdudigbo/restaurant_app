@@ -41,7 +41,7 @@ function ContactPage() {
 
             <div className='app__bookingpage_map_contact_and_text_wrapper flex__center'>
                 <div id='map' className='app__bookingpage_map' />
-                {/* <iframe className='app__bookingpage_map' src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAV-K1IlctPUELdwCyEdn6t44C6ZhvTuL0&q=6.287082195281982,-10.776318550109863&z=20" /> */}
+                <iframe title='Lila Brown Location' className='app__bookingpage_map_alt' src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAV-K1IlctPUELdwCyEdn6t44C6ZhvTuL0&q=6.287082195281982,-10.776318550109863" />
 
                 <section className='app__contactPage_contact_wrapper '>
                     <div className='app__contactPage_contact_instructions_wrapper'>
