@@ -5,12 +5,17 @@ const router = Router();
 // Importing the controller functions
 const {
     getAllUsers,
-    getUserById
+    getUserById,
+    addUser
 } = require("../controllers/user_controller");
 
 // A route to list all users
 router.get('/', getAllUsers);
+
 // A route to get user by ID
-router.post('/:id', getUserById);
+router.get('/:id', getUserById);
+
+// A route to add a user to the database
+router.post('/', addUser);
 
 module.exports = router;

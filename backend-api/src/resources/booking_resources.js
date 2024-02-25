@@ -44,8 +44,26 @@ const getById = (req, res) => {
     })
 }
 
+// A function to add a booking to the database
+const save = (req, res) => {
+    // Destructuring the booking data from the request body
+    const { user_id, prefered_date, prefered_guests, occasion, message, status } = req.body;
+    // Add the user to the database if it doesn't exist
+    client.query(addBooking, [user_id, prefered_date, prefered_guests, occasion, message, status], (error, results) => {
+        if (error) {
+            console.error("Error saving user:", error);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        // Return the created contract
+        res.status(201).json(results.rows[0]);
+    });
+    
+}
+
 
 module.exports = {
     listAll,
-    getById
+    getById,
+    save
 }

@@ -10,7 +10,10 @@ const {
     updateUser,
     deleteUser
 
-} = require("../queries/user_queries")
+} = require("../queries/user_queries");
+
+// Importing the util functions
+const {capitalize} = require("../utils/resource_utils");
 
 
 // A function to list all users
@@ -47,7 +50,40 @@ const getById = (req, res) => {
 
 }
 
+// A function to add a user to the database
+const save = (req, res) => {
+     // destructuring the request parameters
+     const { name, mobile_number, postcode, email, password, role } = req.body;
+
+     // checking if the contract already exists
+     client.query(checkUserExists, [email], (error, results) => {
+         if (error) {
+             console.error("Error checking contract:", error);
+             return res.status(500).json({ error: "Internal Server Error" });
+         }
+ 
+         if (results.rowCount > 0) {
+             // Contract already exists
+             return res.status(409).json({ error: "User already exists." });
+         }
+ 
+         // Add the user to the database if it doesn't exist
+         client.query(addUser, [capitalize(name), mobile_number, postcode, email, password, role], (error, results) => {
+             if (error) {
+                 console.error("Error saving user:", error);
+                 return res.status(500).json({ error: "Internal Server Error" });
+             }
+ 
+             // Return the created contract
+             res.status(201).json(results.rows[0]);
+         });
+     });
+ 
+}
+
+
 module.exports = {
     listAll,
-    getById
+    getById,
+    save
 }
