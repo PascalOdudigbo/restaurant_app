@@ -1,3 +1,115 @@
+# BACKEND SETUP TUTORIAL
+
+### STEPS
+
+1. create the backend folder
+2. install express and postgress
+
+`npm i --save express pg`
+
+`npm i pg`
+
+
+3. Create the server.js file. Paste the following code within the file
+
+```
+
+const express = require('express');
+const pg = require('pg');
+require('dotenv').config();
+
+const app = express();
+const port = process.env.PORT || 3001;
+
+const config = {
+    user: process.env.PGUSER,
+    password: process.env.PASSWORD,
+    host: process.env.HOST,
+    port: 10049,
+    database: "restaurant_application_db",
+    ssl: {
+        rejectUnauthorized: false,
+        ca: process.env.CA_CERTIFICATE
+    }
+};
+
+const client = new pg.Client(config);
+
+// Connect to the PostgreSQL database
+client.connect()
+    .then(() => {
+        console.log('Connected to the PostgreSQL database');
+    })
+    .catch((err) => {
+        console.error('Error connecting to the PostgreSQL database:', err);
+    });
+
+// Define routes
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+// Start the Express server
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
+
+
+```
+
+4. Run the server from within the src directory using the following command 
+
+`node ./server.js`
+
+6. install knex
+
+``` 
+npm install knex pg
+
+```
+
+7. Create a knexfile.js file at the root of the backend directory with the appropriate configuration for development environment.
+
+```
+
+require('dotenv').config()
+
+module.exports = {
+    development: {
+        client: 'postgresql',
+        connection: {
+            user: process.env.PGUSER,
+            password: process.env.PASSWORD, 
+            host: process.env.HOST,
+            port: 10049,
+            database: "restaurant_application_db",
+            ssl: {
+                rejectUnauthorized: false,
+                ca: process.env.CA_CERTIFICATE
+            }
+        },
+        migrations: {
+            directory: './migrations'
+        },
+        seeds: {
+            directory: './seeds'
+        }
+    }
+};
+
+```
+
+7. Use knex to generate a database migration file to create the database tables
+
+```
+npx knex migrate:make create_tables
+
+```
+
+8. Modify the migration file and create all the required tables. Use this code as reference for future projects
+
+```
 exports.up = function (knex) {
     return knex.schema
         .createTable('users', function (table) {
@@ -80,3 +192,11 @@ exports.down = function (knex) {
         .dropTableIfExists('bookings')
         .dropTableIfExists('users');
 };
+
+```
+
+9. Run the migration file
+
+``` 
+npx knex migrate:latest
+```

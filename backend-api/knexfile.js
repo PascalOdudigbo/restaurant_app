@@ -1,15 +1,17 @@
+require('dotenv').config()
+
 module.exports = {
     development: {
         client: 'postgresql',
         connection: {
-            user: process.env.USER,
-            password: process.env.PASSWORD,
+            user: process.env.PGUSER,
+            password: process.env.PASSWORD, 
             host: process.env.HOST,
-            port: process.env.PORT,
+            port: 10049,
             database: "restaurant_application_db",
             ssl: {
-                rejectUnauthorized: true,
-                ca: process.env.CA_CERTIFICATE,
+                rejectUnauthorized: false,
+                ca: process.env.CA_CERTIFICATE
             }
         },
         migrations: {
