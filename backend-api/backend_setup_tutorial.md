@@ -9,18 +9,15 @@
 
 `npm i pg`
 
+3. Create a db.js file and paste the following code within the file 
 
-3. Create the server.js file. Paste the following code within the file
-
-```
-
-const express = require('express');
+``` 
+// Importing PostgreSql
 const pg = require('pg');
+// Enabling the use of environment variables
 require('dotenv').config();
 
-const app = express();
-const port = process.env.PORT || 3001;
-
+// Defining the database configuration
 const config = {
     user: process.env.PGUSER,
     password: process.env.PASSWORD,
@@ -33,9 +30,29 @@ const config = {
     }
 };
 
+// Initializing the database client
 const client = new pg.Client(config);
 
-// Connect to the PostgreSQL database
+module.exports = client
+
+```
+
+4. Create the server.js file. Paste the following code within the file
+
+```
+
+// Importing express
+const express = require('express');
+
+// Import the database connection
+const client = require("./db");
+
+// Importing all the route files
+const userRoutes = require('./src/routes/user_routes');
+
+const app = express();
+const port = process.env.PORT || 3001;
+
 client.connect()
     .then(() => {
         console.log('Connected to the PostgreSQL database');
@@ -49,16 +66,15 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+
 // Start the Express server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-
-
 ```
 
-4. Run the server from within the src directory using the following command 
+5. Run the server from within the src directory using the following command 
 
 `node ./server.js`
 
@@ -100,14 +116,14 @@ module.exports = {
 
 ```
 
-7. Use knex to generate a database migration file to create the database tables
+8. Use knex to generate a database migration file to create the database tables
 
 ```
 npx knex migrate:make create_tables
 
 ```
 
-8. Modify the migration file and create all the required tables. Use this code as reference for future projects
+9. Modify the migration file and create all the required tables. Use this code as reference for future projects
 
 ```
 exports.up = function (knex) {
@@ -195,7 +211,7 @@ exports.down = function (knex) {
 
 ```
 
-9. Run the migration file
+10. Run the migration file
 
 ``` 
 npx knex migrate:latest

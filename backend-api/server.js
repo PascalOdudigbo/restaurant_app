@@ -6,6 +6,7 @@ const client = require("./db");
 
 // Importing all the route files
 const userRoutes = require('./src/routes/user_routes');
+const bookingRoutes = require('./src/routes/booking_routes');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -23,8 +24,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-// Creating a path for user that links to the user routes
+// Creating an API route user that links to the user routes
 app.use('/users', userRoutes);
+
+// Creating an API route for bookings that links to the booking routes
+app.use('/bookings', bookingRoutes);
 
 // Start the Express server
 app.listen(port, () => {
