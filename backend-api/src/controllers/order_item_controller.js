@@ -1,8 +1,8 @@
-// Importing the table resources 
-const { listAll, getById, save, update, destroy } = require("../resources/table_resources");
+// Importing the order Item resources 
+const { listAll, getById, save, update, destroy } = require("../resources/order_item_resources");
 
 // A controller function to get all menu categories
-const getAllTables = (req, res) => {
+const getAllOrderItems = (req, res) => {
     try {
         // Call the listAll function from the resource file
         listAll(req, res);
@@ -13,8 +13,8 @@ const getAllTables = (req, res) => {
     }
 };
 
-// A controller function to get a table by ID
-const getTableById = (req, res) => {
+// A controller function to get a order Item by ID
+const getOrderItemById = (req, res) => {
     try {
         // Call the getById function from the resource file
         getById(req, res);
@@ -25,8 +25,8 @@ const getTableById = (req, res) => {
     }
 }
 
-// A controller function to add a table to the database
-const addTable = (req, res) => {
+// A controller function to add a order Item to the database
+const addOrderItem = (req, res) => {
     try {
         // Call the save function from the resource file
         save(req, res);
@@ -37,8 +37,8 @@ const addTable = (req, res) => {
     }
 }
 
-// A controller function to update table
-const updateTable = (req, res) => {
+// A controller function to update order Item 
+const updateOrderItem = (req, res) => {
     try {
         // Call the update function from the resource file
         update(req, res);
@@ -48,8 +48,8 @@ const updateTable = (req, res) => {
     }
 }
 
-// A controller function to delete table
-const deleteTable = (req, res) => {
+// A controller function to delete order Item I
+const deleteOrderItem = (req, res) => {
     try {
         // Call the destroy function from the resource file
         destroy(req, res);
@@ -60,9 +60,9 @@ const deleteTable = (req, res) => {
 }
 
 module.exports = {
-    getAllTables,
-    getTableById,
-    addTable,
-    updateTable,
-    deleteTable
+    getAllOrderItems,
+    getOrderItemById,
+    addOrderItem,
+    updateOrderItem,
+    deleteOrderItem
 }

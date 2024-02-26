@@ -1,5 +1,5 @@
 // Importing the order resources 
-const { listAll, getById, save, update, destroy } = require("../resources/menu_item_resources");
+const { listAll, getById, save, update, destroy } = require("../resources/order_resources");
 
 // A controller function to get all menu categories
 const getAllOrders = (req, res) => {
