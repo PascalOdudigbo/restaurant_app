@@ -1,6 +1,9 @@
 // Import the database connection
 const client = require("../../db");
 
+// Importing bcrypt
+const bcrypt = require('bcrypt');
+
 // Importing the user queries
 const {
     getAllUsers,
@@ -13,7 +16,7 @@ const {
 } = require("../queries/user_queries");
 
 // Importing the util functions
-const {capitalize} = require("../utils/resource_utils");
+const { capitalize } = require("../utils/resource_utils");
 
 
 // A function to list all users
@@ -52,38 +55,86 @@ const getById = (req, res) => {
 
 // A function to add a user to the database
 const save = (req, res) => {
-     // destructuring the request parameters
-     const { name, mobile_number, postcode, email, password, role } = req.body;
+    // destructuring the request parameters
+    const { name, mobile_number, postcode, email, password, role } = req.body;
 
-     // checking if the contract already exists
-     client.query(checkUserExists, [email], (error, results) => {
-         if (error) {
-             console.error("Error checking contract:", error);
-             return res.status(500).json({ error: "Internal Server Error" });
-         }
- 
-         if (results.rowCount > 0) {
-             // Contract already exists
-             return res.status(409).json({ error: "User already exists." });
-         }
- 
-         // Add the user to the database if it doesn't exist
-         client.query(addUser, [capitalize(name), mobile_number, postcode, email, password, role], (error, results) => {
-             if (error) {
-                 console.error("Error saving user:", error);
-                 return res.status(500).json({ error: "Internal Server Error" });
-             }
- 
-             // Return the created contract
-             res.status(201).json(results.rows[0]);
-         });
-     });
- 
+    // Hashing the password
+    bcrypt.hash(password, 10, (hashError, hashedPassword) => {
+        if (hashError) {
+            console.error("Error hashing password:", hashError);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        // Checking if the user already exists
+        client.query(checkUserExists, [email], (error, results) => {
+            if (error) {
+                console.error("Error checking contract:", error);
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+
+            if (results.rowCount > 0) {
+                // User already exists
+                return res.status(409).json({ error: "User already exists." });
+            }
+
+            // Add the user to the database if it doesn't exist
+            client.query(addUser, [capitalize(name), mobile_number, postcode, email, hashedPassword, role], (error, results) => {
+                if (error) {
+                    console.error("Error saving user:", error);
+                    return res.status(500).json({ error: "Internal Server Error" });
+                }
+
+                // Return the created contract
+                res.status(201).json(results.rows[0]);
+            });
+        });
+    });
 }
 
+// A function to update a user if it exists
+const update = (req, res) => {
+    // Getting the target user id
+    const id = parseInt(req.params.id);
+    // Destructuring the attributes from the request body
+    const { name, mobile_number, postcode, email, password, role } = req.body;
+
+    // Hashing the password
+    bcrypt.hash(password, 10, (error, hashedPassword) => {
+        if (error) {
+            console.error("Error hashing password: ", error);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        // Checking if the user exists
+        client.query(getUserById, [id], (error, results) => {
+            if (error) {
+                console.error("Error checking user:", error);
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+
+            if (results.rowCount === 0) {
+                // User doesn't exist
+                return res.status(404).json({ error: "User doesn't exist." });
+            }
+
+            // Update user if it exists
+            client.query(updateUser, [capitalize(name), mobile_number, postcode, email, hashedPassword, role, id], (error, results) => {
+                if (error) {
+                    console.error("Error updating user:", error);
+                    return res.status(500).json({ error: "Internal Server Error" });
+                }
+
+                // Return the updated contract if successful
+                res.status(200).json(results.rows[0]);
+            })
+        });
+
+    })
+}
 
 module.exports = {
     listAll,
     getById,
-    save
+    save,
+    update
 }

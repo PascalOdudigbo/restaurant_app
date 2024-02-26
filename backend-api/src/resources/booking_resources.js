@@ -61,9 +61,44 @@ const save = (req, res) => {
     
 }
 
+// A function to update a booking 
+const update = (req, res) => {
+    // Getting the booking ID from the request params and Parsing it to Integer
+    const id = parseInt(req.params.id)
+    // Destructuring the booking data from the request body
+    const { user_id, prefered_date, prefered_guests, occasion, message, status } = req.body;
+    //Checking if booking exists
+    client.query(getBookingById, [id], (error, results) => {
+        if(error){
+            console.error("Error checking booking exixts: ", error);
+             res.status(500).json({error: "Internal Server Error"});
+             return
+        }
+
+        // If booking doesn't exist
+        if (results.rowCount === 0){
+           return res.status(404).json({error: "Booking doesn't exist"});
+        }
+
+        // If booking exists querry database for update
+        client.query(updateBooking, [user_id, prefered_date, prefered_guests, occasion, message, status ], (error, results) => {
+            if (error) {
+                console.error("Error updating user:", error);
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+
+            // Return the updated contract if successful
+            res.status(200).json(results.rows[0]);
+        })
+
+    })
+    
+
+}
 
 module.exports = {
     listAll,
     getById,
-    save
+    save,
+    update
 }

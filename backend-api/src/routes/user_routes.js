@@ -6,7 +6,8 @@ const router = Router();
 const {
     getAllUsers,
     getUserById,
-    addUser
+    addUser,
+    updateUser
 } = require("../controllers/user_controller");
 
 // A route to list all users
@@ -17,5 +18,9 @@ router.get('/:id', getUserById);
 
 // A route to add a user to the database
 router.post('/', addUser);
+
+// Routers to update users
+router.patch("/:id", updateUser);
+router.put("/:id", updateUser);
 
 module.exports = router;

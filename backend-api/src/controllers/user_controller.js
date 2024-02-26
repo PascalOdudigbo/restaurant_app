@@ -1,5 +1,5 @@
 // Importing the user resources 
-const { listAll, getById, save } = require("../resources/user_resources");
+const { listAll, getById, save, update } = require("../resources/user_resources");
 
 // A conroller function to get all users
 const getAllUsers = (req, res) => {
@@ -37,8 +37,21 @@ const addUser = (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 }
+
+// A controller function to update user
+const updateUser = (req, res) => {
+    try {
+        // call the update function from the resource file
+        update(req, res);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
-    addUser
+    addUser,
+    updateUser
 }

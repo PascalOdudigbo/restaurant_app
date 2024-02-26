@@ -1,6 +1,5 @@
 // Importing the Booking resources
-const { listAll, getById } = require("../resources/booking_resources");
-const { save } = require("../resources/user_resources");
+const { listAll, getById, save, update } = require("../resources/booking_resources");
 
 // A conroller function to get all bookings
 const getAllBookings = (req, res) => {
@@ -42,9 +41,24 @@ const addBooking = (req, res) => {
     }
 }
 
+// A controller function to update booking
+const updateBooking = (req, res) => {
+    try {
+        // Call the save function from the resource file
+        update(req, res);
+
+    } catch (error) {
+        // In the eventuality of an error occuring
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+
+    }
+}
+
 
 module.exports = {
     getAllBookings,
     getBookingById,
-    addBooking
+    addBooking,
+    updateBooking
 }
