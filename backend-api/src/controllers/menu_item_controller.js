@@ -1,8 +1,8 @@
-// Importing the menu category resources 
-const { listAll, getById, save, update, destroy } = require("../resources/menu_category_resources");
+// Importing the menu item resources 
+const { listAll, getById, save, update, destroy } = require("../resources/menu_item_resources");
 
 // A controller function to get all menu categories
-const getAllMenuCategories = (req, res) => {
+const getAllMenuItems = (req, res) => {
     try {
         // Call the listAll function from the resource file
         listAll(req, res);
@@ -13,8 +13,8 @@ const getAllMenuCategories = (req, res) => {
     }
 };
 
-// A controller function to get a menu category by ID
-const getMenuCategoryById = (req, res) => {
+// A controller function to get a menu item by ID
+const getMenuItemById = (req, res) => {
     try {
         // Call the getById function from the resource file
         getById(req, res);
@@ -25,8 +25,8 @@ const getMenuCategoryById = (req, res) => {
     }
 }
 
-// A controller function to add a menu category to the database
-const addMenuCategory = (req, res) => {
+// A controller function to add a menu item to the database
+const addMenuItem = (req, res) => {
     try {
         // Call the save function from the resource file
         save(req, res);
@@ -37,8 +37,8 @@ const addMenuCategory = (req, res) => {
     }
 }
 
-// A controller function to update menu category
-const updateMenuCategory = (req, res) => {
+// A controller function to update menu item
+const updateMenuItem = (req, res) => {
     try {
         // Call the update function from the resource file
         update(req, res);
@@ -48,8 +48,8 @@ const updateMenuCategory = (req, res) => {
     }
 }
 
-// A controller function to delete menu category
-const deleteMenuCategory = (req, res) => {
+// A controller function to delete menu item
+const deleteMenuItem = (req, res) => {
     try {
         // Call the destroy function from the resource file
         destroy(req, res);
@@ -60,9 +60,9 @@ const deleteMenuCategory = (req, res) => {
 }
 
 module.exports = {
-    getAllMenuCategories,
-    getMenuCategoryById,
-    addMenuCategory,
-    updateMenuCategory,
-    deleteMenuCategory
+    getAllMenuItems,
+    getMenuItemById,
+    addMenuItem,
+    updateMenuItem,
+    deleteMenuItem
 }
