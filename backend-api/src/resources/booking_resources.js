@@ -1,8 +1,7 @@
 // Importing the Database connection
-const { response } = require("express");
 const client = require("../../db");
 
-//importing all booking querries
+// Importing all booking queries
 const {
     getAllBookings,
     getBookingById,
@@ -13,118 +12,84 @@ const {
 
 // A function to get all bookings
 const listAll = (req, res) => {
-    // Using the database connection to querry the database
     client.query(getAllBookings, (error, results) => {
-        // Return error message if it occurs
         if (error) {
             console.error("Error fetching bookings:", error);
-            res.status(500).json({ error: "Internal Server Error" });
-            return;
+            return res.status(500).json({ error: "Internal Server Error" });
         }
-        // Return the database response as JSON if request is successful
         res.status(200).json(results.rows);
-    })
-
-}
+    });
+};
 
 // A function to get booking by ID
 const getById = (req, res) => {
-    // Getting the booking ID from the request params and Parsing it to Integer
-    const id = parseInt(req.params.id)
-    // Using the database connection to querry the database
-    client.query(getBookingById, [id], (error, response) => {
-        // Return error message if it occurs
+    const id = parseInt(req.params.id);
+    client.query(getBookingById, [id], (error, results) => {
         if (error) {
-            console.error("Error fetching booking: ", error);
-            res.status(500).json({ error: "Internal Server Error" });
-            return;
+            console.error("Error fetching booking:", error);
+            return res.status(500).json({ error: "Internal Server Error" });
         }
-        // Return the database connection as JSON if successful
+        if (results.rows.length === 0) {
+            return res.status(404).json({ error: "Booking not found." });
+        }
         res.status(200).json(results.rows[0]);
-    })
-}
+    });
+};
 
 // A function to add a booking to the database
 const save = (req, res) => {
-    // Destructuring the booking data from the request body
     const { user_id, prefered_date, prefered_guests, occasion, message, status } = req.body;
-    // Add the booking to the database if it doesn't exist
     client.query(addBooking, [user_id, prefered_date, prefered_guests, occasion, message, status], (error, results) => {
         if (error) {
             console.error("Error saving booking:", error);
             return res.status(500).json({ error: "Internal Server Error" });
         }
-
-        // Return the created booking
         res.status(201).json(results.rows[0]);
     });
-    
-}
+};
 
-// A function to update a booking 
+// A function to update a booking
 const update = (req, res) => {
-    // Getting the booking ID from the request params and Parsing it to Integer
-    const id = parseInt(req.params.id)
-    // Destructuring the booking data from the request body
+    const id = parseInt(req.params.id);
     const { user_id, prefered_date, prefered_guests, occasion, message, status } = req.body;
-    //Checking if booking exists
     client.query(getBookingById, [id], (error, results) => {
-        if(error){
-            console.error("Error checking booking exixts: ", error);
-             res.status(500).json({error: "Internal Server Error"});
-             return
+        if (error) {
+            console.error("Error checking booking exists:", error);
+            return res.status(500).json({ error: "Internal Server Error" });
         }
-
-        // If booking doesn't exist
-        if (results.rowCount === 0){
-           return res.status(404).json({error: "Booking doesn't exist"});
+        if (results.rows.length === 0) {
+            return res.status(404).json({ error: "Booking not found." });
         }
-
-        // If booking exists querry database for update
-        client.query(updateBooking, [user_id, prefered_date, prefered_guests, occasion, message, status ], (error, results) => {
+        client.query(updateBooking, [user_id, prefered_date, prefered_guests, occasion, message, status, id], (error, results) => {
             if (error) {
                 console.error("Error updating booking:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-
-            // Return the updated contract if successful
             res.status(200).json(results.rows[0]);
-        })
+        });
+    });
+};
 
-    })
-
-}
-
+// A function to delete a booking
 const destroy = (req, res) => {
-    // Getting the booking ID from the request params and Parsing it to Integer
-    const id = parseInt(req.params.id)
-    //Checking if booking exists
+    const id = parseInt(req.params.id);
     client.query(getBookingById, [id], (error, results) => {
-        if(error){
-            console.error("Error checking booking exixts: ", error);
-             res.status(500).json({error: "Internal Server Error"});
-             return
+        if (error) {
+            console.error("Error checking booking exists:", error);
+            return res.status(500).json({ error: "Internal Server Error" });
         }
-
-        // If booking doesn't exist
-        if (results.rowCount === 0){
-           return res.status(404).json({error: "Booking doesn't exist"});
+        if (results.rows.length === 0) {
+            return res.status(404).json({ error: "Booking not found." });
         }
-
-        // If booking exists querry database for delete
-        client.query(deleteBooking, [user_id, prefered_date, prefered_guests, occasion, message, status ], (error, results) => {
+        client.query(deleteBooking, [id], (error, results) => {
             if (error) {
                 console.error("Error deleting booking:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-
-            // Booking is deleted successfully
             res.status(200).json("Booking deleted successfully");
-        })
-
-    })
-    
-}
+        });
+    });
+};
 
 module.exports = {
     listAll,
@@ -132,4 +97,4 @@ module.exports = {
     save,
     update,
     destroy
-}
+};
