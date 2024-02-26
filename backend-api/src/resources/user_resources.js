@@ -68,7 +68,7 @@ const save = (req, res) => {
         // Checking if the user already exists
         client.query(checkUserExists, [email], (error, results) => {
             if (error) {
-                console.error("Error checking contract:", error);
+                console.error("Error checking user exists:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
 
@@ -84,7 +84,7 @@ const save = (req, res) => {
                     return res.status(500).json({ error: "Internal Server Error" });
                 }
 
-                // Return the created contract
+                // Return the created user
                 res.status(201).json(results.rows[0]);
             });
         });
@@ -108,7 +108,7 @@ const update = (req, res) => {
         // Checking if the user exists
         client.query(getUserById, [id], (error, results) => {
             if (error) {
-                console.error("Error checking user:", error);
+                console.error("Error checking user exists:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
 
@@ -124,7 +124,7 @@ const update = (req, res) => {
                     return res.status(500).json({ error: "Internal Server Error" });
                 }
 
-                // Return the updated contract if successful
+                // Return the updated user if successful
                 res.status(200).json(results.rows[0]);
             })
         });
@@ -132,9 +132,41 @@ const update = (req, res) => {
     })
 }
 
+// A function to delete a user if it exists
+const destroy = (req, res) => {
+    // Getting the target user id
+    const id = parseInt(req.params.id);
+
+    // Checking if the user exists
+    client.query(getUserById, [id], (error, results) => {
+        if (error) {
+            console.error("Error checking user exists:", error);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        if (results.rowCount === 0) {
+            // User doesn't exist
+            return res.status(404).json({ error: "User doesn't exist." });
+        }
+
+        // Delete user if it exists
+        client.query(deleteUser, [id], (error, results) => {
+            if (error) {
+                console.error("Error deleting user:", error);
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+
+            // User is deleted successfully
+            res.status(200).json("User deleted successfully");
+        })
+    });
+
+}
+
 module.exports = {
     listAll,
     getById,
     save,
-    update
+    update,
+    destroy
 }

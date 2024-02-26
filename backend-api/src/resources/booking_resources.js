@@ -48,14 +48,14 @@ const getById = (req, res) => {
 const save = (req, res) => {
     // Destructuring the booking data from the request body
     const { user_id, prefered_date, prefered_guests, occasion, message, status } = req.body;
-    // Add the user to the database if it doesn't exist
+    // Add the booking to the database if it doesn't exist
     client.query(addBooking, [user_id, prefered_date, prefered_guests, occasion, message, status], (error, results) => {
         if (error) {
-            console.error("Error saving user:", error);
+            console.error("Error saving booking:", error);
             return res.status(500).json({ error: "Internal Server Error" });
         }
 
-        // Return the created contract
+        // Return the created booking
         res.status(201).json(results.rows[0]);
     });
     
@@ -83,7 +83,7 @@ const update = (req, res) => {
         // If booking exists querry database for update
         client.query(updateBooking, [user_id, prefered_date, prefered_guests, occasion, message, status ], (error, results) => {
             if (error) {
-                console.error("Error updating user:", error);
+                console.error("Error updating booking:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
 
@@ -92,13 +92,44 @@ const update = (req, res) => {
         })
 
     })
-    
 
+}
+
+const destroy = (req, res) => {
+    // Getting the booking ID from the request params and Parsing it to Integer
+    const id = parseInt(req.params.id)
+    //Checking if booking exists
+    client.query(getBookingById, [id], (error, results) => {
+        if(error){
+            console.error("Error checking booking exixts: ", error);
+             res.status(500).json({error: "Internal Server Error"});
+             return
+        }
+
+        // If booking doesn't exist
+        if (results.rowCount === 0){
+           return res.status(404).json({error: "Booking doesn't exist"});
+        }
+
+        // If booking exists querry database for delete
+        client.query(deleteBooking, [user_id, prefered_date, prefered_guests, occasion, message, status ], (error, results) => {
+            if (error) {
+                console.error("Error deleting booking:", error);
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+
+            // Booking is deleted successfully
+            res.status(200).json("Booking deleted successfully");
+        })
+
+    })
+    
 }
 
 module.exports = {
     listAll,
     getById,
     save,
-    update
+    update,
+    destroy
 }

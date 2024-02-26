@@ -1,5 +1,5 @@
 // Importing the user resources 
-const { listAll, getById, save, update } = require("../resources/user_resources");
+const { listAll, getById, save, update, destroy } = require("../resources/user_resources");
 
 // A conroller function to get all users
 const getAllUsers = (req, res) => {
@@ -49,9 +49,21 @@ const updateUser = (req, res) => {
     }
 }
 
+// A controller function to delete user
+const deleteUser = (req, res) => {
+    try {
+        // call the update function from the resource file
+        destroy(req, res);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
     addUser,
-    updateUser
+    updateUser,
+    deleteUser
 }

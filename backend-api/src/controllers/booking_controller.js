@@ -1,5 +1,5 @@
 // Importing the Booking resources
-const { listAll, getById, save, update } = require("../resources/booking_resources");
+const { listAll, getById, save, update, destroy } = require("../resources/booking_resources");
 
 // A conroller function to get all bookings
 const getAllBookings = (req, res) => {
@@ -55,10 +55,22 @@ const updateBooking = (req, res) => {
     }
 }
 
+// A controller function to delete booking
+const deleteBooking = (req, res) => {
+    try {
+        // call the update function from the resource file
+        destroy(req, res);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
 
 module.exports = {
     getAllBookings,
     getBookingById,
     addBooking,
-    updateBooking
+    updateBooking,
+    deleteBooking
 }
