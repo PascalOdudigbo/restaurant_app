@@ -119,10 +119,61 @@ const destroy = (req, res) => {
     });
 };
 
+// A function to login user
+const login = (req, res) => {
+    // Destructuring the request and getting the email and password from the 
+    const {email, password} = req.body
+    // Checking to see if user exists
+    client.query(checkUserExists, [email], (error, results) => {
+        if(error) {
+            console.error("Error checking user exists: ", error)
+            return res.status(500).json({error: "Internal Server Error"});
+        }
+
+        if(results.rows.length === 0) {
+            return res.status(404).json({error: "Invalid email or password!"})
+        }
+
+        // Storing user data from the request
+        const user = results.rows[0]
+
+        // Using Bcrypt to compare the login password and the user password
+        bcrypt.compare(password, user.password, (compareError, isMatch) => {
+            if(compareError) { 
+                console.error("Error comparing passwords:", compareError);
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+
+            if (!isMatch) {
+                return res.status(401).json({error: "Invalid email or password!"});
+            }
+
+            // Use session to implement auto authentication
+            req.session.user = user
+            // Login successfully since the password matches
+            res.status(200).json({message: "Login successful!", user: user});
+
+        })
+
+    })
+}
+
+// A function to verify user login status
+const loggedIn = (req, res) => {
+    // check if user session doesn't exist
+    if(!req.session.user) {
+        return res.status(404).json({message: "Not logged in!"})
+    }
+    
+    res.status(200).json({user: req.session.user})
+}
+
 module.exports = {
     listAll,
     getById,
     save,
     update,
-    destroy
+    destroy,
+    login,
+    loggedIn
 };
