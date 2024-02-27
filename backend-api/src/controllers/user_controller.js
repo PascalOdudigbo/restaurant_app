@@ -1,5 +1,5 @@
 // Importing the user resources 
-const { listAll, getById, save, update, destroy } = require("../resources/user_resources");
+const { listAll, getById, save, update, destroy, login, loggedIn } = require("../resources/user_resources");
 
 // A conroller function to get all users
 const getAllUsers = (req, res) => {
@@ -60,10 +60,34 @@ const deleteUser = (req, res) => {
     }
 }
 
+// A controller function to login user
+const userLogin = (req, res) => {
+    try {
+        // Call the login function from the resource file
+        login(req, res);
+    } catch {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+// A controller function to verify user loggedIn
+const userLoggedIn = (req, res) => {
+    try {
+        // Call the loggedIn function from the resource file
+        loggedIn(req, res);
+    } catch {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    userLogin,
+    userLoggedIn
 }
