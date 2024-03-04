@@ -43,6 +43,10 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// Setup the backend to receive JSON data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Creating an API route user that links to the user routes
 app.use('/users', userRoutes);
 

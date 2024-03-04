@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import FormInput from '../FormInput/FormInput'
 import { Link } from 'react-router-dom';
+import {registerUser, RegisterFormData} from '../../utils/registerUtils';
+import {User} from "../../utils/appUtils";
 
-type RegisterFormData = {
-    name: string;
-    mobileNumber: string;
-    email: string;
-    password: string;
-    confirmPassword: string
-
+type RegisterProps = {
+    setUserData: React.Dispatch<React.SetStateAction<User>>
 }
-function Register() {
+
+function Register({setUserData}: RegisterProps) {
     // creating state variables for controlled form inputs
     const [registerData, setRegisterData] = useState<RegisterFormData>({
         name: "",
@@ -20,13 +18,14 @@ function Register() {
         confirmPassword: ""
     })
 
+    
     return (
         <div className='register_wrapper flex__center'>
             <header className='register_header'>
                 <h3 className='headtext__playfair register_header_title'>REGISTER</h3>
                 <Link to="/" className='headtext__playfair register_header_close'>X</Link>
             </header>
-            <form className='register_form'>
+            <form className='register_form' onSubmit={(e)=>{console.log("clicked");registerUser(e, registerData, setUserData)}}>
                 <FormInput
                     label='Name  *'
                     inputType='text'
@@ -67,7 +66,7 @@ function Register() {
                 />
 
 
-                <button className='custom__button register_form_button'>REGISTER</button>
+                <button type="submit" className='custom__button register_form_button'>REGISTER</button>
             </form>
 
         </div>
