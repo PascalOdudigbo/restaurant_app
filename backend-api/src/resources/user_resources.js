@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const {
     getAllUsers,
     getUserById,
+    getUserByEmail,
     checkUserExists,
     addUser,
     updateUser,
@@ -168,9 +169,33 @@ const loggedIn = (req, res) => {
     res.status(200).json({user: req.session.user})
 }
 
+// A function to get a user by email
+const getByEmail = (req, res) => {
+    // Getting the user email from the request body
+    const {email} = req.body
+
+    // Check if user exists
+    client.query(getUserByEmail, [email], (error, results) => {
+        // If an error occurs 
+        if(error) {
+            console.error("Recover user account error: ", error)
+            return res.status(500).json({error: "Internal Server Error"})
+        }
+
+        // If the user doesn't exist
+        if(results.rows.length === 0){
+            return res.status(404).json({error: "Invalid email!"})
+        }
+        else{
+            return res.status(200).json({message: "Account found!"})
+        }
+    })
+}
+
 module.exports = {
     listAll,
     getById,
+    getByEmail,
     save,
     update,
     destroy,

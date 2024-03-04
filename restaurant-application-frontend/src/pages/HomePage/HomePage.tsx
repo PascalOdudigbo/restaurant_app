@@ -1,7 +1,7 @@
 import React from 'react'
 import welcomeImage from "../../assets/welcome_image_2.jpg";
 import { Route, Routes } from 'react-router-dom';
-import { Login, Register } from '../../components';
+import { ForgotPassword, Login, Register } from '../../components';
 import {User} from "../../utils/appUtils";
 
 // Defining the homepage prop types
@@ -16,6 +16,7 @@ function HomePage({setUserData}: HomePageProps) {
             <Routes>
               <Route path="/login" element={<Login setUserData={setUserData}/>}/>
               <Route path="/register" element={<Register/>}/>
+              <Route path="/forgot-password" element={<ForgotPassword/>}/>
 
             </Routes>
         </div>

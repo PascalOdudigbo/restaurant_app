@@ -38,7 +38,7 @@ function Login({setUserData}: LoginProps) {
                     onChangeFunction={(e) => setLoginData({ ...loginData, password: e.target.value })}
                 />
 
-                <p className='p__inter login_form_forgotpassword'>forgot password?</p>
+                <Link to="/forgot-password" className='p__inter login_form_forgotpassword'>forgot password?</Link>
 
                 <button className='custom__button login_form_button'>LOGIN</button>
             </form>

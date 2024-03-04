@@ -1,5 +1,5 @@
 // Importing the user resources 
-const { listAll, getById, save, update, destroy, login, loggedIn } = require("../resources/user_resources");
+const { listAll, getById, getByEmail, save, update, destroy, login, loggedIn } = require("../resources/user_resources");
 
 // A conroller function to get all users
 const getAllUsers = (req, res) => {
@@ -82,6 +82,19 @@ const userLoggedIn = (req, res) => {
     }
 }
 
+// A controller function to recover user account using email
+const recoverAccount = (req, res) => {
+    try {
+        // Call the getByEmail function from the resource file
+        getByEmail(req, res);
+    }catch {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+    
+
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
@@ -89,5 +102,6 @@ module.exports = {
     updateUser,
     deleteUser,
     userLogin,
-    userLoggedIn
+    userLoggedIn,
+    recoverAccount
 }
