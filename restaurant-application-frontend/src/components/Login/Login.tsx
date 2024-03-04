@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import FormInput from '../FormInput/FormInput'
 import { Link } from 'react-router-dom';
+import {User} from "../../utils/appUtils";
+import { LoginFormData, login } from '../../utils/loginUtils';
 
-type LoginFormData = {
-    email: string;
-    password: string;
+type LoginProps = {
+    setUserData: React.Dispatch<React.SetStateAction<User>>
 }
-function Login() {
+
+function Login({setUserData}: LoginProps) {
     // creating state variables for controlled form inputs
     const [loginData, setLoginData] = useState<LoginFormData>({
         email: "",
@@ -19,7 +21,7 @@ function Login() {
                 <h3 className='headtext__playfair login_header_title'>LOGIN</h3>
                 <Link to="/" className='headtext__playfair login_header_close'>X</Link>
             </header>
-            <form className='login_form'>
+            <form className='login_form' onSubmit={(e) => {login(e, loginData, setUserData)}}>
                 <FormInput
                     label="Email *"
                     inputType="email"

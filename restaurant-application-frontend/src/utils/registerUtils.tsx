@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from "axios";
 import {toast} from 'react-toastify';
-import {User} from "./appUtils";
 
 // defining the registerFormData type
 export type RegisterFormData = {
@@ -14,7 +13,7 @@ export type RegisterFormData = {
 }
 
 // Defining a function to register a user
-export const registerUser = (e : React.FormEvent<HTMLFormElement>, registerData: RegisterFormData, setUserData: React.Dispatch<React.SetStateAction<User>>) => {
+export const registerUser = (e : React.FormEvent<HTMLFormElement>, registerData: RegisterFormData) => {
     // Preventing form reload 
     e.preventDefault();
     // Organizing the post data
@@ -31,8 +30,7 @@ export const registerUser = (e : React.FormEvent<HTMLFormElement>, registerData:
         // Showing a success message
         toast.success("Registration Success!")
         console.log(response)
-        // Setting the userData to the state variable
-        setUserData(response.data); 
+        
     })
     .catch(error => {
         if(error){

@@ -14,8 +14,8 @@ function HomePage({setUserData}: HomePageProps) {
     <div className='app__homepage app__bg app__wrapper section_padding flex__center' id='home'>
         <div className='app__homepage_login_and_register_wrapper flex__center'>
             <Routes>
-              <Route path="/login" element={<Login/>}/>
-              <Route path="/register" element={<Register setUserData={setUserData}/>}/>
+              <Route path="/login" element={<Login setUserData={setUserData}/>}/>
+              <Route path="/register" element={<Register/>}/>
 
             </Routes>
         </div>
