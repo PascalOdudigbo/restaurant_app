@@ -5,7 +5,7 @@ const express = require('express');
 const client = require("./db");
 
 // Importing express session
-const session = require("express-session")
+// const session = require("express-session")
 
 // Importing all the route files
 const userRoutes = require('./src/routes/user_routes');
@@ -15,9 +15,6 @@ const menuItemRoutes = require('./src/routes/menu_item_routes');
 const tableRoutes = require('./src/routes/table_routes');
 const orderRoutes = require('./src/routes/order_routes');
 const orderItemRoutes = require('./src/routes/order_item_routes');
-
-
-
 
 
 const app = express();
@@ -37,11 +34,11 @@ app.get('/', (req, res) => {
 });
 
 // Set up session middleware
-app.use(session({
-    secret: process.env.SESSION_SECRET_KEY,
-    resave: false,
-    saveUninitialized: true
-}));
+// app.use(session({
+//     secret: process.env.SESSION_SECRET_KEY,
+//     resave: true,
+//     saveUninitialized: false
+// }));
 
 // Setup the backend to receive JSON data
 app.use(express.json());

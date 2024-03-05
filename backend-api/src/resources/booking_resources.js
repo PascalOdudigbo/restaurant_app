@@ -38,20 +38,20 @@ const getById = (req, res) => {
 
 // A function to add a booking to the database
 const save = (req, res) => {
-    const { user_id, prefered_date, prefered_guests, occasion, message, status } = req.body;
-    client.query(addBooking, [user_id, prefered_date, prefered_guests, occasion, message, status], (error, results) => {
+    const { user_id, preferred_date, preferred_guests, occasion, message, status } = req.body;
+    client.query(addBooking, [user_id, preferred_date, preferred_guests, occasion, message, status], (error, results) => {
         if (error) {
             console.error("Error saving booking:", error);
             return res.status(500).json({ error: "Internal Server Error" });
         }
-        res.status(201).json(results.rows[0]);
+        res.status(201).json({message: "Booking submitted successfully!", booking: results.rows[0]});
     });
 };
 
 // A function to update a booking
 const update = (req, res) => {
     const id = parseInt(req.params.id);
-    const { user_id, prefered_date, prefered_guests, occasion, message, status } = req.body;
+    const { user_id, preferred_date, preferred_guests, occasion, message, status } = req.body;
     client.query(getBookingById, [id], (error, results) => {
         if (error) {
             console.error("Error checking booking exists:", error);
@@ -60,7 +60,7 @@ const update = (req, res) => {
         if (results.rows.length === 0) {
             return res.status(404).json({ error: "Booking not found." });
         }
-        client.query(updateBooking, [user_id, prefered_date, prefered_guests, occasion, message, status, id], (error, results) => {
+        client.query(updateBooking, [user_id, preferred_date, preferred_guests, occasion, message, status, id], (error, results) => {
             if (error) {
                 console.error("Error updating booking:", error);
                 return res.status(500).json({ error: "Internal Server Error" });

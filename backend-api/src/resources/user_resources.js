@@ -18,6 +18,12 @@ const {
 // Importing the util functions
 const { capitalize } = require("../utils/resource_utils");
 
+// Importing JWT for user login and authentication
+const jwt = require('jsonwebtoken');
+
+// initializing JWT secretKey variable
+const secretKey = process.env.SESSION_SECRET_KEY;
+
 // A function to list all users
 const listAll = (req, res) => {
     client.query(getAllUsers, (error, results) => {
@@ -149,10 +155,10 @@ const login = (req, res) => {
                 return res.status(401).json({ error: "Invalid email or password!" });
             }
 
-            // Use session to implement auto authentication
-            req.session.user = user
+            // Generate JWT token
+            const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '5h' });
             // Login successfully since the password matches
-            res.status(200).json({ message: "Login successful!", user: user });
+            res.status(200).json({ message: "Login successful!", user: token });
 
         })
 
@@ -161,12 +167,19 @@ const login = (req, res) => {
 
 // A function to verify user login status
 const loggedIn = (req, res) => {
-    // check if user session doesn't exist
-    if (!req.session.user) {
-        return res.status(404).json({ message: "Not logged in!" })
+    // Check if user session doesn't exist
+    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
+    if (!token) {
+        return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    res.status(200).json({ user: req.session.user })
+    jwt.verify(token, secretKey, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ error: 'Invalid token' });
+        }
+        req.user = decoded;
+        next();
+    });
 }
 
 // A function to get a user by email
@@ -189,7 +202,7 @@ const getByEmail = (req, res) => {
         else {
             // Storing user data from the request
             const user = results.rows[0];
-            return res.status(200).json({ message: "Account found!", user: user});
+            return res.status(200).json({ message: "Account found!", user: user });
         }
     })
 }
