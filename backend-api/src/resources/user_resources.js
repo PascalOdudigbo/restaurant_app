@@ -123,16 +123,16 @@ const destroy = (req, res) => {
 // A function to login user
 const login = (req, res) => {
     // Destructuring the request and getting the email and password from the 
-    const {email, password} = req.body
+    const { email, password } = req.body
     // Checking to see if user exists
     client.query(checkUserExists, [email], (error, results) => {
-        if(error) {
+        if (error) {
             console.error("Error checking user exists: ", error)
-            return res.status(500).json({error: "Internal Server Error"});
+            return res.status(500).json({ error: "Internal Server Error" });
         }
 
-        if(results.rows.length === 0) {
-            return res.status(404).json({error: "Invalid email or password!"})
+        if (results.rows.length === 0) {
+            return res.status(404).json({ error: "Invalid email or password!" })
         }
 
         // Storing user data from the request
@@ -140,19 +140,19 @@ const login = (req, res) => {
 
         // Using Bcrypt to compare the login password and the user password
         bcrypt.compare(password, user.password, (compareError, isMatch) => {
-            if(compareError) { 
+            if (compareError) {
                 console.error("Error comparing passwords:", compareError);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
 
             if (!isMatch) {
-                return res.status(401).json({error: "Invalid email or password!"});
+                return res.status(401).json({ error: "Invalid email or password!" });
             }
 
             // Use session to implement auto authentication
             req.session.user = user
             // Login successfully since the password matches
-            res.status(200).json({message: "Login successful!", user: user});
+            res.status(200).json({ message: "Login successful!", user: user });
 
         })
 
@@ -162,32 +162,34 @@ const login = (req, res) => {
 // A function to verify user login status
 const loggedIn = (req, res) => {
     // check if user session doesn't exist
-    if(!req.session.user) {
-        return res.status(404).json({message: "Not logged in!"})
+    if (!req.session.user) {
+        return res.status(404).json({ message: "Not logged in!" })
     }
-    
-    res.status(200).json({user: req.session.user})
+
+    res.status(200).json({ user: req.session.user })
 }
 
 // A function to get a user by email
 const getByEmail = (req, res) => {
     // Getting the user email from the request body
-    const {email} = req.body
+    const { email } = req.body
 
     // Check if user exists
     client.query(getUserByEmail, [email], (error, results) => {
         // If an error occurs 
-        if(error) {
+        if (error) {
             console.error("Recover user account error: ", error)
-            return res.status(500).json({error: "Internal Server Error"})
+            return res.status(500).json({ error: "Internal Server Error" });
         }
 
         // If the user doesn't exist
-        if(results.rows.length === 0){
-            return res.status(404).json({error: "Invalid email!"})
+        if (results.rows.length === 0) {
+            return res.status(404).json({ error: "Invalid email!" });
         }
-        else{
-            return res.status(200).json({message: "Account found!"})
+        else {
+            // Storing user data from the request
+            const user = results.rows[0];
+            return res.status(200).json({ message: "Account found!", user: user});
         }
     })
 }

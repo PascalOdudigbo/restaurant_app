@@ -19,19 +19,22 @@ export const login = (e : React.FormEvent<HTMLFormElement>, loginData: LoginForm
         email: loginData.email,
         password: loginData.password,
     }
-    //sending user data to the backend
+    // Sending user data to the backend
     axios.post("/users/login", postData)
     .then(response => {
         // Showing a success message
-        toast.success("Login Success!")
-        console.log(response)
+        toast.success(response.data.message)
         // Setting the userData to the state variable
-        setUserData(response.data); 
+        setUserData(response.data.user); 
         
     })
     .catch(error => {
-        if(error){
-            toast.error("Something went wrong please try again!");
+        if(error.response.data){
+            // Display the error message if it's sent from the backend
+            toast.error(error.response.data.error);
+        }else if(error){
+            // If no error message is sent from backend display a generic message
+            toast.error(error.message);
         }
     })
     

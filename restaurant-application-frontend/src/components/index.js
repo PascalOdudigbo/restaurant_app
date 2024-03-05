@@ -1,5 +1,3 @@
-import ForgotPassword from "./ForgotPassword/ForgotPassword";
-
 export { default as Navbar } from "./Navbar/Navbar";
 export { default as FormInput } from "./FormInput/FormInput";
 export { default as Dropdown } from "./Dropdown/Dropdown";

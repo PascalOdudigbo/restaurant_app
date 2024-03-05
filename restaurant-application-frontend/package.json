@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:10049",
   "dependencies": {
+    "@emailjs/browser": "^4.2.0",
     "@googlemaps/js-api-loader": "^1.16.6",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
