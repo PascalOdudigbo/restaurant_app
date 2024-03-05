@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { FormInput, TextArea } from '../../components';
+import { ContactPageProps, ContactDetails, contactUs } from '../../utils/contactPageUtils';
 
-type ContactDetails = {
-    name: string;
-    email: string;
-    mobileNumber: string;
-    message: string;
-}
-
-function ContactPage() {
+function ContactPage({ userData }: ContactPageProps) {
+    // Defining state variables for contact page form
     const [contactDetails, setContactDetails] = useState<ContactDetails>({
-        name: "",
-        email: "",
-        mobileNumber: "",
+        name: userData.id ? userData.name : "",
+        email: userData.id ? userData.email : "",
+        mobileNumber: userData.id ? userData.mobile_number : "",
         message: "",
     })
 
     useEffect(() => {
         // Initialize the map when the component mounts
         initMap();
-    }, []);
+
+        // Using the hook to make booking details data refresh
+        setContactDetails({
+            name: userData.id ? userData.name : "",
+            email: userData.id ? userData.email : "",
+            mobileNumber: userData.id ? userData.mobile_number : "",
+            message: "",
+        })
+    }, [userData]);
 
     function initMap() {
         if ((window as any).google) {
@@ -56,7 +59,7 @@ function ContactPage() {
                     </div>
 
                     <div className='app__contactPage_form_wrapper'>
-                        <form className='app__contactPage_form'>
+                        <form className='app__contactPage_form' onSubmit={(e) => {contactUs(e, contactDetails) }}>
 
                             <FormInput
                                 label='Name  *'

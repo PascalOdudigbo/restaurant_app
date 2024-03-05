@@ -66,6 +66,27 @@ export const sendEmail = (emailValues: EmailValues, successMessage: string, erro
     );
 }
 
+// Creating a function to send email 
+export const sendEmailNoNavigate = (emailValues: EmailValues, successMessage: string, errorMessage: string) => {
+    if (!serviceID || !templateID || !publicKey) {
+        // If environment variables are not properly set
+        console.error('Environment variables for email service are not set properly');
+        return;
+    }
+
+    emailjs.send(serviceID, templateID, emailValues, publicKey).then(
+        () => {
+            // Display a success message when the email is sent successfully
+            toast.success(successMessage);
+        },
+        (err) => {
+            // Display the error message if the email doesn't send
+            toast.error(errorMessage)
+        }
+    );
+}
+
+
 // Function to check if user is logged in
 export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User>>): boolean => {
     // Retrieve token from local storage

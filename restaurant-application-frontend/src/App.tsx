@@ -44,7 +44,7 @@ function App() {
 
             <HomePage setUserData={setUserData}/>
             <BookingPage userData={userData}/>
-            <ContactPage/>
+            <ContactPage userData={userData}/>
           </>
         } />
       </Routes>
