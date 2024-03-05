@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
 import { BookingPage, ContactPage, HomePage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { User, isLoggedIn } from './utils/appUtils';
 
-// Defining the user type
-type User = {
-  id: number,
-  name: string, 
-  mobile_number: string, 
-  postcode: string, 
-  email: string, 
-  password: string, 
-  role: string
-}
 
 function App() {
+  // Defining state variables for userData
   const [userData, setUserData] = useState<User>({
     id: 0,
     name: "",
@@ -26,6 +18,11 @@ function App() {
     password: "",
     role: ""
   })
+
+  useEffect(() => {
+    isLoggedIn(setUserData);
+  }, [])
+  
   return (
     <div className='app__container'>
       <Routes>
@@ -46,7 +43,7 @@ function App() {
             />
 
             <HomePage setUserData={setUserData}/>
-            <BookingPage />
+            <BookingPage userData={userData}/>
             <ContactPage/>
           </>
         } />

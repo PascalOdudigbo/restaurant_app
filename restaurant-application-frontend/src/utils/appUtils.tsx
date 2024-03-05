@@ -2,6 +2,7 @@ import React from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import { NavigateFunction } from 'react-router-dom';
+import axios from "axios";
 
 // Creating the navigation function type
 type NavigateFunctionType = NavigateFunction;
@@ -43,7 +44,7 @@ type EmailValues = Partial<{
 }>
 
 
-// Creating a function to send multi-factor auth email 
+// Creating a function to send email 
 export const sendEmail = (emailValues: EmailValues, successMessage: string, errorMessage: string, navigationRoute: string, navigate: NavigateFunctionType) => {
     if (!serviceID || !templateID || !publicKey) {
         // If environment variables are not properly set
@@ -65,5 +66,55 @@ export const sendEmail = (emailValues: EmailValues, successMessage: string, erro
     );
 }
 
+// Function to check if user is logged in
+export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User>>): boolean => {
+    // Retrieve token from local storage
+    const token = localStorage.getItem('token');
+    if (!token) {
+        // No token found
+        return false;
+    }
 
+    // Check if token is expired
+    const decodedToken: any = parseJwt(token);
+    if (!decodedToken || Date.now() >= decodedToken.exp * 1000) {
+        // Token is expired
+        localStorage.removeItem('token'); // Remove expired token
+        return false;
+
+    }
+
+    // User is logged in get the userData
+    getUserData(`/users/${decodedToken.userId}`, setUserData)
+    return true
+};
+
+// A function to decode JWT tokens manually
+export const parseJwt = (token: string) => {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+        return null;
+    }
+};
+
+
+// A function to get user data 
+export const getUserData = (route: string, setUserData: React.Dispatch<React.SetStateAction<User>>) => {
+    axios.get(`${route}`)
+        .then(response => {
+            // Setting user data to the state variable
+            setUserData(response.data)
+        })
+        .catch(error => {
+            if (error.response.data) {
+                // Display the error message if it's sent from the backend
+                toast.error(error.response.data.error);
+            } else if (error) {
+                // If no error message is sent from backend display a generic message
+                toast.error(error.message);
+            }
+        })
+
+}
 

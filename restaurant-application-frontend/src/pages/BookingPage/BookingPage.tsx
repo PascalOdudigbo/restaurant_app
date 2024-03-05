@@ -1,29 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dropdown, FormInput, FormInputDate, TextArea } from '../../components';
+import {BookingProps, BookingDetails, makeBooking } from '../../utils/bookingUtils';
+import { useNavigate } from 'react-router-dom';
 
-type BookingDetails = {
-  date: string | number;
-  preferedGuests: number | string;
-  name: string;
-  email: string;
-  mobilenumber: string;
-  postcode: string;
-  occasion: string | number;
-  message: string;
-};
 
-function BookingPage() {
+function BookingPage({userData} : BookingProps) {
+  // Declaring state variables for controlled form inputs
   const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
     date: "",
-    preferedGuests: "Select",
-    name: "",
-    email: "",
-    mobilenumber: "",
-    postcode: "",
+    preferredGuests: "Select",
+    name: userData.id ? userData.name : "",
+    email: userData.id ? userData.email : "",
+    mobilenumber: userData.id ? userData.mobile_number : "",
+    postcode: userData.id ? userData.postcode : "",
     occasion: "Select",
     message: "",
   })
+  // Creating the navigation function
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    // Using the hook to make booking details data refresh
+    setBookingDetails({
+      date: "",
+      preferredGuests: "Select",
+      name: userData.id ? userData.name : "",
+      email: userData.id ? userData.email : "",
+      mobilenumber: userData.id ? userData.mobile_number : "",
+      postcode: userData.id ? userData.postcode : "",
+      occasion: "Select",
+      message: "",
+    })
+  }, [userData])
 
 
   return (
@@ -64,7 +72,7 @@ function BookingPage() {
           </div>
 
           <div className='app__bookingpage_form_wrapper'>
-            <form className='app__bookingpage_form'>
+            <form className='app__bookingpage_form' onSubmit={(e) => {makeBooking(e, bookingDetails, userData, navigate)}}>
               <div className='item1'>
                 <FormInputDate
                   label="Prefered date  *"
@@ -76,8 +84,8 @@ function BookingPage() {
                 <Dropdown
                   label='Prefered guests  *'
                   items={["select", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"]}
-                  buttonText={bookingDetails.preferedGuests}
-                  clickFunction={(data) => { setBookingDetails({ ...bookingDetails, preferedGuests: data }) }}
+                  buttonText={bookingDetails.preferredGuests}
+                  clickFunction={(data) => { setBookingDetails({ ...bookingDetails, preferredGuests: data }) }}
                 />
               </div>
 

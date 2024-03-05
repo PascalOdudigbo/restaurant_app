@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from "axios";
-import {toast} from 'react-toastify';
-import {User} from "./appUtils";
+import { toast } from 'react-toastify';
+import { User, parseJwt, getUserData } from "./appUtils";
+// import jwt_decode from 'jwt-decode';
+
 
 // Defining the login form data type
 export type LoginFormData = {
@@ -10,7 +12,7 @@ export type LoginFormData = {
 }
 
 // defining a function to login users
-export const login = (e : React.FormEvent<HTMLFormElement>, loginData: LoginFormData, setUserData: React.Dispatch<React.SetStateAction<User>>) => {
+export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormData, setUserData: React.Dispatch<React.SetStateAction<User>>) => {
 
     // Preventing form reload 
     e.preventDefault();
@@ -21,22 +23,33 @@ export const login = (e : React.FormEvent<HTMLFormElement>, loginData: LoginForm
     }
     // Sending user data to the backend
     axios.post("/users/login", postData)
-    .then(response => {
-        // Showing a success message
-        toast.success(response.data.message)
-        // Setting the userData to the state variable
-        setUserData(response.data.user); 
-        
-    })
-    .catch(error => {
-        if(error.response.data){
-            // Display the error message if it's sent from the backend
-            toast.error(error.response.data.error);
-        }else if(error){
-            // If no error message is sent from backend display a generic message
-            toast.error(error.message);
-        }
-    })
-    
-   
+        .then(response => {
+            // Showing a success message
+            toast.success(response.data.message)
+            
+            // Saving the response token in localStorage
+            const token = response.data.user;
+
+            // Store the token in local storage
+            localStorage.setItem('token', token);
+
+            // Decode the token to get user ID
+            const userId: number = parseJwt(token).userId;
+           
+            // Getting the userData
+            getUserData(`/users/${userId}`, setUserData)
+
+        })
+        .catch(error => {
+            if (error.response.data) {
+                // Display the error message if it's sent from the backend
+                toast.error(error.response.data.error);
+            } else if (error) {
+                // If no error message is sent from backend display a generic message
+                toast.error(error.message);
+            }
+        })
+
+
 }
+
