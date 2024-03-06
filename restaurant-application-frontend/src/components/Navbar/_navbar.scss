@@ -86,8 +86,24 @@
                     border-bottom: 1px solid var(--color-gold);
                 }
             }
+
+
         
         }
+        .app__navbar_logged_in{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            .cart_icon{
+                color: var(--color-white);
+                height: 30px;
+                width: 30px;
+                margin-left: 25px;
+            }
+        }
+
     
        
         .app__navbar_login div{

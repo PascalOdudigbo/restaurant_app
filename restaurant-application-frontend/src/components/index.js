@@ -6,3 +6,4 @@ export { default as FormInputDate } from "./FormInputDate/FormInputDate";
 export { default as Login } from "./Login/Login";
 export { default as Register } from "./Register/Register";
 export { default as ForgotPassword } from "./ForgotPassword/ForgotPassword";
+export { default as UserSignedInDropdown } from "./UserSignedInDropdown/UserSignedInDropdown";

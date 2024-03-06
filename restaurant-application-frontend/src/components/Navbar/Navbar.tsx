@@ -3,8 +3,13 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineRestaurantMenu, MdLocationOn, MdPhone } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
+import Badge from '@mui/material/Badge';
+import { FaShoppingBasket } from "react-icons/fa";
+import Tooltip from '@mui/material/Tooltip';
+import { NavbarProps } from '../../utils/navbarUtils';
+import {UserSignedInDropdown} from '../';
 
-function Navbar() {
+function Navbar({ userData, setUserData }: NavbarProps) {
   //creating useState to display toggle menu
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   // defining the navigate variable function
@@ -36,17 +41,36 @@ function Navbar() {
 
 
         <ul className='app__navbar_links'>
-          <li className='p__inter'><a href='#home'>HOME</a></li>
-          <li className='p__inter'><a href='#menu'>MENU</a></li>
-          <li className='p__inter'><a href='#booking'>BOOKING</a></li>
-          <li className='p__inter'><a href='#gallery'>GALLERY</a></li>
-          <li className='p__inter'><a href='#contactus'>CONTACT</a></li>
+          <li className='p__inter'><a href='/#home'>HOME</a></li>
+          <li className='p__inter'><a href='/#menu'>MENU</a></li>
+          <li className='p__inter'><a href='/#booking'>BOOKING</a></li>
+          <li className='p__inter'><a href='/#gallery'>GALLERY</a></li>
+          <li className='p__inter'><a href='/#contactus'>CONTACT</a></li>
         </ul>
 
-        <div className='app__navbar_login'>
-          <Link to='/login' className='p__inter app__navbar_login_link'>LOGIN</Link>
-          <Link to='/register' className='p__inter app__navbar_login_link'>REGISTER</Link>
-        </div>
+        {
+          // If user is logged in display more options
+          userData?.id !== 0 ?
+            <div className='app__navbar_logged_in'>
+              <UserSignedInDropdown userData={userData} setUserData={setUserData}/>
+
+              {
+                userData.role === "client" && window.location.href.includes("orders") === false &&
+                <Tooltip title="Your Order" arrow>
+                  <Badge color="secondary" badgeContent={0} showZero onClick={() => {navigate("/orders")}}>
+                    <IconContext.Provider value={{ className: "cart_icon" }}>
+                      <FaShoppingBasket />
+                    </IconContext.Provider>
+                  </Badge>
+                </Tooltip>
+              }
+            </div>
+            :
+            <div className='app__navbar_login'>
+              <Link to='/login' className='p__inter app__navbar_login_link'>LOGIN</Link>
+              <Link to='/register' className='p__inter app__navbar_login_link'>REGISTER</Link>
+            </div>
+        }
 
 
         <div className='app__navbar_smallscreen'>

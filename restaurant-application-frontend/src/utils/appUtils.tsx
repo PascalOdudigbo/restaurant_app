@@ -99,8 +99,8 @@ export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User
     // Check if token is expired
     const decodedToken: any = parseJwt(token);
     if (!decodedToken || Date.now() >= decodedToken.exp * 1000) {
-        // Token is expired
-        localStorage.removeItem('token'); // Remove expired token
+        // Token is expired remove expired token
+        localStorage.removeItem('token'); 
         return false;
 
     }

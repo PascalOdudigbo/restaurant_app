@@ -5,6 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { User, isLoggedIn } from './utils/appUtils';
+import { FaShoppingBasket } from "react-icons/fa";
+
 
 
 function App() {
@@ -28,7 +30,7 @@ function App() {
       <Routes>
         <Route path="/*" element={
           <>
-            <Navbar />
+            <Navbar userData={userData} setUserData={setUserData}/>
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -41,10 +43,15 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-
             <HomePage setUserData={setUserData}/>
             <BookingPage userData={userData}/>
             <ContactPage userData={userData}/>
+          </>
+        } />
+        <Route path="/orders" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData}/>
+            
           </>
         } />
       </Routes>
