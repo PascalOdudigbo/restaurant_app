@@ -11,6 +11,7 @@ function Register() {
         name: "",
         mobileNumber: "",
         email: "",
+        postcode: "",
         password: "",
         confirmPassword: ""
     })
@@ -38,12 +39,22 @@ function Register() {
                     required={true}
                     onChangeFunction={(e) => { setRegisterData({ ...registerData, mobileNumber: e.target.value }) }}
                 />
+
                 <FormInput
                     label="Email *"
                     inputType="email"
                     inputValue={registerData.email}
                     required={true}
                     onChangeFunction={(e) => setRegisterData({ ...registerData, email: e.target.value })}
+                />
+
+
+                <FormInput
+                    label='Postcode  *'
+                    inputType='text'
+                    inputValue={registerData.postcode}
+                    required={true}
+                    onChangeFunction={(e) => { setRegisterData({ ...registerData, postcode: e.target.value }) }}
                 />
 
                 <FormInput

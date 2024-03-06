@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FormInput from '../FormInput/FormInput'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {User} from "../../utils/appUtils";
 import { LoginFormData, login } from '../../utils/loginUtils';
 
@@ -15,13 +15,16 @@ function Login({setUserData}: LoginProps) {
         password: ""
     })
 
+    // Defining a navigation variable function
+    const navigate = useNavigate()
+
     return (
         <div className='login_wrapper flex__center'>
             <header className='login_header'>
                 <h3 className='headtext__playfair login_header_title'>LOGIN</h3>
                 <Link to="/" className='headtext__playfair login_header_close'>X</Link>
             </header>
-            <form className='login_form' onSubmit={(e) => {login(e, loginData, setUserData)}}>
+            <form className='login_form' onSubmit={(e) => {login(e, loginData, setUserData, navigate)}}>
                 <FormInput
                     label="Email *"
                     inputType="email"

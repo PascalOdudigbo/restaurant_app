@@ -7,9 +7,9 @@ export type RegisterFormData = {
     name: string;
     mobileNumber: string;
     email: string;
+    postcode: string;
     password: string;
-    confirmPassword: string
-
+    confirmPassword: string;
 }
 
 // Defining a function to register a user
@@ -21,6 +21,7 @@ export const registerUser = (e: React.FormEvent<HTMLFormElement>, registerData: 
         name: registerData.name,
         mobile_number: registerData.mobileNumber,
         email: registerData.email,
+        postcode: registerData.postcode,
         password: registerData.password,
         role: "client"
     }

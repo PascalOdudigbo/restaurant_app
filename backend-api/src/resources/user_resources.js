@@ -81,11 +81,31 @@ const save = (req, res) => {
 const update = (req, res) => {
     const id = parseInt(req.params.id);
     const { name, mobile_number, postcode, email, password, role } = req.body;
-    bcrypt.hash(password, 10, (error, hashedPassword) => {
-        if (error) {
-            console.error("Error hashing password: ", error);
-            return res.status(500).json({ error: "Internal Server Error" });
-        }
+    if (password) {
+        bcrypt.hash(password, 10, (error, hashedPassword) => {
+            if (error) {
+                console.error("Error hashing password: ", error);
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+            client.query(getUserById, [id], (error, results) => {
+                if (error) {
+                    console.error("Error checking user existence:", error);
+                    return res.status(500).json({ error: "Internal Server Error" });
+                }
+                if (results.rows.length === 0) {
+                    return res.status(404).json({ error: "User not found." });
+                }
+                client.query(updateUser, [capitalize(name), mobile_number, postcode, email, hashedPassword, role, id], (error, results) => {
+                    if (error) {
+                        console.error("Error updating user:", error);
+                        return res.status(500).json({ error: "Internal Server Error" });
+                    }
+                    res.status(200).json({message: "Update Successful", user: results.rows[0]});
+                });
+            });
+        });
+    }
+    else{
         client.query(getUserById, [id], (error, results) => {
             if (error) {
                 console.error("Error checking user existence:", error);
@@ -94,15 +114,15 @@ const update = (req, res) => {
             if (results.rows.length === 0) {
                 return res.status(404).json({ error: "User not found." });
             }
-            client.query(updateUser, [capitalize(name), mobile_number, postcode, email, hashedPassword, role, id], (error, results) => {
+            client.query(updateUser, [capitalize(name), mobile_number, postcode, email, password, role, id], (error, results) => {
                 if (error) {
                     console.error("Error updating user:", error);
                     return res.status(500).json({ error: "Internal Server Error" });
                 }
-                res.status(200).json(results.rows[0]);
+                res.status(200).json({message: "Update Successful", user: results.rows[0]});
             });
         });
-    });
+    }
 };
 
 // A function to delete a user if it exists

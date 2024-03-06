@@ -1,17 +1,17 @@
-.app__navbar_wrapper{
+.app__navbar_wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
     // position: fixed;
 
-    .app_navbar_restaurant_details_wrapper{
+    .app_navbar_restaurant_details_wrapper {
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         background-color: var(--color-gold);
 
-        .app_navbar_detail_wrapper{
+        .app_navbar_detail_wrapper {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -33,70 +33,72 @@
         }
     }
 
-    .app__navbar{
+    .app__navbar {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: var(--color-purple);
         padding: 0rem 2rem;
-        .app__navbar_logo{
+
+        .app__navbar_logo {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-    
-            .app__navbar_logo_text{
+
+            .app__navbar_logo_text {
                 font-size: 34px;
             }
         }
-    
-        .app__navbar_links{
+
+        .app__navbar_links {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             list-style: none;
-    
+
         }
-    
-        .app__navbar_links li{
+
+        .app__navbar_links li {
             margin: 0 1rem;
             cursor: pointer;
             color: var(--color-white);
             // font-size: 14px;
             font-weight: bold;
-    
-            &:hover{
+
+            &:hover {
                 color: var(--color-gold);
             }
         }
-    
-        .app__navbar_login{
+
+        .app__navbar_login {
             display: flex;
             justify-content: flex-end;
             align-items: center;
 
-            .app__navbar_login_link{
+            .app__navbar_login_link {
                 margin: 0 1rem;
                 // text-decoration: none;
                 transition: 0.5s ease;
                 font-weight: bold;
-        
-                &:hover{
+
+                &:hover {
                     border-bottom: 1px solid var(--color-gold);
                 }
             }
 
 
-        
+
         }
-        .app__navbar_logged_in{
+
+        .app__navbar_logged_in {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
 
-            .cart_icon{
+            .cart_icon {
                 color: var(--color-white);
                 height: 30px;
                 width: 30px;
@@ -104,18 +106,18 @@
             }
         }
 
-    
-       
-        .app__navbar_login div{
+
+
+        .app__navbar_login div {
             width: 1px;
             height: 30px;
             background-color: var(--color-gray);
         }
-    
-        .app__navbar_smallscreen{
+
+        .app__navbar_smallscreen {
             display: none;
-    
-            .app__navbar_smallscreen_overlay{
+
+            .app__navbar_smallscreen_overlay {
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -125,9 +127,9 @@
                 transition: 0.5s ease;
                 flex-direction: column;
                 z-index: 5;
-    
-    
-                .overlay__close{
+
+
+                .overlay__close {
                     font-size: 24px;
                     color: var(--color-gold);
                     cursor: pointer;
@@ -135,147 +137,153 @@
                     top: 20px;
                     right: 20px;
                 }
-    
-                .app__navbar_smallscreen_links{
+
+                .app__navbar_smallscreen_links {
                     list-style: none;
                 }
-    
-                .app__navbar_smallscreen_links li{
+
+                .app__navbar_smallscreen_links li {
                     margin: 2rem;
                     cursor: pointer;
                     color: var(--color-gold);
                     font-size: 1.8rem;
                     text-align: center;
                     font-family: var(--font-base);
-    
-                    &:hover{
+
+                    &:hover {
                         color: var(--color-white);
                     }
                 }
             }
-    
-    
-        }   
-    
-    
+
+
+        }
+
+
     }
 }
 
 
 
 @media screen and (min-width: 2000px) {
-    .app__navbar_wrapper{
+    .app__navbar_wrapper {
 
-        .app__navbar{
+        .app__navbar {
             padding: 0rem 1rem;
-        
-            .app__navbar-logo{
-        
-                .app__navbar_logo_text{
-                   font-size: 60px;
+
+            .app__navbar-logo {
+
+                .app__navbar_logo_text {
+                    font-size: 60px;
                 }
             }
-            
+
         }
-        
+
     }
 }
 
 @media screen and (max-width: 1150px) {
-    .app__navbar_wrapper{
-    
-        .app_navbar_restaurant_details_wrapper{
-    
-            .app_navbar_detail_wrapper{
+    .app__navbar_wrapper {
+
+        .app_navbar_restaurant_details_wrapper {
+
+            .app_navbar_detail_wrapper {
                 padding-left: 10px;
                 padding-right: 10px;
-    
+
                 .app_navbar_detail_text {
                     font-size: 0.5em;
                 }
             }
         }
-    
-        .app__navbar{
+
+        .app__navbar {
             padding: 0rem 1rem;
-        
-            .app__navbar_logo{
-                .app__navbar_logo_text{
+
+            .app__navbar_logo {
+                .app__navbar_logo_text {
                     font-size: 34px;
                 }
             }
-        
-            .app__navbar_links{
-                display: none;   
+
+            .app__navbar_links {
+                display: none;
             }
-        
-            .app__navbar_smallscreen{
+
+            .app__navbar_smallscreen {
                 display: flex;
             }
-        
-            .app__navbar_logo{
-        
-                .app__navbar_logo_img{
+
+            .app__navbar_logo {
+
+                .app__navbar_logo_img {
                     width: 180px;
                     height: 30px;
                 }
             }
-        
-            .app__navbar_login{
+
+            .app__navbar_login {
                 display: none;
-            }  
-        
-        
+            }
+
+            .app__navbar_logged_in {
+                display: none;
+            }
+
+
         }
     }
 }
 
 @media screen and (max-width: 850px) {
-    .app__navbar_wrapper{
-    
-        .app_navbar_restaurant_details_wrapper{
-    
-            .app_navbar_detail_wrapper{
+    .app__navbar_wrapper {
+
+        .app_navbar_restaurant_details_wrapper {
+
+            .app_navbar_detail_wrapper {
                 padding-left: 10px;
                 padding-right: 10px;
-    
+
                 .app_navbar_detail_text {
                     font-size: 0.5em;
                 }
             }
         }
-    
-        .app__navbar{
+
+        .app__navbar {
             padding: 0rem 1rem;
-        
-            .app__navbar_logo{
-                .app__navbar_logo_text{
+
+            .app__navbar_logo {
+                .app__navbar_logo_text {
                     font-size: 25px;
                 }
             }
-        
-            .app__navbar_links{
-                display: none;   
+
+            .app__navbar_links {
+                display: none;
             }
-        
-            .app__navbar_smallscreen{
+
+            .app__navbar_smallscreen {
                 display: flex;
             }
-        
-            .app__navbar_logo{
-        
-                .app__navbar_logo_img{
+
+            .app__navbar_logo {
+
+                .app__navbar_logo_img {
                     width: 180px;
                     height: 30px;
                 }
             }
-        
-            .app__navbar_login{
+
+            .app__navbar_login {
                 display: none;
-            }  
-        
-        
+            }
+
+            .app__navbar_logged_in {
+                display: none;
+            }
+
         }
     }
 }
-

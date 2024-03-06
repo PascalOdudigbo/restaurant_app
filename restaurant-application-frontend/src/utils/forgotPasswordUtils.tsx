@@ -10,7 +10,7 @@ type NavigateFunctionType = NavigateFunction;
 
 // Defining the forgot password form type
 export type ForgotPasswordForm = {
-    email: string
+    email: string;
 }
 
 // Account recovery link

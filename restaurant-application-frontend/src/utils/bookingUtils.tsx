@@ -5,7 +5,7 @@ import { NavigateFunction } from "react-router-dom";
 
 // Defining the Booking Props
 export type BookingProps = {
-  userData: User
+  userData: User;
 }
 
 // Defining the Booking details type

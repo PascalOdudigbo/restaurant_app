@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
-import { BookingPage, ContactPage, HomePage } from './pages';
+import { BookingPage, ContactPage, HomePage, UserProfileManagement } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { User, isLoggedIn } from './utils/appUtils';
-import { FaShoppingBasket } from "react-icons/fa";
-
 
 
 function App() {
@@ -24,13 +22,13 @@ function App() {
   useEffect(() => {
     isLoggedIn(setUserData);
   }, [])
-  
+
   return (
     <div className='app__container'>
       <Routes>
         <Route path="/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData}/>
+            <Navbar userData={userData} setUserData={setUserData} />
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -43,15 +41,45 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <HomePage setUserData={setUserData}/>
-            <BookingPage userData={userData}/>
-            <ContactPage userData={userData}/>
+            <HomePage setUserData={setUserData} />
+            <BookingPage userData={userData} />
+            <ContactPage userData={userData} />
           </>
         } />
         <Route path="/orders" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData}/>
-            
+            <Navbar userData={userData} setUserData={setUserData} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+          </>
+        } />
+
+        <Route path="/profile-management" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <UserProfileManagement userData={userData} setUserData={setUserData} />
           </>
         } />
       </Routes>

@@ -10,13 +10,13 @@ type NavigateFunctionType = NavigateFunction;
 
 // Defining the user type
 export type User = {
-    id: number,
-    name: string,
-    mobile_number: string,
-    postcode: string,
-    email: string,
-    password: string,
-    role: string
+    id: number;
+    name: string;
+    mobile_number: string;
+    postcode: string;
+    email: string;
+    password: string;
+    role: string;
 }
 
 // Initializaing emailJs variables
@@ -26,21 +26,21 @@ const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 // Defining the email values type
 type EmailValues = Partial<{
-    image_url: string,
-    logo_text: string,
-    logo_font: string,
-    logo_color: string,
-    email_title: string,
-    user_name: string,
-    email_to: string,
-    notice: string,
-    minor_body: string,
-    email_body: string,
-    button_color: string,
-    button_link: string,
-    button_text: string
-    button_text_size: string,
-    button_text_color: string
+    image_url: string;
+    logo_text: string;
+    logo_font: string;
+    logo_color: string;
+    email_title: string;
+    user_name: string;
+    email_to: string;
+    notice: string;
+    minor_body: string;
+    email_body: string;
+    button_color: string;
+    button_link: string;
+    button_text: string;
+    button_text_size: string;
+    button_text_color: string;
 }>
 
 
@@ -126,6 +126,7 @@ export const getUserData = (route: string, setUserData: React.Dispatch<React.Set
         .then(response => {
             // Setting user data to the state variable
             setUserData(response.data)
+        
         })
         .catch(error => {
             if (error.response.data) {

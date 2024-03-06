@@ -2,7 +2,7 @@ import { User, sendEmailNoNavigate } from "./appUtils";
 
 // Defining the contact page props
 export type ContactPageProps = {
-    userData: User
+    userData: User;
 }
 
 // Defining the contactDetails type

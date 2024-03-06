@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { User, parseJwt, getUserData } from "./appUtils";
+import { NavigateFunction } from 'react-router-dom';
 // import jwt_decode from 'jwt-decode';
 
 
@@ -11,8 +12,11 @@ export type LoginFormData = {
     password: string;
 }
 
+// Initializing the navigate function type
+type NavigateFunctionType = NavigateFunction
+
 // defining a function to login users
-export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormData, setUserData: React.Dispatch<React.SetStateAction<User>>) => {
+export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormData, setUserData: React.Dispatch<React.SetStateAction<User>>, navigate: NavigateFunctionType) => {
 
     // Preventing form reload 
     e.preventDefault();
@@ -39,6 +43,8 @@ export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormD
             // Getting the userData
             getUserData(`/users/${userId}`, setUserData)
 
+            // Navigate to homepage
+            navigate("/")
         })
         .catch(error => {
             if (error.response.data) {

@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 
 // Defining the navbar props
 export type NavbarProps = {
-    userData: User,
-    setUserData: React.Dispatch<React.SetStateAction<User>>
+    userData: User;
+    setUserData: React.Dispatch<React.SetStateAction<User>>;
 }
 
 // Declaring the navigate function type

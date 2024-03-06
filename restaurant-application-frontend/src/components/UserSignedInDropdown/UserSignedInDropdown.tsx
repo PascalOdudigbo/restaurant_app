@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaUserCircle } from 'react-icons/fa';
 import { IconContext } from "react-icons/lib";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ function UserSignedInDropdown({ userData, setUserData }: UserSignedInDropdownPro
                 }
 
                 {
-                    userData?.role === "chef" ||  userData?.role === "attendant" && <button className="dropdownBtn p__inter" onClick={() => navigate("/kitchen")}>Kitchen</button>
+                    (userData?.role === "chef" ||  userData?.role === "attendant") && <button className="dropdownBtn p__inter" onClick={() => navigate("/kitchen")}>Kitchen</button>
                 }
 
                 {
