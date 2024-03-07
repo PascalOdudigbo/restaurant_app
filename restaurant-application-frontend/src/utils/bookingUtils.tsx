@@ -75,3 +75,10 @@ export const makeBooking = (e: React.FormEvent<HTMLFormElement>, bookingDetails:
       }
     })
 }
+
+// Defining a function that returns the current date
+export const currentDate = () => {
+  const today = new Date();
+  const formattedToday = today.toISOString().split('T')[0];
+  return formattedToday
+}

@@ -1,0 +1,258 @@
+.editBooking_wrapper{
+    flex-direction: column;
+    background-color: var(--color-grey);
+    width: 60%;
+
+    .editBooking_header{
+        width: 100%;
+        padding: 0em 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: var(--color-purple);
+
+        .editBooking_header_title{
+            font-size: 30px;
+        }
+
+        .editBooking_header_close{
+            font-size: 20px;
+
+            &:hover{
+                color:red;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .editBooking_form_wrapper {
+        flex-direction: column;
+        width: 90%;
+        margin-top: 25px;
+
+        .editBooking_form {
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 20px;
+
+            .item1 {
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+
+            .item2 {
+                grid-column-start: 2;
+                grid-column-end: 3;
+            }
+
+            .item3 {
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+
+            .item4 {
+                grid-column-start: 2;
+                grid-column-end: 3;
+            }
+
+            .item5 {
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+
+            .item6 {
+                grid-column-start: 2;
+                grid-column-end: 3;
+            }
+
+            .item7 {
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+
+            .item8 {
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+
+            .item9 {
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+
+            .editBooking_form_button {
+                margin-top: 15px;
+                margin-bottom: 20px;
+            }
+
+
+        }
+    }
+}
+
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .editBooking_wrapper{
+        width: 45%;
+    
+        .editBooking_header{
+
+            .editBooking_header_title{
+                font-size: 25px;
+            }
+    
+            .editBooking_header_close{
+                font-size: 18px;
+            }
+        }
+    
+    
+    } 
+}
+
+@media screen and (max-width: 850px) {
+    .editBooking_wrapper{
+        width: 45%;
+    
+        .editBooking_header{
+
+            .editBooking_header_title{
+                font-size: 25px;
+            }
+    
+            .editBooking_header_close{
+                font-size: 18px;
+            }
+        }
+
+        .editBooking_form_wrapper {
+            flex-direction: column;
+            width: 85%;
+            margin-top: 20px;
+
+            .editBooking_form {
+                display: flex;
+                flex-direction: column;
+
+                .editBooking_form_button {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+
+
+            }
+        }
+
+    } 
+}
+
+@media screen and (max-width: 650px) {
+    .editBooking_wrapper{
+        width: 65%;
+    
+        .editBooking_header{
+
+            .editBooking_header_title{
+                font-size: 25px;
+            }
+    
+            .editBooking_header_close{
+                font-size: 18px;
+            }
+        }
+
+        .editBooking_form_wrapper {
+            flex-direction: column;
+            width: 90%;
+            margin-top: 25px;
+
+            .editBooking_form {
+                display: flex;
+                flex-direction: column;
+
+                .editBooking_form_button {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+
+
+            }
+        }
+    
+    } 
+}
+
+@media screen and (max-width: 450px) {
+    .editBooking_wrapper{
+        width: 85%;
+    
+        .editBooking_header{
+
+            .editBooking_header_title{
+                font-size: 22px;
+            }
+    
+            .editBooking_header_close{
+                font-size: 18px;
+            }
+        }
+        
+        .editBooking_form_wrapper {
+            flex-direction: column;
+            width: 90%;
+            margin-top: 25px;
+
+            .editBooking_form {
+                display: flex;
+                flex-direction: column;
+
+                .editBooking_form_button {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+
+
+            }
+        }
+    
+    } 
+}
+
+@media screen and (max-width: 360px) {
+    .editBooking_wrapper{
+        width: 85%;
+    
+        .editBooking_header{
+
+            .editBooking_header_title{
+                font-size: 18px;
+            }
+    
+            .editBooking_header_close{
+                font-size: 18px;
+            }
+        }
+
+        .editBooking_form_wrapper {
+            flex-direction: column;
+            width: 90%;
+            margin-top: 25px;
+
+            .editBooking_form {
+                display: flex;
+                flex-direction: column;
+
+                .editBooking_form_button {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+
+
+            }
+        }
+    
+    }
+}

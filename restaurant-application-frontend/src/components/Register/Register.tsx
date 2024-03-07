@@ -29,6 +29,7 @@ function Register() {
                     inputType='text'
                     inputValue={registerData.name}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => { setRegisterData({ ...registerData, name: e.target.value }) }}
                 />
 
@@ -37,6 +38,7 @@ function Register() {
                     inputType='text'
                     inputValue={registerData.mobileNumber}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => { setRegisterData({ ...registerData, mobileNumber: e.target.value }) }}
                 />
 
@@ -45,6 +47,7 @@ function Register() {
                     inputType="email"
                     inputValue={registerData.email}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => setRegisterData({ ...registerData, email: e.target.value })}
                 />
 
@@ -54,6 +57,7 @@ function Register() {
                     inputType='text'
                     inputValue={registerData.postcode}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => { setRegisterData({ ...registerData, postcode: e.target.value }) }}
                 />
 
@@ -62,6 +66,7 @@ function Register() {
                     inputType="password"
                     inputValue={registerData.password}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => setRegisterData({ ...registerData, password: e.target.value })}
                 />
 
@@ -70,6 +75,7 @@ function Register() {
                     inputType="password"
                     inputValue={registerData.confirmPassword}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })}
                 />
 

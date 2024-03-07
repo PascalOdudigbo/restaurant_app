@@ -25,6 +25,7 @@ function ForgotPassword() {
                     inputType="email"
                     inputValue={formData.email}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
 

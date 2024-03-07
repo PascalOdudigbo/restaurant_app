@@ -7,3 +7,7 @@ export { default as Login } from "./Login/Login";
 export { default as Register } from "./Register/Register";
 export { default as ForgotPassword } from "./ForgotPassword/ForgotPassword";
 export { default as UserSignedInDropdown } from "./UserSignedInDropdown/UserSignedInDropdown";
+export { default as BookingsTable } from "./BookingsTable/BookingsTable";
+export { default as BookingRow } from "./BookingsTable/BookingRow/BookingRow";
+export { default as EditBooking } from "./EditBooking/EditBooking";
+export { default as Booking } from "./Booking/Booking";

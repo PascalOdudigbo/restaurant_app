@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
-import { BookingPage, ContactPage, HomePage, UserProfileManagement } from './pages';
+import { BookingPage, BookingsManagement, ContactPage, HomePage, UserProfileManagement } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -82,10 +82,29 @@ function App() {
             <UserProfileManagement userData={userData} setUserData={setUserData} />
           </>
         } />
+
+        <Route path="/bookings-management/*" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <BookingsManagement userData={userData} />
+          </>
+        } />
+
       </Routes>
 
-
-    </div>
+    </div >
   );
 }
 

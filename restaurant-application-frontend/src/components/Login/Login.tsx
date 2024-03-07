@@ -30,6 +30,7 @@ function Login({setUserData}: LoginProps) {
                     inputType="email"
                     inputValue={loginData.email}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => setLoginData({ ...loginData, email: e.target.value })}
                 />
 
@@ -38,6 +39,7 @@ function Login({setUserData}: LoginProps) {
                     inputType="password"
                     inputValue={loginData.password}
                     required={true}
+                    readonly={false}
                     onChangeFunction={(e) => setLoginData({ ...loginData, password: e.target.value })}
                 />
 

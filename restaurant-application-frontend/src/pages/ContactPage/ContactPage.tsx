@@ -66,6 +66,7 @@ function ContactPage({ userData }: ContactPageProps) {
                                 inputType='text'
                                 inputValue={contactDetails.name}
                                 required={true}
+                                readonly={false}
                                 onChangeFunction={(e) => { setContactDetails({ ...contactDetails, name: e.target.value }) }}
                             />
 
@@ -75,6 +76,7 @@ function ContactPage({ userData }: ContactPageProps) {
                                 inputType='text'
                                 inputValue={contactDetails.email}
                                 required={true}
+                                readonly={false}
                                 onChangeFunction={(e) => { setContactDetails({ ...contactDetails, email: e.target.value }) }}
                             />
 
@@ -83,6 +85,7 @@ function ContactPage({ userData }: ContactPageProps) {
                                 inputType='text'
                                 inputValue={contactDetails.mobileNumber}
                                 required={true}
+                                readonly={false}
                                 onChangeFunction={(e) => { setContactDetails({ ...contactDetails, mobileNumber: e.target.value }) }}
                             />
 

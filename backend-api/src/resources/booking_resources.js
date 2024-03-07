@@ -10,6 +10,8 @@ const {
     deleteBooking
 } = require("../queries/booking_queries");
 
+const { getUserById } = require("../queries/user_queries");
+
 // A function to get all bookings
 const listAll = (req, res) => {
     client.query(getAllBookings, (error, results) => {
@@ -17,7 +19,25 @@ const listAll = (req, res) => {
             console.error("Error fetching bookings:", error);
             return res.status(500).json({ error: "Internal Server Error" });
         }
-        res.status(200).json(results.rows);
+        const bookingPromises = results.rows.map(booking => {
+            return new Promise((resolve, reject) => {
+                getUserByIdFunc(booking.user_id, getUserById)
+                    .then(user => {
+                        booking.user = user;
+                        resolve(booking);
+                    })
+                    .catch(error => reject(error));
+            });
+        });
+
+        Promise.all(bookingPromises)
+            .then(allBookings => {
+                res.status(200).json(allBookings);
+            })
+            .catch(error => {
+                console.error("Error fetching booking user:", error);
+                res.status(500).json({ error: "Internal Server Error" });
+            });
     });
 };
 
@@ -65,7 +85,7 @@ const update = (req, res) => {
                 console.error("Error updating booking:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json(results.rows[0]);
+            res.status(200).json({message: "Booking updated successfully!", booking: results.rows[0]});
         });
     });
 };
@@ -86,7 +106,24 @@ const destroy = (req, res) => {
                 console.error("Error deleting booking:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json("Booking deleted successfully");
+            res.status(200).json({message: "Booking deleted successfully!"});
+        });
+    });
+};
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRIVATE FUNCTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+// A function to get a user by ID
+const getUserByIdFunc = (id, getUserById) => {
+    return new Promise((resolve, reject) => {
+        client.query(getUserById, [id], (error, results) => {
+            if (error) {
+                console.error("Error fetching user:", error);
+                reject(error);
+            } else if (results.rows.length === 0) {
+                reject("User not found.");
+            } else {
+                resolve(results.rows[0]);
+            }
         });
     });
 };

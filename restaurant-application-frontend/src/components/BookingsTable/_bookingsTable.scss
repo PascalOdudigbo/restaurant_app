@@ -1,0 +1,44 @@
+.bookings_table_wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+
+    .search_wrapper{
+        width: 97%;
+        height: 60px;
+        background-color: var(--color-purple);
+        padding: 0.2em 0em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .bookings_table{
+        margin-left: auto;
+        margin-right: auto;
+        width: 96%;
+
+        .table_headers_wrapper{
+            border-radius: 5px;
+
+            .table_header{
+                height: 10px;
+                padding: 10px;
+                background-color: var(--color-purple);
+                font-size: 0.9em;
+                font-weight: 900;
+                color: var(--color-gold);
+            }
+        }
+    }
+
+    .no_bookings_text{
+        text-transform: capitalize;
+        color: var(--color-white);
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        margin-top: 5px;
+    }
+}
+.bookings_table_wrapper::-webkit-scrollbar {
+    display: none;
+}

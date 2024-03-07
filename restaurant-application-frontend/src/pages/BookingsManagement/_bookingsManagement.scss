@@ -1,0 +1,152 @@
+.bookings_management {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .heading_wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .bookingsManagementPage_heading {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .bookings_management_edit_booking_wrapper {
+        flex-direction: column;
+        width: 100%;
+        z-index: 2;
+        position: absolute;
+        margin-top: 6%;
+    }
+
+    .bookings_table_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile_view_wrapper{
+        display: none;
+    }
+}
+.bookings_management::-webkit-scrollbar{
+    display: none;
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .bookings_management {
+
+        .heading_wrapper {
+
+            .bookingsManagementPage_heading {
+                font-size: 50px;
+            }
+        }
+
+        .bookings_table_wrapper {
+            display: none;
+        }
+
+        .mobile_view_wrapper{
+            width: 96%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(300px, 1fr));
+            grid-auto-rows: 1fr;
+            gap: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .bookings_management {
+
+        .heading_wrapper {
+
+            .bookingsManagementPage_heading {
+                font-size: 50px;
+            }
+        }
+
+        .bookings_table_wrapper {
+            display: none;
+        }
+
+        .mobile_view_wrapper{
+            width: 96%;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(340px, 1fr));
+            grid-auto-rows: 1fr;
+            gap: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .bookings_management {
+
+        .heading_wrapper {
+
+            .bookingsManagementPage_heading {
+                font-size: 35px;
+            }
+        }
+
+        .bookings_table_wrapper {
+            display: none;
+        }
+
+        .mobile_view_wrapper{
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .bookings_management {
+
+        .heading_wrapper {
+
+            .bookingsManagementPage_heading {
+                font-size: 35px;
+            }
+        }
+
+        .bookings_table_wrapper {
+            display: none;
+        }
+
+        .mobile_view_wrapper{
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .bookings_management {
+
+        .heading_wrapper {
+
+            .bookingsManagementPage_heading {
+                font-size: 35px;
+            }
+        }
+
+        .bookings_table_wrapper {
+            display: none;
+        }
+
+        .mobile_view_wrapper{
+           display: block;
+        }
+    }
+}

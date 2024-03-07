@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Dropdown, FormInput, FormInputDate, TextArea } from '../../components';
-import {BookingProps, BookingDetails, makeBooking } from '../../utils/bookingUtils';
+import {BookingProps, BookingDetails, makeBooking, currentDate } from '../../utils/bookingUtils';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -33,6 +33,7 @@ function BookingPage({userData} : BookingProps) {
     })
   }, [userData])
 
+  //
 
   return (
     <div className='app__bookingpage_wrapper app__bg app__wrapper section_padding' id='booking'>
@@ -77,6 +78,7 @@ function BookingPage({userData} : BookingProps) {
                 <FormInputDate
                   label="Prefered date  *"
                   selectionLimit={30}
+                  defaultDate={bookingDetails.date === ""  ? currentDate() : bookingDetails.date}
                   setDate={(e)=>{setBookingDetails({...bookingDetails, date: e.target.value})}}
                 />
               </div>
@@ -95,6 +97,7 @@ function BookingPage({userData} : BookingProps) {
                   inputType='text'
                   inputValue={bookingDetails.name}
                   required={true}
+                  readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, name: e.target.value }) }}
                 />
               </div>
@@ -107,6 +110,7 @@ function BookingPage({userData} : BookingProps) {
                   inputType='text'
                   inputValue={bookingDetails.email}
                   required={true}
+                  readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, email: e.target.value }) }}
                 />
               </div>
@@ -117,6 +121,7 @@ function BookingPage({userData} : BookingProps) {
                   inputType='text'
                   inputValue={bookingDetails.mobilenumber}
                   required={true}
+                  readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, mobilenumber: e.target.value }) }}
                 />
               </div>
@@ -127,6 +132,7 @@ function BookingPage({userData} : BookingProps) {
                   inputType='text'
                   inputValue={bookingDetails.postcode}
                   required={true}
+                  readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, postcode: e.target.value }) }}
                 />
               </div>

@@ -1,0 +1,157 @@
+.booking_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-white);
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+
+    .client_details_wrapper {
+        width: 96%;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        .section_hearder {
+            color: var(--color-purple);
+            margin-bottom: 5px;
+        }
+
+        .client_details {
+
+            .client_detail {
+                color: var(--color-black);
+                text-transform: none;
+            }
+        }
+    }
+
+    .booking_details_wrapper {
+        width: 96%;
+        margin-bottom: 10px;
+        .section_hearder {
+            color: var(--color-purple);
+            margin-bottom: 5px;
+        }
+
+        .booking_details {
+
+            .booking_detail {
+                color: var(--color-black);
+                text-transform: none;
+                max-width: 300px;
+            }
+        }
+    }
+
+    .booking_buttons_wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 96%;
+        margin-bottom: 10px;
+        margin-top: auto;
+
+        .booking_button {
+            font-size: small;
+            border-radius: 5px;
+        }
+
+        .booking_delete_btn {
+            font-size: small;
+            border-radius: 5px;
+
+            &:hover{
+                background-color: red;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .booking_wrapper {
+    
+        .booking_buttons_wrapper {
+
+    
+            .booking_button {
+                font-size: 0.9em;
+            }
+    
+            .booking_delete_btn {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .booking_wrapper {
+    
+        .booking_buttons_wrapper {
+
+    
+            .booking_button {
+                font-size: 0.9em;
+            }
+    
+            .booking_delete_btn {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .booking_wrapper {
+        width: 90%;
+        .booking_buttons_wrapper {
+
+    
+            .booking_button {
+                font-size: 0.8em;
+            }
+    
+            .booking_delete_btn {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .booking_wrapper {
+        width: 90%;
+        .booking_buttons_wrapper {
+
+    
+            .booking_button {
+                font-size: 0.8em;
+            }
+    
+            .booking_delete_btn {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .booking_wrapper {
+        width: 90%;
+        .booking_buttons_wrapper {
+
+    
+            .booking_button {
+                font-size: 0.7em;
+            }
+    
+            .booking_delete_btn {
+                font-size: 0.7em;
+            }
+        }
+    }
+}

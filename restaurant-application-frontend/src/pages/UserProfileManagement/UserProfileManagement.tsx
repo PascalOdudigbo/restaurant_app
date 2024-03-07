@@ -40,6 +40,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                     inputType="text"
                     inputValue={profileData.name}
                     required={false}
+                    readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, name: e.target.value })}
                 />
                 <FormInput
@@ -47,6 +48,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                     inputType="email"
                     inputValue={profileData.email}
                     required={false}
+                    readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, email: e.target.value })}
                 />
 
@@ -55,6 +57,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                     inputType="text"
                     inputValue={profileData.mobile_number}
                     required={false}
+                    readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, mobile_number: e.target.value })}
                 />
 
@@ -63,6 +66,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                     inputType="text"
                     inputValue={profileData.postcode}
                     required={false}
+                    readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, postcode: e.target.value })}
                 />
 
@@ -71,6 +75,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                     inputType="password"
                     inputValue={profileData.password}
                     required={false}
+                    readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, password: e.target.value })}
                 />
 
@@ -79,6 +84,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                     inputType="password"
                     inputValue={profileData.password_confirmation}
                     required={false}
+                    readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, password_confirmation: e.target.value })}
                 />
 
