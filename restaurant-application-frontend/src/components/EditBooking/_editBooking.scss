@@ -96,7 +96,7 @@
 
 @media screen and (max-width: 1150px) {
     .editBooking_wrapper{
-        width: 45%;
+        width: 70%;
     
         .editBooking_header{
 
@@ -115,7 +115,7 @@
 
 @media screen and (max-width: 850px) {
     .editBooking_wrapper{
-        width: 45%;
+        width: 80%;
     
         .editBooking_header{
 
@@ -125,24 +125,6 @@
     
             .editBooking_header_close{
                 font-size: 18px;
-            }
-        }
-
-        .editBooking_form_wrapper {
-            flex-direction: column;
-            width: 85%;
-            margin-top: 20px;
-
-            .editBooking_form {
-                display: flex;
-                flex-direction: column;
-
-                .editBooking_form_button {
-                    margin-top: 15px;
-                    margin-bottom: 15px;
-                }
-
-
             }
         }
 

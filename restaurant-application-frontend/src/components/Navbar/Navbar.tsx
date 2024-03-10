@@ -6,7 +6,7 @@ import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import { FaShoppingBasket } from "react-icons/fa";
 import Tooltip from '@mui/material/Tooltip';
-import { NavbarProps } from '../../utils/navbarUtils';
+import { NavbarProps, handleLogout } from '../../utils/navbarUtils';
 import {UserSignedInDropdown} from '../';
 
 function Navbar({ userData, setUserData }: NavbarProps) {
@@ -81,13 +81,24 @@ function Navbar({ userData, setUserData }: NavbarProps) {
               <div className='app__navbar_smallscreen_overlay flex__center slide_bottom'>
                 <MdOutlineRestaurantMenu fontSize={27} className='overlay__close' onClick={() => { setToggleMenu(false) }} />
                 <ul className='app__navbar_smallscreen_links'>
-                  <li className='p__inter'><a href='#home' onClick={() => { setToggleMenu(false) }} >HOME</a></li>
-                  <li className='p__inter'><a href='#menu' onClick={() => { setToggleMenu(false) }} >MENU</a></li>
-                  <li className='p__inter'><a href='#booking' onClick={() => { setToggleMenu(false) }} >BOOKING</a></li>
-                  <li className='p__inter'><a href='#gallery' onClick={() => { setToggleMenu(false) }} >GALLERY</a></li>
-                  <li className='p__inter'><a href='#contactus' onClick={() => { setToggleMenu(false) }} >CONTACT</a></li>
-                  <li className='p__inter'><Link to='/login' onClick={() => { setToggleMenu(false) }} >LOGIN</Link></li>
-                  <li className='p__inter'><Link to='/register' onClick={() => { setToggleMenu(false) }} >REGISTER</Link></li>
+                  <li className='p__inter'><a href='/#home' onClick={() => { setToggleMenu(false) }} >HOME</a></li>
+                  <li className='p__inter'><a href='/#menu' onClick={() => { setToggleMenu(false) }} >MENU</a></li>
+                  <li className='p__inter'><a href='/#booking' onClick={() => { setToggleMenu(false) }} >BOOKING</a></li>
+                  <li className='p__inter'><a href='/#gallery' onClick={() => { setToggleMenu(false) }} >GALLERY</a></li>
+                  <li className='p__inter'><a href='/#contactus' onClick={() => { setToggleMenu(false) }} >CONTACT</a></li>
+                  { userData.id === 0 && <li className='p__inter'><Link to='/login' onClick={() => { setToggleMenu(false) }} >LOGIN</Link></li>}
+                  { userData.id === 0 && <li className='p__inter'><Link to='/register' onClick={() => { setToggleMenu(false) }} >REGISTER</Link></li>}
+                  <li className='p__inter'><Link to='/profile-management' onClick={() => { setToggleMenu(false) }} >YOUR PROFILE</Link></li>
+                  { userData.role === "client" && <li className='p__inter'><Link to='/bookings-management' onClick={() => { setToggleMenu(false) }} >BOOKINGS</Link></li>}
+                  {
+                    userData.role === "client" && window.location.href.includes("orders") === false &&
+                    <li className='p__inter'><Link to='/orders' onClick={() => { setToggleMenu(false) }} >{`CART(${2})`}</Link></li>
+                  }
+                  {
+                    userData.id !== 0 &&
+                    <li className='p__inter'><p onClick={() => { setToggleMenu(false); handleLogout(setUserData, navigate)}} >LOGOUT</p></li>
+                  }
+
                 </ul>
 
               </div>

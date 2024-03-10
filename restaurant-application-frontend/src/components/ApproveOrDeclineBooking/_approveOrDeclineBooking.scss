@@ -1,0 +1,204 @@
+.approve_or_decline_booking_wrapper{
+    flex-direction: column;
+    background-color: var(--color-grey);
+    width: 30%;
+    
+
+    .approve_or_decline_booking_header{
+        width: 100%;
+        padding: 0em 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: var(--color-purple);
+
+        .approve_or_decline_booking_header_title{
+            font-size: 30px;
+        }
+
+        .approve_or_decline_booking_header_close{
+            font-size: 20px;
+
+            &:hover{
+                color:red;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .approve_or_decline_booking_form{
+        width: 90%;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+
+        .approve_or_decline_booking_form_forgotpassword{
+            margin-top: -10px;
+            font-size: 12px;
+
+            &:hover{
+                cursor: pointer;
+                color: var(--color-purple);
+            }
+        }
+
+        .approve_or_decline_booking_form_button{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    } 
+
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .approve_or_decline_booking_wrapper{
+        width: 45%;
+    
+        .approve_or_decline_booking_header{
+
+            .approve_or_decline_booking_header_title{
+                font-size: 25px;
+            }
+    
+            .approve_or_decline_booking_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .approve_or_decline_booking_form{
+            width: 90%;
+    
+            .approve_or_decline_booking_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .approve_or_decline_booking_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 850px) {
+    .approve_or_decline_booking_wrapper{
+        width: 45%;
+    
+        .approve_or_decline_booking_header{
+
+            .approve_or_decline_booking_header_title{
+                font-size: 25px;
+            }
+    
+            .approve_or_decline_booking_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .approve_or_decline_booking_form{
+            width: 90%;
+    
+            .approve_or_decline_booking_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .approve_or_decline_booking_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 650px) {
+    .approve_or_decline_booking_wrapper{
+        width: 65%;
+    
+        .approve_or_decline_booking_header{
+
+            .approve_or_decline_booking_header_title{
+                font-size: 25px;
+            }
+    
+            .approve_or_decline_booking_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .approve_or_decline_booking_form{
+            width: 90%;
+    
+            .approve_or_decline_booking_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .approve_or_decline_booking_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 450px) {
+    .approve_or_decline_booking_wrapper{
+        width: 85%;
+    
+        .approve_or_decline_booking_header{
+
+            .approve_or_decline_booking_header_title{
+                font-size: 20px;
+            }
+    
+            .approve_or_decline_booking_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .approve_or_decline_booking_form{
+            width: 90%;
+    
+            .approve_or_decline_booking_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .approve_or_decline_booking_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 360px) {
+    .approve_or_decline_booking_wrapper{
+        width: 85%;
+    
+        .approve_or_decline_booking_header{
+
+            .approve_or_decline_booking_header_title{
+                font-size: 20px;
+            }
+    
+            .approve_or_decline_booking_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .approve_or_decline_booking_form{
+            width: 90%;
+    
+            .approve_or_decline_booking_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .approve_or_decline_booking_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    }
+}

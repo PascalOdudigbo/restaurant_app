@@ -6,15 +6,19 @@
 
     .textarea_label {
         margin-bottom: 10px;
+    }
 
-        .textarea {
-            // width: 80%;
-            height: 90px;
-            font-size: large;
+    .textarea {
+        height: 90px;
+        font-size: medium;
+        color: var(--color-black);
+        text-transform: none;
 
-            &:focus {
-                margin: 1px solid var(--color-purple);
-            }
+        &:focus {
+            margin: 1px solid var(--color-purple);
         }
+    }
+    .input_count{
+        font-size: small;
     }
 }

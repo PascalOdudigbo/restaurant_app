@@ -4,7 +4,7 @@ import { SlOptions } from "react-icons/sl"
 import { BookingRowProps, deleteBooking } from '../../../utils/bookingsManagementUtils'
 import { useNavigate } from 'react-router-dom'
 
-function BookingRow({ userData, booking, setTargetBooking, targetBooking, bookings, setBookings }: BookingRowProps) {
+function BookingRow({ userData, booking, setTargetBooking, targetBooking, bookings, setBookings, bookingStatus, setBookingStatus }: BookingRowProps) {
     // Declaring state variables to manage dropdown display
     const [dropdownDisplay, setDropdownDisplay] = useState<string>("none")
     // Declaring navigation variable function
@@ -28,20 +28,31 @@ function BookingRow({ userData, booking, setTargetBooking, targetBooking, bookin
                     <div className="dropdown_content" style={{ display: dropdownDisplay }}>
                         {
                             (userData.role === "client" && booking.status === "Pending") && <button className='dropdown_item' onClick={() => {
+                                window.scrollTo(0, 0)
                                 setTargetBooking(booking)
                                 navigate("/bookings-management/edit-booking")
-                            }}>Edit</button>
+                            }}>EDIT</button>
                         }
                         {
                             (userData.role === "client" && booking.status === "Pending") && <button className="delete_btn" onClick={() => { 
                                 deleteBooking(targetBooking, bookings, setBookings)
-                             }}>Delete</button>
+                             }}>DELETE</button>
                         }
                          {
-                            userData.role === "manager" && <button className='dropdown_item' onClick={() => { }}>Approve</button>
+                            userData.role === "manager" && <button className='dropdown_item' onClick={() => {
+                                window.scrollTo(0,0)
+                                setTargetBooking(booking)
+                                setBookingStatus(true)
+                                navigate("/bookings-management/approve-booking")
+                             }}>APPROVE</button>
                         }
                          {
-                            userData.role === "manager" && <button className='dropdown_item' onClick={() => { }}>Deny</button>
+                            userData.role === "manager" && <button className='dropdown_item' onClick={() => {
+                                window.scrollTo(0,0)
+                                setTargetBooking(booking)
+                                setBookingStatus(false)
+                                navigate("/bookings-management/decline-booking")
+                             }}>DECLINE</button>
                         }
                     </div>
                 </div>

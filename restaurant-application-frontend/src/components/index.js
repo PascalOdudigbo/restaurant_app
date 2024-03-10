@@ -11,3 +11,5 @@ export { default as BookingsTable } from "./BookingsTable/BookingsTable";
 export { default as BookingRow } from "./BookingsTable/BookingRow/BookingRow";
 export { default as EditBooking } from "./EditBooking/EditBooking";
 export { default as Booking } from "./Booking/Booking";
+export { default as Search } from "./Search/Search";
+export { default as ApproveOrDeclineBooking } from "./ApproveOrDeclineBooking/ApproveOrDeclineBooking";

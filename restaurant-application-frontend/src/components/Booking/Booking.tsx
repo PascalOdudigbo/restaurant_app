@@ -2,7 +2,7 @@ import React from 'react'
 import { BookingRowProps, deleteBooking } from '../../utils/bookingsManagementUtils'
 import { useNavigate } from 'react-router-dom'
 
-function Booking({ userData, booking, setTargetBooking, targetBooking, bookings, setBookings }: BookingRowProps) {
+function Booking({ userData, booking, setTargetBooking, targetBooking, bookings, setBookings, setBookingStatus }: BookingRowProps) {
     // Declaring navigation variable function
     const navigate = useNavigate()
 
@@ -20,7 +20,7 @@ function Booking({ userData, booking, setTargetBooking, targetBooking, bookings,
             <section className='booking_details_wrapper'>
                 <h3 className='p__playfair section_hearder'>BOOKING DETAILS</h3>
                 <section className='booking_details'>
-                    <p className='p__inter booking_detail'><b>Date:</b> {booking.preferred_date}</p>
+                    <p className='p__inter booking_detail'><b>Date:</b> {booking.preferred_date.toString().split("T")[0]}</p>
                     <p className='p__inter booking_detail'><b>Guests:</b> {booking.preferred_guests}</p>
                     <p className='p__inter booking_detail'><b>Occassion:</b> {booking.occasion}</p>
                     <p className='p__inter booking_detail'><b>Message:</b> {booking.message}</p>
@@ -31,6 +31,7 @@ function Booking({ userData, booking, setTargetBooking, targetBooking, bookings,
             <section className='booking_buttons_wrapper'>
                 {
                     (userData.role === "client" && booking.status === "Pending") && <button className='custom__button booking_button' onClick={() => {
+                        window.scrollTo(0, 0)
                         setTargetBooking(booking)
                         navigate("/bookings-management/edit-booking")
                     }}>EDIT</button>
@@ -41,10 +42,20 @@ function Booking({ userData, booking, setTargetBooking, targetBooking, bookings,
                     }}>DELETE</button>
                 }
                 {
-                    userData.role === "manager" && <button className='booking_button' onClick={() => { }}>Approve</button>
+                    userData.role === "manager" && <button className='custom__button booking_button' onClick={() => {
+                        window.scrollTo(0,0)
+                        setTargetBooking(booking)
+                        setBookingStatus(true)
+                        navigate("/bookings-management/approve-booking")
+                     }}>APPROVE</button>
                 }
                 {
-                    userData.role === "manager" && <button className='booking_button' onClick={() => { }}>Deny</button>
+                    userData.role === "manager" && <button className='custom__button booking_button' onClick={() => {
+                        window.scrollTo(0,0)
+                        setTargetBooking(booking)
+                        setBookingStatus(false)
+                        navigate("/bookings-management/decline-booking")
+                     }}>DECLINE</button>
                 }
 
             </section>

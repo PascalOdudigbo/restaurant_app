@@ -3,12 +3,31 @@
     margin-bottom: 20px;
 
     .search_wrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         width: 97%;
-        height: 60px;
-        background-color: var(--color-purple);
-        padding: 0.2em 0em;
+        height: 90px;
+        padding: 0.2em 2em;
         margin-left: auto;
         margin-right: auto;
+        background-color: var(--color-purple);
+
+        .filterWrapper{
+            width: 10%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-self: flex-end;
+
+            .filter_icon{
+                color: var(--color-gold);
+                height: 30px;
+                width: 30px;
+                margin-right: 10px;
+            }
+        }
     }
 
     .bookings_table{

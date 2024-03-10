@@ -32,11 +32,51 @@
         align-items: center;
     }
 
-    .mobile_view_wrapper{
+    .mobile_view_wrapper {
+        width: 96%;
         display: none;
+        flex-direction: column;
+        align-items: center;
+
+        .search_and_filter_wrapper {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            .search_wrapper{
+                width: 60%;
+            }
+
+            .filterWrapper {
+                width: 15%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .filter_icon {
+                    color: var(--color-gold);
+                    height: 30px;
+                    width: 30px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .mobile_bookings_wrapper {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(320px, 1fr));
+            grid-auto-rows: 1fr;
+            gap: 10px;
+        }
     }
 }
-.bookings_management::-webkit-scrollbar{
+
+.bookings_management::-webkit-scrollbar {
     display: none;
 }
 
@@ -57,15 +97,19 @@
             display: none;
         }
 
-        .mobile_view_wrapper{
-            width: 96%;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(300px, 1fr));
-            grid-auto-rows: 1fr;
-            gap: 10px;
+        .mobile_view_wrapper {
+            display: flex;
+
+            .search_and_filter_wrapper {
+
+                .filterWrapper .filter_icon {}
+            }
         }
+
+        .mobile_bookings_wrapper {}
     }
 }
+
 
 @media screen and (max-width: 850px) {
     .bookings_management {
@@ -81,12 +125,21 @@
             display: none;
         }
 
-        .mobile_view_wrapper{
-            width: 96%;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(340px, 1fr));
-            grid-auto-rows: 1fr;
-            gap: 20px;
+        .mobile_view_wrapper {
+
+            .search_and_filter_wrapper {
+
+                .filterWrapper {
+                    width: 20%;
+
+                    .filter_icon {
+                    }
+                }
+            }
+
+            .mobile_bookings_wrapper {
+                grid-template-columns: repeat(2, minmax(300px, 1fr));
+            }
         }
     }
 }
@@ -105,8 +158,24 @@
             display: none;
         }
 
-        .mobile_view_wrapper{
-            display: block;
+        .mobile_view_wrapper {
+
+            .search_and_filter_wrapper {
+                .search_wrapper{
+                    width: 50%;
+                }
+
+                .filterWrapper {
+                    width: 25%;
+
+                    .filter_icon {
+                    }
+                }
+            }
+
+            .mobile_bookings_wrapper {
+                grid-template-columns: repeat(2, minmax(300px, 1fr));
+            }
         }
     }
 }
@@ -125,8 +194,27 @@
             display: none;
         }
 
-        .mobile_view_wrapper{
-            display: block;
+        .mobile_view_wrapper {
+            display: flex;
+
+            .search_and_filter_wrapper {
+                .search_wrapper{
+                    width: 50%;
+                }
+
+                .filterWrapper {
+                    width: 35%;
+    
+                    .filter_icon {
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
+            }
+    
+            .mobile_bookings_wrapper {
+                grid-template-columns: repeat(1, minmax(320px, 1fr));
+            }
         }
     }
 }
@@ -145,8 +233,27 @@
             display: none;
         }
 
-        .mobile_view_wrapper{
-           display: block;
+        .mobile_view_wrapper {
+            display: flex;
+
+            .search_and_filter_wrapper {
+                .search_wrapper{
+                    width: 55%;
+                }
+
+                .filterWrapper {
+                    width: 40%;
+    
+                    .filter_icon {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+            }
+    
+            .mobile_bookings_wrapper {
+                grid-template-columns: repeat(1, minmax(320px, 1fr));
+            }
         }
     }
 }

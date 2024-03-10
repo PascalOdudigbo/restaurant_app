@@ -16,6 +16,7 @@ export const handleLogout = (setUserData: React.Dispatch<React.SetStateAction<Us
     try {
         // Remove the JWT token from the local storage
         localStorage.removeItem("token");
+        
         // Reset the user data
         setUserData({
             id: 0,

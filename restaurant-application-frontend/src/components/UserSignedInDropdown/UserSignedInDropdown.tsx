@@ -24,8 +24,11 @@ function UserSignedInDropdown({ userData, setUserData }: UserSignedInDropdownPro
             </div>
 
             <div className='dropdownLinksContainer'>
-                {
+                
                     <button className="dropdownBtn p__inter" onClick={() => navigate("/profile-management")}>Your Profile</button>
+                
+                {
+                    userData?.role === "client" && <button className="dropdownBtn p__inter" onClick={() => navigate("/bookings-management")}>Bookings</button>
                 }
 
                 {
