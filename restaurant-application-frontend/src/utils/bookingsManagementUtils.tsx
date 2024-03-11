@@ -156,20 +156,36 @@ export const searchBookings = (searchData: string, bookings: BookingsType, setBo
 
 // Defining a function to handle filter bookings
 export const filterBookings = (filterData: string, bookings: BookingsType, setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
+    // if (filterData === "All") {
+    //     getAllBookings(setBookings)
+    // }
+    // else {
+    //     if (bookings.length < 1) {
+    //         getAllBookings(setBookings)
+
+    //     }
+    //     else {
+    //         // Filtering the bookings to get bookings where the status is equal to filter data
+    //         let filteredBookings = bookings.filter(booking => booking.status === filterData);
+    //         setBookings(filteredBookings);
+    //     }
+
+    // }
+
+    const bookingsCountStr = localStorage.getItem("bookingsCount");
+    const bookingsCount = bookingsCountStr ? parseInt(bookingsCountStr) : 0;
+
     if (filterData === "All") {
-        getAllBookings(setBookings)
-    }
-    else {
-        if (bookings.length < 1) {
-            getAllBookings(setBookings)
-
+        getAllBookings(setBookings);
+    } else {
+        let filteredBookings: BookingsType;
+        if (bookings.length < bookingsCount) {
+            getAllBookings(setBookings);
+            filteredBookings = bookings.filter(booking => booking.status === filterData);
+        } else {
+            filteredBookings = bookings.filter(booking => booking.status === filterData);
         }
-        else {
-            // Filtering the bookings to get bookings where the status is equal to filter data
-            let filteredBookings = bookings.filter(booking => booking.status === filterData);
-            setBookings(filteredBookings);
-        }
-
+        setBookings(filteredBookings);
     }
 }
 
@@ -203,7 +219,7 @@ export const approveOrDeclineBooking = (e: React.FormEvent<HTMLFormElement>, tar
                 `
             }
             // Sending the booking submission email 
-            sendEmail(emailValues, `Booking ${status ? "approval" : "decline"} email sent!`, `Something went wrong, booking ${status ? "approval" : "decline"} email not sent!`, "/bookings-management", navigationFunction)
+            sendEmail(emailValues, `Booking ${status ? "approval" : "decline"} email sent!`, `Something went wrong, booking ${status ? "approval" : "decline"} email not sent!`, "/restaurant-management/bookings-management", navigationFunction)
 
 
             // Getting all the bookings data

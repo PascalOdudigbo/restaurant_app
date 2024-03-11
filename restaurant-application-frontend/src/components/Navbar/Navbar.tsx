@@ -4,7 +4,7 @@ import { MdOutlineRestaurantMenu, MdLocationOn, MdPhone } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
-import { FaShoppingBasket } from "react-icons/fa";
+import { GiShoppingBag } from "react-icons/gi";
 import Tooltip from '@mui/material/Tooltip';
 import { NavbarProps, handleLogout } from '../../utils/navbarUtils';
 import {UserSignedInDropdown} from '../';
@@ -59,7 +59,7 @@ function Navbar({ userData, setUserData }: NavbarProps) {
                 <Tooltip title="Your Order" arrow>
                   <Badge color="secondary" badgeContent={0} showZero onClick={() => {navigate("/orders")}}>
                     <IconContext.Provider value={{ className: "cart_icon" }}>
-                      <FaShoppingBasket />
+                      <GiShoppingBag />
                     </IconContext.Provider>
                   </Badge>
                 </Tooltip>

@@ -10,7 +10,7 @@ function ApproveOrDeclineBooking({ bookingStatus, targetBooking, setBookings }: 
     const navigate = useNavigate();
 
     useEffect(() => {
-        targetBooking.id < 1 && navigate("/bookings-management")
+        targetBooking.id < 1 && navigate(window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management" : "/bookings-management")
     }, [targetBooking, navigate])
 
 
@@ -18,7 +18,7 @@ function ApproveOrDeclineBooking({ bookingStatus, targetBooking, setBookings }: 
         <div className='approve_or_decline_booking_wrapper flex__center'>
             <header className='approve_or_decline_booking_header'>
                 <h3 className='headtext__playfair approve_or_decline_booking_header_title'>{bookingStatus ? "APPROVE BOOKING" : "DECLINE BOOKING"}</h3>
-                <Link to="/bookings-management" className='headtext__playfair approve_or_decline_booking_header_close'>X</Link>
+                <Link to={window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management" : "/bookings-management"} className='headtext__playfair approve_or_decline_booking_header_close'>X</Link>
             </header>
             <form className='approve_or_decline_booking_form' onSubmit={(e) => { 
                 approveOrDeclineBooking(e, targetBooking, bookingStatus, message, setBookings, navigate) 

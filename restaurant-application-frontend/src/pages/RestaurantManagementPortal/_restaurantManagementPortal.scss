@@ -1,0 +1,192 @@
+.restaurantManagementPortal_wrapper {
+    flex-direction: row;
+
+    .portal_navigation_menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        width: 5%;
+        background-color: var(--color-purple);
+        border-top: 5px solid var(--color-black);
+        justify-content: space-around;
+
+        .portal_navigation_icon {
+            height: 30px;
+            width: 30px;
+            color: var(--color-gold);
+
+            &:hover {
+                color: var(--color-white)
+            }
+        }
+
+        .portal_logout_icon {
+            @extend .portal_navigation_icon;
+            color: red
+        }
+    }
+
+    .sub_pages_wrapper {
+        height: 100vh;
+        width: 95%;
+        overflow-y: scroll;
+    }
+    .sub_pages_wrapper::-webkit-scrollbar{
+        display: none;
+    }
+
+
+    .portal_navigation_menu_mobile {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        height: 50px;
+        width: 100%;
+        background-color: var(--color-purple);
+        border-top: 5px solid var(--color-black);
+        justify-content: space-around;
+
+        .portal_navigation_icon {
+            height: 30px;
+            width: 30px;
+            color: var(--color-gold);
+
+            &:hover {
+                color: var(--color-white)
+            }
+        }
+
+        .portal_logout_icon {
+            @extend .portal_navigation_icon;
+            color: red
+        }
+    }
+}
+
+
+@media screen and (min-width: 2000px) {
+  
+}
+
+@media screen and (max-width: 1150px) {
+    .restaurantManagementPortal_wrapper {
+        flex-direction: column;
+
+        .portal_navigation_menu {
+            display: none;
+        }
+    
+        .sub_pages_wrapper {
+            width: 100%;
+        }
+    
+    
+        .portal_navigation_menu_mobile {
+            display: flex;
+            height: 60px;
+            
+            .portal_navigation_icon {
+                height: 30px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .restaurantManagementPortal_wrapper {
+        flex-direction: column;
+
+        .portal_navigation_menu {
+            display: none;
+        }
+    
+        .sub_pages_wrapper {
+            width: 100%;
+        }
+    
+    
+        .portal_navigation_menu_mobile {
+            display: flex;
+        
+            .portal_navigation_icon {
+                height: 30px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .restaurantManagementPortal_wrapper {
+        flex-direction: column;
+
+        .portal_navigation_menu {
+            display: none;
+        }
+    
+        .sub_pages_wrapper {
+            width: 100%;
+        }
+    
+    
+        .portal_navigation_menu_mobile {
+            display: flex;
+        
+            .portal_navigation_icon {
+                height: 30px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .restaurantManagementPortal_wrapper {
+        flex-direction: column;
+
+        .portal_navigation_menu {
+            display: none;
+        }
+    
+        .sub_pages_wrapper {
+            width: 100%;
+        }
+    
+    
+        .portal_navigation_menu_mobile {
+            display: flex;
+        
+            .portal_navigation_icon {
+                height: 30px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .restaurantManagementPortal_wrapper {
+        flex-direction: column;
+
+        .portal_navigation_menu {
+            display: none;
+        }
+    
+        .sub_pages_wrapper {
+            width: 100%;
+        }
+    
+    
+        .portal_navigation_menu_mobile {
+            display: flex;
+        
+            .portal_navigation_icon {
+                height: 25px;
+                width: 25px;
+            }
+        }
+    }
+    
+}

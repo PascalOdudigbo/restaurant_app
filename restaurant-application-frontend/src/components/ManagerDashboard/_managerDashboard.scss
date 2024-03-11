@@ -1,0 +1,431 @@
+.managerDashboard_wrapper {
+    flex-direction: column;
+
+    .heading_wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 18px;
+        margin-top: 18px;
+
+        .dashboard_heading {}
+
+    }
+
+    .welcome_and_stats_wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 20px;
+
+        .welcome_wrapper {
+            width: 25%;
+            height: 100%;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .welcome_texts_name {
+                font-size: 24px;
+            }
+
+            .welcome_texts {
+                font-size: 18px;
+            }
+        }
+
+        .stats_layout_wrapper {
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+    
+            .stats_wrapper {
+                width: 45%;
+                height: 200px;
+                background-color: var(--color-purple);
+                border-radius: 10px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+    
+                .stat_wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 60%;
+                    // width: 30%;
+                    justify-content: space-around;
+    
+                    .dashboard_icon {
+                        height: 40px;
+                        width: 40px;
+                        color: var(--color-gold);
+                        margin-bottom: 10px;
+                    }
+    
+                    .stat_text {
+                        font-size: 16px;
+                        font-weight: 700;
+                    }
+    
+                    .stat_count {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+
+    .piechart_wrapper{
+        flex-direction: column;
+        justify-content: space-around;
+        width: 96%;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: var(--color-grey);
+
+        .chart_title{
+            margin-left: 15px;
+            font-style: italic;
+        }
+    }
+   
+
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .managerDashboard_wrapper {
+        flex-direction: column;
+
+        .heading_wrapper {
+
+            .dashboard_heading {
+                font-size: 50px;
+            }
+
+        }
+
+        .welcome_and_stats_wrapper {
+            width: 100%;
+            flex-direction: column;
+
+            .welcome_wrapper {
+                width: 96%;
+                height: fit-content;
+                margin-bottom: 12px;
+                align-items: flex-start;
+
+                .welcome_texts_name {
+                    font-size: 18px;
+                }
+
+                .welcome_texts {
+                    font-size: 16px;
+                }
+            }
+
+            .stats_layout_wrapper {
+                flex-direction: row;
+                width: 100%;
+    
+                .stats_wrapper {
+                    width: 45%;
+                    height: 160px;
+                    margin-bottom: 20px;
+    
+                    .stat_wrapper {
+                        height: 60%;
+    
+                        .dashboard_icon {
+                            height: 30px;
+                            width: 30px;
+                        }
+    
+                        .stat_text {
+                            font-size: 14px;
+                            font-weight: 700;
+                        }
+    
+                        .stat_count {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .managerDashboard_wrapper {
+        flex-direction: column;
+
+        .heading_wrapper {
+
+            .dashboard_heading {
+                font-size: 50px;
+            }
+
+        }
+
+        .welcome_and_stats_wrapper {
+            width: 100%;
+            flex-direction: column;
+
+            .welcome_wrapper {
+                width: 96%;
+                height: fit-content;
+                margin-bottom: 12px;
+                align-items: flex-start;
+
+                .welcome_texts_name {
+                    font-size: 18px;
+                }
+
+                .welcome_texts {
+                    font-size: 16px;
+                }
+            }
+
+            .stats_layout_wrapper {
+                flex-direction: row;
+                width: 100%;
+    
+                .stats_wrapper {
+                    width: 45%;
+                    height: 150px;
+                    margin-bottom: 20px;
+    
+                    .stat_wrapper {
+                        height: 60%;
+    
+                        .dashboard_icon {
+                            height: 30px;
+                            width: 30px;
+                        }
+    
+                        .stat_text {
+                            font-size: 12px;
+                            font-weight: 700;
+                        }
+    
+                        .stat_count {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .managerDashboard_wrapper {
+        flex-direction: column;
+
+        .heading_wrapper {
+
+            .dashboard_heading {
+                font-size: 35px;
+            }
+
+        }
+
+        .welcome_and_stats_wrapper {
+            width: 100%;
+            flex-direction: column;
+
+            .welcome_wrapper {
+                width: 96%;
+                height: fit-content;
+                margin-bottom: 12px;
+                align-items: flex-start;
+
+                .welcome_texts_name {
+                    font-size: 18px;
+                }
+
+                .welcome_texts {
+                    font-size: 16px;
+                }
+            }
+
+            .stats_layout_wrapper {
+                flex-direction: column;
+                width: 100%;
+    
+                .stats_wrapper {
+                    width: 96%;
+                    height: 150px;
+                    margin-bottom: 20px;
+    
+                    .stat_wrapper {
+                        height: 60%;
+    
+                        .dashboard_icon {
+                            height: 28px;
+                            width: 28px;
+                        }
+    
+                        .stat_text {
+                            font-size: 12px;
+                            font-weight: 700;
+                        }
+    
+                        .stat_count {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+       
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    .managerDashboard_wrapper {
+        flex-direction: column;
+
+        .heading_wrapper {
+
+            .dashboard_heading {
+                font-size: 35px;
+            }
+
+        }
+
+        .welcome_and_stats_wrapper {
+            width: 100%;
+            flex-direction: column;
+
+            .welcome_wrapper {
+                width: 96%;
+                height: fit-content;
+                margin-bottom: 12px;
+                align-items: flex-start;
+
+                .welcome_texts_name {
+                    font-size: 18px;
+                }
+
+                .welcome_texts {
+                    font-size: 16px;
+                }
+            }
+
+            .stats_layout_wrapper {
+                flex-direction: column;
+                width: 100%;
+    
+                .stats_wrapper {
+                    width: 96%;
+                    height: 150px;
+                    margin-bottom: 20px;
+    
+                    .stat_wrapper {
+                        height: 60%;
+    
+                        .dashboard_icon {
+                            height: 28px;
+                            width: 28px;
+                        }
+    
+                        .stat_text {
+                            font-size: 12px;
+                            font-weight: 700;
+                        }
+    
+                        .stat_count {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+       
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .managerDashboard_wrapper {
+        flex-direction: column;
+
+        .heading_wrapper {
+
+            .dashboard_heading {
+                font-size: 35px;
+            }
+
+        }
+
+        .welcome_and_stats_wrapper {
+            width: 100%;
+            flex-direction: column;
+
+            .welcome_wrapper {
+                width: 96%;
+                height: fit-content;
+                margin-bottom: 20px;
+                align-items: flex-start;
+
+                .welcome_texts_name {
+                    font-size: 18px;
+                }
+
+                .welcome_texts {
+                    font-size: 16px;
+                }
+            }
+
+            .stats_layout_wrapper {
+                flex-direction: column;
+                width: 100%;
+    
+                .stats_wrapper {
+                    width: 96%;
+                    height: 150px;
+                    margin-bottom: 20px;
+    
+                    .stat_wrapper {
+                        height: 60%;
+    
+                        .dashboard_icon {
+                            height: 25px;
+                            width: 25px;
+                        }
+    
+                        .stat_text {
+                            font-size: 11px;
+                            font-weight: 700;
+                        }
+    
+                        .stat_count {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+       
+    }
+}

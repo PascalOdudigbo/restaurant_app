@@ -30,7 +30,7 @@ function BookingRow({ userData, booking, setTargetBooking, targetBooking, bookin
                             (userData.role === "client" && booking.status === "Pending") && <button className='dropdown_item' onClick={() => {
                                 window.scrollTo(0, 0)
                                 setTargetBooking(booking)
-                                navigate("/bookings-management/edit-booking")
+                                navigate(window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management/edit-booking" : "/bookings-management/edit-booking")
                             }}>EDIT</button>
                         }
                         {
@@ -43,7 +43,7 @@ function BookingRow({ userData, booking, setTargetBooking, targetBooking, bookin
                                 window.scrollTo(0,0)
                                 setTargetBooking(booking)
                                 setBookingStatus(true)
-                                navigate("/bookings-management/approve-booking")
+                                navigate(window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management/approve-booking" : "/bookings-management/approve-booking")
                              }}>APPROVE</button>
                         }
                          {
@@ -51,7 +51,7 @@ function BookingRow({ userData, booking, setTargetBooking, targetBooking, bookin
                                 window.scrollTo(0,0)
                                 setTargetBooking(booking)
                                 setBookingStatus(false)
-                                navigate("/bookings-management/decline-booking")
+                                navigate(window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management/decline-booking" : "/bookings-management/decline-booking")
                              }}>DECLINE</button>
                         }
                     </div>

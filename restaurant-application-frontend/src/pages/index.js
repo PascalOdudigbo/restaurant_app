@@ -3,3 +3,4 @@ export { default as BookingPage } from "./BookingPage/BookingPage";
 export { default as ContactPage } from "./ContactPage/ContactPage";
 export { default as UserProfileManagement } from "./UserProfileManagement/UserProfileManagement";
 export { default as BookingsManagement } from "./BookingsManagement/BookingsManagement";
+export { default as RestaurantManagementPortal } from "./RestaurantManagementPortal/RestaurantManagementPortal";

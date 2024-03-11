@@ -21,14 +21,14 @@ function EditBooking({ targetBooking, setBookings }: EditBookingProps) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        targetBooking.id < 1 && navigate("/bookings-management")
+        targetBooking.id < 1 && navigate(window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management" : "/bookings-management")
     }, [targetBooking, navigate])
 
     return (
         <div className='editBooking_wrapper flex__center'>
             <header className='editBooking_header'>
                 <h3 className='headtext__playfair editBooking_header_title'>UPDATE BOOKING</h3>
-                <Link to="/bookings-management" className='headtext__playfair editBooking_header_close'>X</Link>
+                <Link to={window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management" : "/bookings-management"} className='headtext__playfair editBooking_header_close'>X</Link>
             </header>
             <div className='editBooking_form_wrapper'>
                 <form className='editBooking_form' onSubmit={(e) => { editBooking(e, targetBooking, bookingDetails, setBookings)}}>

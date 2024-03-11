@@ -46,16 +46,16 @@ function Booking({ userData, booking, setTargetBooking, targetBooking, bookings,
                         window.scrollTo(0,0)
                         setTargetBooking(booking)
                         setBookingStatus(true)
-                        navigate("/bookings-management/approve-booking")
-                     }}>APPROVE</button>
+                        navigate(window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management/approve-booking" : "/bookings-management/approve-booking")
+                    }}>APPROVE</button>
                 }
                 {
                     userData.role === "manager" && <button className='custom__button booking_button' onClick={() => {
                         window.scrollTo(0,0)
                         setTargetBooking(booking)
                         setBookingStatus(false)
-                        navigate("/bookings-management/decline-booking")
-                     }}>DECLINE</button>
+                        navigate(window.location.href.includes("restaurant-management") ? "/restaurant-management/bookings-management/decline-booking" : "/bookings-management/decline-booking")
+                    }}>DECLINE</button>
                 }
 
             </section>
