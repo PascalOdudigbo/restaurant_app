@@ -7,7 +7,7 @@ import Badge from '@mui/material/Badge';
 import { GiShoppingBag } from "react-icons/gi";
 import Tooltip from '@mui/material/Tooltip';
 import { NavbarProps, handleLogout } from '../../utils/navbarUtils';
-import {UserSignedInDropdown} from '../';
+import { UserSignedInDropdown } from '../';
 
 function Navbar({ userData, setUserData }: NavbarProps) {
   //creating useState to display toggle menu
@@ -52,12 +52,12 @@ function Navbar({ userData, setUserData }: NavbarProps) {
           // If user is logged in display more options
           userData?.id !== 0 ?
             <div className='app__navbar_logged_in'>
-              <UserSignedInDropdown userData={userData} setUserData={setUserData}/>
+              <UserSignedInDropdown userData={userData} setUserData={setUserData} />
 
               {
                 userData.role === "client" && window.location.href.includes("orders") === false &&
                 <Tooltip title="Your Order" arrow>
-                  <Badge color="secondary" badgeContent={0} showZero onClick={() => {navigate("/orders")}}>
+                  <Badge color="secondary" badgeContent={0} showZero onClick={() => { navigate("/orders") }}>
                     <IconContext.Provider value={{ className: "cart_icon" }}>
                       <GiShoppingBag />
                     </IconContext.Provider>
@@ -86,17 +86,22 @@ function Navbar({ userData, setUserData }: NavbarProps) {
                   <li className='p__inter'><a href='/#booking' onClick={() => { setToggleMenu(false) }} >BOOKING</a></li>
                   <li className='p__inter'><a href='/#gallery' onClick={() => { setToggleMenu(false) }} >GALLERY</a></li>
                   <li className='p__inter'><a href='/#contactus' onClick={() => { setToggleMenu(false) }} >CONTACT</a></li>
-                  { userData.id === 0 && <li className='p__inter'><Link to='/login' onClick={() => { setToggleMenu(false) }} >LOGIN</Link></li>}
-                  { userData.id === 0 && <li className='p__inter'><Link to='/register' onClick={() => { setToggleMenu(false) }} >REGISTER</Link></li>}
-                  <li className='p__inter'><Link to='/profile-management' onClick={() => { setToggleMenu(false) }} >YOUR PROFILE</Link></li>
-                  { userData.role === "client" && <li className='p__inter'><Link to='/bookings-management' onClick={() => { setToggleMenu(false) }} >BOOKINGS</Link></li>}
+                  {userData.id === 0 && <li className='p__inter'><Link to='/login' onClick={() => { setToggleMenu(false) }} >LOGIN</Link></li>}
+                  {userData.id === 0 && <li className='p__inter'><Link to='/register' onClick={() => { setToggleMenu(false) }} >REGISTER</Link></li>}
+                  {userData.id !== 0 &&
+                    <li className='p__inter'><Link to='/profile-management' onClick={() => { setToggleMenu(false) }} >YOUR PROFILE</Link></li>
+                  }
+                  {userData.role === "manager" &&
+                    <li className='p__inter'><Link to='/restaurant-management' onClick={() => { setToggleMenu(false) }} >RESTAURANT MANAGEMENT</Link></li>
+                  }
+                  {userData.role === "client" && <li className='p__inter'><Link to='/bookings-management' onClick={() => { setToggleMenu(false) }}>BOOKINGS</Link></li>}
                   {
                     userData.role === "client" && window.location.href.includes("orders") === false &&
                     <li className='p__inter'><Link to='/orders' onClick={() => { setToggleMenu(false) }} >{`CART(${2})`}</Link></li>
                   }
                   {
                     userData.id !== 0 &&
-                    <li className='p__inter'><p onClick={() => { setToggleMenu(false); handleLogout(setUserData, navigate)}} >LOGOUT</p></li>
+                    <li className='p__inter'><p onClick={() => { setToggleMenu(false); handleLogout(setUserData, navigate) }} >LOGOUT</p></li>
                   }
 
                 </ul>

@@ -70,7 +70,7 @@ export const getAllBookings = (setBookings: React.Dispatch<React.SetStateAction<
         .then(response => {
             // Setting bookings data to the state variable
             setBookings(response.data)
-            // localStorage.setItem("bookingsCount", response.data.length)
+            localStorage.setItem("bookingsCount", response.data.length)
         })
         .catch(error => {
             if (error.response.data) {

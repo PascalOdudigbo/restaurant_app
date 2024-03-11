@@ -1,0 +1,157 @@
+.user_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-white);
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+
+    .client_details_wrapper {
+        width: 96%;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        .section_hearder {
+            color: var(--color-purple);
+            margin-bottom: 5px;
+        }
+
+        .client_details {
+
+            .client_detail {
+                color: var(--color-black);
+                text-transform: none;
+            }
+        }
+    }
+
+    .user_details_wrapper {
+        width: 96%;
+        margin-bottom: 10px;
+        .section_hearder {
+            color: var(--color-purple);
+            margin-bottom: 5px;
+        }
+
+        .user_details {
+
+            .user_detail {
+                color: var(--color-black);
+                text-transform: none;
+                max-width: 280px;
+            }
+        }
+    }
+
+    .user_buttons_wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 96%;
+        margin-bottom: 10px;
+        margin-top: auto;
+
+        .user_button {
+            font-size: small;
+            border-radius: 5px;
+        }
+
+        .user_delete_btn {
+            font-size: small;
+            border-radius: 5px;
+
+            &:hover{
+                background-color: red;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .user_wrapper {
+    
+        .user_buttons_wrapper {
+
+    
+            .user_button {
+                font-size: 0.9em;
+            }
+    
+            .user_delete_btn {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .user_wrapper {
+    
+        .user_buttons_wrapper {
+
+    
+            .user_button {
+                font-size: 0.9em;
+            }
+    
+            .user_delete_btn {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .user_wrapper {
+        width: 90%;
+        .user_buttons_wrapper {
+
+    
+            .user_button {
+                font-size: 0.8em;
+            }
+    
+            .user_delete_btn {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .user_wrapper {
+        width: 90%;
+        .user_buttons_wrapper {
+
+    
+            .user_button {
+                font-size: 0.8em;
+            }
+    
+            .user_delete_btn {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .user_wrapper {
+        width: 90%;
+        .user_buttons_wrapper {
+
+    
+            .user_button {
+                font-size: 0.7em;
+            }
+    
+            .user_delete_btn {
+                font-size: 0.7em;
+            }
+        }
+    }
+}

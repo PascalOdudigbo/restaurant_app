@@ -14,3 +14,6 @@ export { default as Booking } from "./Booking/Booking";
 export { default as Search } from "./Search/Search";
 export { default as ApproveOrDeclineBooking } from "./ApproveOrDeclineBooking/ApproveOrDeclineBooking";
 export { default as ManagerDashboard } from "./ManagerDashboard/ManagerDashboard";
+export { default as UsersTable} from "./UsersTable/UsersTable"
+export { default as UserRow } from "./UsersTable/UserRow/UserRow";
+export { default as UserComponent } from "./UserComponent/UserComponent";

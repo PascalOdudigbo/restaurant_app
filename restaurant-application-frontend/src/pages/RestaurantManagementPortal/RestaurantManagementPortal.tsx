@@ -9,7 +9,7 @@ import { MdTableRestaurant } from "react-icons/md";
 import { MdMenuBook } from "react-icons/md";
 import { GiShoppingBag } from "react-icons/gi";
 // import { BiSolidLogOut } from "react-icons/bi";
-import {BookingsManagement} from '../';
+import {BookingsManagement, UsersManagement} from '../';
 import { BookingsManagementProps } from '../../utils/bookingsManagementUtils';
 import { ManagerDashboard } from '../../components';
 
@@ -31,8 +31,8 @@ function RestaurantManagementPortal({userData}: BookingsManagementProps) {
           </Badge>
         </Tooltip>
 
-        <Tooltip title="Clients" arrow>
-          <Badge color="secondary" badgeContent={0} onClick={() => { navigate("/restaurant-management/clients") }}>
+        <Tooltip title="Users Management" arrow>
+          <Badge color="secondary" badgeContent={0} onClick={() => { navigate("/restaurant-management/users-management") }}>
             <IconContext.Provider value={{ className: "portal_navigation_icon" }}>
               <FaUser />
             </IconContext.Provider>
@@ -86,6 +86,7 @@ function RestaurantManagementPortal({userData}: BookingsManagementProps) {
               totalOrders={0}
             />
           }/>
+          <Route path='/users-management/*' element={<UsersManagement userData={userData}/>}/>
           <Route path='/bookings-management/*' element={<BookingsManagement userData={userData}/>}/>
         </Routes>
       </section>
@@ -99,8 +100,8 @@ function RestaurantManagementPortal({userData}: BookingsManagementProps) {
           </Badge>
         </Tooltip>
 
-        <Tooltip title="Clients" arrow>
-          <Badge color="secondary" badgeContent={0} onClick={() => { navigate("/restaurant-management/clients") }}>
+        <Tooltip title="Users Management" arrow>
+          <Badge color="secondary" badgeContent={0} onClick={() => { navigate("/restaurant-management/users-management") }}>
             <IconContext.Provider value={{ className: "portal_navigation_icon" }}>
               <FaUser />
             </IconContext.Provider>
@@ -139,13 +140,6 @@ function RestaurantManagementPortal({userData}: BookingsManagementProps) {
           </Badge>
         </Tooltip>
 
-        {/* <Tooltip title="Logout" arrow>
-          <Badge color="secondary" badgeContent={0} onClick={() => { }}>
-            <IconContext.Provider value={{ className: "portal_logout_icon" }}>
-              <BiSolidLogOut />
-            </IconContext.Provider>
-          </Badge>
-        </Tooltip> */}
       </section>
 
       
