@@ -1,4 +1,4 @@
-.users_management {
+.tables_management {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,18 +14,18 @@
         flex-direction: column;
         align-items: center;
 
-        .usersManagementPage_heading {
+        .tablesManagementPage_heading {
             margin-top: 20px;
             margin-bottom: 20px;
         }
 
-        .add_user_link_wrapper{
+        .add_table_link_wrapper{
             width: 96%;
             height: fit-content;
             align-items: right;
             margin-bottom: 15px;
 
-            .add_user_link{
+            .add_table_link{
                 border-radius: 10px;
                 font-size: 12px;
                 padding: 0.5rem 0.5rem;
@@ -34,7 +34,7 @@
         }
     }
 
-    .users_management_edit_user_wrapper {
+    .tables_management_edit_table_wrapper {
         flex-direction: column;
         width: 100%;
         z-index: 2;
@@ -42,7 +42,7 @@
         margin-top: 6%;
     }
 
-    .users_table_wrapper {
+    .tables_table_wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -82,7 +82,7 @@
             }
         }
 
-        .mobile_users_wrapper {
+        .mobile_tables_wrapper {
             width: 100%;
             display: grid;
             grid-template-columns: repeat(3, minmax(320px, 1fr));
@@ -92,7 +92,7 @@
     }
 }
 
-.users_management::-webkit-scrollbar {
+.tables_management::-webkit-scrollbar {
     display: none;
 }
 
@@ -100,21 +100,20 @@
 @media screen and (min-width: 2000px) {}
 
 @media screen and (max-width: 1150px) {
-    .users_management {
+    .tables_management {
 
         .heading_wrapper {
 
-            .usersManagementPage_heading {
+            .tablesManagementPage_heading {
                 font-size: 50px;
             }
         }
 
-        .users_table_wrapper {
-            display: none;
+        .tables_table_wrapper {
+            display: flex;
         }
 
         .mobile_view_wrapper {
-            display: flex;
 
             .search_and_filter_wrapper {
 
@@ -122,31 +121,31 @@
             }
         }
 
-        .mobile_users_wrapper {}
+        .mobile_tables_wrapper {}
     }
 }
 
-
 @media screen and (max-width: 850px) {
-    .users_management {
+    .tables_management {
 
         .heading_wrapper {
 
-            .usersManagementPage_heading {
+            .tablesManagementPage_heading {
                 font-size: 50px;
             }
 
-            .add_user_link_wrapper{
+            .add_table_link_wrapper{
     
-                .add_user_link{
+                .add_table_link{
                     padding: 0.6rem 0.5rem;
                 }
     
             }
         }
 
-        .users_table_wrapper {
-            display: none;
+        .tables_table_wrapper {
+            display: flex;
+            width: 98%;
         }
 
         .mobile_view_wrapper {
@@ -155,13 +154,10 @@
 
                 .filterWrapper {
                     width: 20%;
-
-                    .filter_icon {
-                    }
                 }
             }
 
-            .mobile_users_wrapper {
+            .mobile_tables_wrapper {
                 grid-template-columns: repeat(2, minmax(300px, 1fr));
             }
         }
@@ -169,17 +165,17 @@
 }
 
 @media screen and (max-width: 650px) {
-    .users_management {
+    .tables_management {
 
         .heading_wrapper {
 
-            .usersManagementPage_heading {
+            .tablesManagementPage_heading {
                 font-size: 35px;
             }
 
-            .add_user_link_wrapper{
+            .add_table_link_wrapper{
     
-                .add_user_link{
+                .add_table_link{
                     font-size: 10px;
                     padding: 0.6rem 0.5rem;
                 }
@@ -187,44 +183,28 @@
             }
         }
 
-        .users_table_wrapper {
-            display: none;
+        .tables_table_wrapper {
+            display: flex;
         }
 
         .mobile_view_wrapper {
-
-            .search_and_filter_wrapper {
-                .search_wrapper{
-                    width: 50%;
-                }
-
-                .filterWrapper {
-                    width: 25%;
-
-                    .filter_icon {
-                    }
-                }
-            }
-
-            .mobile_users_wrapper {
-                grid-template-columns: repeat(2, minmax(300px, 1fr));
-            }
+            display: none;
         }
     }
 }
 
 @media screen and (max-width: 450px) {
-    .users_management {
+    .tables_management {
 
         .heading_wrapper {
 
-            .usersManagementPage_heading {
+            .tablesManagementPage_heading {
                 font-size: 35px;
             }
 
-            .add_user_link_wrapper{
+            .add_table_link_wrapper{
     
-                .add_user_link{
+                .add_table_link{
                     font-size: 10px;
                     padding: 0.6rem 0.5rem;
                 }
@@ -232,47 +212,29 @@
             }
         }
 
-        .users_table_wrapper {
-            display: none;
+        .tables_table_wrapper {
+            display: flex;
+            width: 96%;
         }
 
         .mobile_view_wrapper {
-            display: flex;
-
-            .search_and_filter_wrapper {
-                .search_wrapper{
-                    width: 50%;
-                }
-
-                .filterWrapper {
-                    width: 35%;
-    
-                    .filter_icon {
-                        height: 25px;
-                        width: 25px;
-                    }
-                }
-            }
-    
-            .mobile_users_wrapper {
-                grid-template-columns: repeat(1, minmax(320px, 1fr));
-            }
+            display: none;
         }
     }
 }
 
 @media screen and (max-width: 360px) {
-    .users_management {
+    .tables_management {
 
         .heading_wrapper {
 
-            .usersManagementPage_heading {
+            .tablesManagementPage_heading {
                 font-size: 35px;
             }
 
-            .add_user_link_wrapper{
+            .add_table_link_wrapper{
     
-                .add_user_link{
+                .add_table_link{
                     font-size: 10px;
                     padding: 0.6rem 0.5rem;
                 }
@@ -280,31 +242,13 @@
             }
         }
 
-        .users_table_wrapper {
-            display: none;
+        .tables_table_wrapper {
+            display: flex;
+            width: 96%;
         }
 
         .mobile_view_wrapper {
-            display: flex;
-
-            .search_and_filter_wrapper {
-                .search_wrapper{
-                    width: 55%;
-                }
-
-                .filterWrapper {
-                    width: 40%;
-    
-                    .filter_icon {
-                        height: 20px;
-                        width: 20px;
-                    }
-                }
-            }
-    
-            .mobile_users_wrapper {
-                grid-template-columns: repeat(1, minmax(320px, 1fr));
-            }
+            display: none;
         }
     }
 }

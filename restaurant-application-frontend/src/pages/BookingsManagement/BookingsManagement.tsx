@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { BookingType, BookingsManagementProps, BookingsType, filterBookings, getAllBookings, searchBookings } from '../../utils/bookingsManagementUtils'
+import React, { useState } from 'react'
+import { BookingType, BookingsManagementProps, filterBookings, searchBookings } from '../../utils/bookingsManagementUtils'
 import { ApproveOrDeclineBooking, Booking, BookingsTable, Dropdown, EditBooking, Search } from '../../components'
 import { Route, Routes } from 'react-router-dom'
 import { IconContext } from 'react-icons'
 import { Tooltip } from '@mui/material'
 import { FaFilter } from 'react-icons/fa'
 
-function BookingsManagement({ userData }: BookingsManagementProps) {
-
-  // Creating state variables to hold bookings
-  const [bookings, setBookings] = useState<BookingsType>([])
+function BookingsManagement({ userData, bookings, setBookings }: BookingsManagementProps) {
   // Creating state variables to hold target bookings
   const [targetBooking, setTargetBooking] = useState<BookingType>({
     id: 0,
@@ -40,12 +37,6 @@ function BookingsManagement({ userData }: BookingsManagementProps) {
     const searchValue = e.target.value;
     searchBookings(searchValue, bookings, setBookings)
   }
-
-  useEffect(() => {
-    //Getting all the bookings
-    getAllBookings(setBookings);
-
-  }, [])
 
   return (
     <div className='bookings_management app__bg app__wrapper section_padding flex__center'>

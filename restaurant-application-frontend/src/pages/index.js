@@ -5,3 +5,4 @@ export { default as UserProfileManagement } from "./UserProfileManagement/UserPr
 export { default as BookingsManagement } from "./BookingsManagement/BookingsManagement";
 export { default as RestaurantManagementPortal } from "./RestaurantManagementPortal/RestaurantManagementPortal";
 export { default as UsersManagement } from "./UsersManagement/UsersManagement";
+export { default as TablesManagement } from "./TablesManagement/TablesManagement";

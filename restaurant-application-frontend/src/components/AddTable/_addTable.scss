@@ -1,0 +1,203 @@
+.add_table_wrapper{
+    flex-direction: column;
+    background-color: var(--color-grey);
+    width: 30%;
+
+    .add_table_header{
+        width: 100%;
+        padding: 0em 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: var(--color-purple);
+
+        .add_table_header_title{
+            font-size: 30px;
+        }
+
+        .add_table_header_close{
+            font-size: 20px;
+
+            &:hover{
+                color:red;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .add_table_form{
+        width: 90%;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+
+        .add_table_form_forgotpassword{
+            margin-top: -10px;
+            font-size: 12px;
+
+            &:hover{
+                cursor: pointer;
+                color: var(--color-purple);
+            }
+        }
+
+        .add_table_form_button{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    } 
+
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .add_table_wrapper{
+        width: 45%;
+    
+        .add_table_header{
+
+            .add_table_header_title{
+                font-size: 25px;
+            }
+    
+            .add_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .add_table_form{
+            width: 90%;
+    
+            .add_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .add_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 850px) {
+    .add_table_wrapper{
+        width: 45%;
+    
+        .add_table_header{
+
+            .add_table_header_title{
+                font-size: 25px;
+            }
+    
+            .add_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .add_table_form{
+            width: 90%;
+    
+            .add_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .add_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 650px) {
+    .add_table_wrapper{
+        width: 65%;
+    
+        .add_table_header{
+
+            .add_table_header_title{
+                font-size: 25px;
+            }
+    
+            .add_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .add_table_form{
+            width: 90%;
+    
+            .add_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .add_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 450px) {
+    .add_table_wrapper{
+        width: 85%;
+    
+        .add_table_header{
+
+            .add_table_header_title{
+                font-size: 25px;
+            }
+    
+            .add_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .add_table_form{
+            width: 90%;
+    
+            .add_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .add_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 360px) {
+    .add_table_wrapper{
+        width: 85%;
+    
+        .add_table_header{
+
+            .add_table_header_title{
+                font-size: 25px;
+            }
+    
+            .add_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .add_table_form{
+            width: 90%;
+    
+            .add_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .add_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    }
+}

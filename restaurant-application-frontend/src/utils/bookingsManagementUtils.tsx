@@ -25,6 +25,8 @@ type NavigateFunctionType = NavigateFunction;
 // Defining the bookingsManagementProps
 export type BookingsManagementProps = {
     userData: User;
+    bookings: BookingsType;
+    setBookings: React.Dispatch<React.SetStateAction<BookingsType>>;
 }
 
 // Defining the booking table props

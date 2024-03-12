@@ -27,3 +27,48 @@
     }
 
 }
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {}
+
+@media screen and (max-width: 850px) {
+    .formInputDate_wrapper {
+    
+        .formInputDate {
+            font-size: medium;
+        }
+    
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .formInputDate_wrapper {
+    
+        .formInputDate {
+            font-size: medium;
+        }
+    
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .formInputDate_wrapper {
+    
+        .formInputDate {
+            font-size: small;
+        }
+    
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .formInputDate_wrapper {
+    
+        .formInputDate {
+            font-size: small;
+        }
+    
+    }
+    
+}

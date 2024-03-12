@@ -1,0 +1,203 @@
+.edit_table_wrapper{
+    flex-direction: column;
+    background-color: var(--color-grey);
+    width: 30%;
+
+    .edit_table_header{
+        width: 100%;
+        padding: 0em 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: var(--color-purple);
+
+        .edit_table_header_title{
+            font-size: 30px;
+        }
+
+        .edit_table_header_close{
+            font-size: 20px;
+
+            &:hover{
+                color:red;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .edit_table_form{
+        width: 90%;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+
+        .edit_table_form_forgotpassword{
+            margin-top: -10px;
+            font-size: 12px;
+
+            &:hover{
+                cursor: pointer;
+                color: var(--color-purple);
+            }
+        }
+
+        .edit_table_form_button{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    } 
+
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {
+    .edit_table_wrapper{
+        width: 45%;
+    
+        .edit_table_header{
+
+            .edit_table_header_title{
+                font-size: 25px;
+            }
+    
+            .edit_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .edit_table_form{
+            width: 90%;
+    
+            .edit_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .edit_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 850px) {
+    .edit_table_wrapper{
+        width: 45%;
+    
+        .edit_table_header{
+
+            .edit_table_header_title{
+                font-size: 25px;
+            }
+    
+            .edit_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .edit_table_form{
+            width: 90%;
+    
+            .edit_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .edit_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 650px) {
+    .edit_table_wrapper{
+        width: 65%;
+    
+        .edit_table_header{
+
+            .edit_table_header_title{
+                font-size: 25px;
+            }
+    
+            .edit_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .edit_table_form{
+            width: 90%;
+    
+            .edit_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .edit_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 450px) {
+    .edit_table_wrapper{
+        width: 85%;
+    
+        .edit_table_header{
+
+            .edit_table_header_title{
+                font-size: 25px;
+            }
+    
+            .edit_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .edit_table_form{
+            width: 90%;
+    
+            .edit_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .edit_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    } 
+}
+
+@media screen and (max-width: 360px) {
+    .edit_table_wrapper{
+        width: 90%;
+    
+        .edit_table_header{
+
+            .edit_table_header_title{
+                font-size: 25px;
+            }
+    
+            .edit_table_header_close{
+                font-size: 18px;
+            }
+        }
+    
+        .edit_table_form{
+            width: 90%;
+    
+            .edit_table_form_forgotpassword{
+                font-size: 10px;
+            }
+    
+            .edit_table_form_button{
+                margin-top: 15px;
+            }
+        } 
+    
+    }
+}

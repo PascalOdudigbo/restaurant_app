@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { User, isLoggedIn } from './utils/appUtils';
+import { BookingsType } from './utils/bookingsManagementUtils';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
     password: "",
     role: ""
   })
+  // Creating state variables to hold bookings
+  const [bookings, setBookings] = useState<BookingsType>([])
 
   useEffect(() => {
     isLoggedIn(setUserData);
@@ -98,7 +101,7 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <BookingsManagement userData={userData} />
+            <BookingsManagement userData={userData} bookings={bookings} setBookings={setBookings}/>
           </>
         } />
 

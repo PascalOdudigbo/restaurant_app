@@ -14,7 +14,7 @@ function UsersTable({ userData, users, setTargetUser, targetUser, setUsers, hand
                 {
                     userData.role === "manager" &&
                     <Search
-                        placeholderText={"Client name..."}
+                        placeholderText={"User name..."}
                         handleOnChange={handleSearchOnChange}
                     />
                 }
@@ -56,7 +56,7 @@ function UsersTable({ userData, users, setTargetUser, targetUser, setUsers, hand
 
                 <tbody className='table_body'>
                     {users?.map((user) => (
-                        // user.role !== "manager" &&
+                        user.role !== "manager" &&
                         <UserRow
                             key={users.indexOf(user)}
                             userData={userData}

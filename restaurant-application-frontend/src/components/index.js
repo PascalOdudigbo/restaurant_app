@@ -17,3 +17,7 @@ export { default as ManagerDashboard } from "./ManagerDashboard/ManagerDashboard
 export { default as UsersTable} from "./UsersTable/UsersTable"
 export { default as UserRow } from "./UsersTable/UserRow/UserRow";
 export { default as UserComponent } from "./UserComponent/UserComponent";
+export { default as TablesTable } from "./TablesTable/TablesTable";
+export { default as TableRow } from "./TablesTable/TableRow/TableRow";
+export { default as AddTable } from "./AddTable/AddTable";
+export { default as EditTable } from "./EditTable/EditTable";

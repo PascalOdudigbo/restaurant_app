@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { User } from '../../utils/appUtils'
-import { Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
 import { Dropdown, Search, UserComponent, UsersTable } from '../../components'
 import { Tooltip } from '@mui/material'
 import { IconContext } from 'react-icons'
 import { FaFilter } from 'react-icons/fa'
-import { UsersManagementProps, filterUsers, getAllUsers, searchUsers } from '../../utils/restaurantManagementPortalUtils'
+import { UsersManagementProps, filterUsers, searchUsers } from '../../utils/restaurantManagementPortalUtils'
 import AddUser from '../../components/AddUser/AddUser'
 import EditUser from '../../components/EditUser/EditUser'
 
-function UsersManagement({userData}: UsersManagementProps) {
+function UsersManagement({ userData, users, setUsers }: UsersManagementProps) {
 
-    // Creating state variables to hold users
-    const [users, setUsers] = useState<User[]>([])
     // Creating state variables to hold target users
     const [targetUser, setTargetUser] = useState<User>({
         id: 0,
@@ -25,7 +23,7 @@ function UsersManagement({userData}: UsersManagementProps) {
     })
     // Declaring state variables for filtering users
     const [filterValue, setFilterValue] = useState<string | number>("All")
-   
+
     // Defining a function to handle search input value change
     const handleUserSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>, setSearchData: React.Dispatch<React.SetStateAction<string>>) => {
         setSearchData(e.target.value);
@@ -33,21 +31,18 @@ function UsersManagement({userData}: UsersManagementProps) {
         searchUsers(searchValue, users, setUsers)
     }
 
-    useEffect(() => {
-        //Getting all the users
-        getAllUsers(setUsers);
-
-    }, [])
-
     return (
         <div className='users_management app__bg app__wrapper section_padding flex__center'>
             <section className='heading_wrapper'>
                 <h1 className='headtext__playfair usersManagementPage_heading'>{userData.role === "manager" ? "USERS" : "MY USERS"}</h1>
+                <section className='add_user_link_wrapper'>
+                    <Link to={"/restaurant-management/users-management/add-user"} className='custom__button add_user_link'>+ ADD USER</Link>
+                </section>
             </section>
             <section className='users_management_edit_user_wrapper flex__center'>
                 <Routes>
-                    <Route path="/add-user" element={<AddUser users={users} setUsers={setUsers}/>} />
-                    <Route path="/edit-user" element={<EditUser targetUser={targetUser} setUsers={setUsers}/>} />
+                    <Route path="/add-user" element={<AddUser users={users} setUsers={setUsers} />} />
+                    <Route path="/edit-user" element={<EditUser targetUser={targetUser} setUsers={setUsers} />} />
                 </Routes>
             </section>
 
@@ -68,7 +63,7 @@ function UsersManagement({userData}: UsersManagementProps) {
                         userData.role === "manager" &&
                         <section className='search_wrapper'>
                             <Search
-                                placeholderText={"Client name..."}
+                                placeholderText={"User name..."}
                                 handleOnChange={handleUserSearchOnChange}
                             />
                         </section>
@@ -96,6 +91,7 @@ function UsersManagement({userData}: UsersManagementProps) {
 
                 <section className='mobile_users_wrapper'>
                     {users.map(user =>
+                        user.role !== "manager" &&
                         <UserComponent
                             key={users.indexOf(user)}
                             userData={userData}
@@ -104,7 +100,7 @@ function UsersManagement({userData}: UsersManagementProps) {
                             targetUser={targetUser}
                             users={users}
                             setUsers={setUsers}
-                         />)}
+                        />)}
 
                 </section>
 

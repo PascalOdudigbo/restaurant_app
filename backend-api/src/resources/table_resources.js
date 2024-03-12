@@ -80,7 +80,7 @@ const update = (req, res) => {
                 console.error("Error updating table:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json(results.rows[0]);
+            res.status(200).json({message: "Table updated successfully!", table: results.rows[0]});
         });
     });
 };
@@ -101,7 +101,7 @@ const destroy = (req, res) => {
                 console.error("Error deleting table:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json("Table deleted successfully");
+            res.status(200).json({message: "Table deleted successfully"});
         });
     });
 };

@@ -141,7 +141,7 @@ const destroy = (req, res) => {
                 console.error("Error deleting user:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json("User deleted successfully");
+            res.status(200).json({message: "User deleted successfully"});
         });
     });
 };
