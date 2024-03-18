@@ -1,0 +1,196 @@
+.row_wrapper {
+    font-family: var(--font-alt);
+    color: var(--color-white);
+
+    .row_cell {
+        padding: 15px;
+        text-align: left;
+        font-size: 0.9em;
+        border-bottom: 2px solid var(--color-gold);
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            align-content: center;
+            align-self: center;
+            cursor: pointer;
+
+            .dropdown_icon{
+                color: var(--color-golden);
+                box-shadow: 1px 1px 1px 1px var(--color-white);
+                width: 25px;
+                height: 25px;
+                background-color: var(--color-grey);
+
+                &:hover{
+                    background-color: var(--color-purple);
+                    color: var(--color-white);
+                }
+                
+            }
+      
+
+            .dropdown_content {
+              position: absolute;
+              background-color: var(--color-white);
+              min-width: 120px;
+              height: fit-content;
+              z-index: 2;
+              box-shadow: 1px 1px 1px 1px var(--color-grey);
+
+              .dropdown_item{
+                font-size: 0.9em;
+                font-weight: 800;
+                width: 100%;
+                text-align: center;
+                border: none;
+                border-top: 1px solid var(--color-purple);
+                padding: 12px 16px;
+                background-color: transparent;
+    
+                &:hover {
+                    cursor: pointer;
+                    color: black;
+                    background-color: var(--color-gold);
+                    box-shadow: 1px 1px 1px 1px rgb(207, 207, 207);
+                }
+
+              }
+
+              .delete_btn{
+                font-size: 0.9em;
+                font-weight: 800;
+                width: 100%;
+                text-align: center;
+                border: none;
+                border-top: 1px solid var(--color-purple);
+                padding: 12px 16px;
+                background-color: transparent;
+    
+                &:hover {
+                    cursor: pointer;
+                    color: black;
+                    background-color: red;
+                    box-shadow: 1px 1px 1px 1px rgb(207, 207, 207);
+                }
+
+              }
+            }
+      
+        }
+    }
+
+    &:nth-child(even) {
+      background-color: var(--color-grey);
+      color: var(--color-black);
+    }
+    &:hover {
+      background-color: var(--color-gold);
+      color: var(--color-black);
+    }
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {}
+
+@media screen and (max-width: 850px) {
+
+}
+
+@media screen and (max-width: 650px) {
+    .row_wrapper {
+    
+        .row_cell {
+            font-size: 0.8em;
+          
+            .dropdown {
+                .dropdown_icon{
+                    width: 22px;
+                    height: 22px;        
+                }
+    
+                .dropdown_content {
+                  min-width: 80px;
+    
+                  .dropdown_item{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+    
+                  .delete_btn{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+                }
+          
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .row_wrapper {
+    
+        .row_cell {
+            font-size: 0.8em;
+          
+            .dropdown {
+                .dropdown_icon{
+                    width: 20px;
+                    height: 20px;        
+                }
+    
+                .dropdown_content {
+                  min-width: 80px;
+    
+                  .dropdown_item{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+    
+                  .delete_btn{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+                }
+          
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .row_wrapper {
+    
+        .row_cell {
+            font-size: 0.8em;
+          
+            .dropdown {
+                .dropdown_icon{
+                    width: 20px;
+                    height: 20px;        
+                }
+    
+                .dropdown_content {
+                  min-width: 70px;
+    
+                  .dropdown_item{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+    
+                  .delete_btn{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+                }
+          
+            }
+        }
+
+    }
+}

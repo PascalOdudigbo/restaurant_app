@@ -1,5 +1,5 @@
 // Importing the Booking resources
-const { listAll, getById, save, update, destroy } = require("../resources/booking_resources");
+const { listAll, getById, save, update, destroy, getByUserId } = require("../resources/booking_resources");
 
 // A conroller function to get all bookings
 const getAllBookings = (req, res) => {
@@ -66,6 +66,18 @@ const deleteBooking = (req, res) => {
     }
 }
 
+// A conroller function to get a booking by ID
+const getBookingByUserId = (req, res) => {
+    try {
+        // Call the getByID function from the resource file
+        getByUserId(req, res)
+
+    } catch (error) {
+        // In the eventuality of an error occuring
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
 
 module.exports = {
     getAllBookings,

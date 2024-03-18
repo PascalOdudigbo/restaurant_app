@@ -21,7 +21,7 @@ function EditTable({ targetTable, setTables }: EditTableProps) {
     return (
         <div className='edit_table_wrapper flex__center'>
             <header className='edit_table_header'>
-                <h3 className='headtext__playfair edit_table_header_title'>UPDATE USER</h3>
+                <h3 className='headtext__playfair edit_table_header_title'>EDIT TABLE</h3>
                 <Link to="/restaurant-management/tables-management" className='headtext__playfair edit_table_header_close'>X</Link>
             </header>
             <form className='edit_table_form' onSubmit={(e) => { console.log("clicked"); editTable(e, targetTable, tableData, setTables) }}>

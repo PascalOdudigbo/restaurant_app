@@ -5,6 +5,7 @@ const client = require("../../db");
 const {
     getAllBookings,
     getBookingById,
+    getBookingByUserId,
     addBooking,
     updateBooking,
     deleteBooking
@@ -111,6 +112,36 @@ const destroy = (req, res) => {
     });
 };
 
+// A function to get booking by user id
+const getByUserId = (req, res) => {
+    const user_id = parseInt(req.params.user_id)
+    client.query(getBookingByUserId, [user_id], (error, results) => {
+        if (error) {
+            console.error("Error fetching bookings:", error);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+        const bookingPromises = results.rows.map(booking => {
+            return new Promise((resolve, reject) => {
+                getUserByIdFunc(booking.user_id, getUserById)
+                    .then(user => {
+                        booking.user = user;
+                        resolve(booking);
+                    })
+                    .catch(error => reject(error));
+            });
+        });
+
+        Promise.all(bookingPromises)
+            .then(allBookings => {
+                res.status(200).json(allBookings);
+            })
+            .catch(error => {
+                console.error("Error fetching booking user:", error);
+                res.status(500).json({ error: "Internal Server Error" });
+            });
+    });
+}
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PRIVATE FUNCTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // A function to get a user by ID
 const getUserByIdFunc = (id, getUserById) => {
@@ -133,5 +164,6 @@ module.exports = {
     getById,
     save,
     update,
-    destroy
+    destroy,
+    getByUserId
 };
