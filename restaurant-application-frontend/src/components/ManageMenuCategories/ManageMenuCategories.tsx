@@ -12,7 +12,6 @@ function ManageMenuCategories({ userData, menuCategories, setTargetMenuCategory,
                 <Routes>
                     <Route path="/add-menu-category" element={<AddMenuCategory menuCategories={menuCategories} setMenuCategories={setMenuCategories} />} />
                     <Route path="/edit-menu-category" element={<EditMenuCategory targetMenuCategory={targetMenuCategory} setMenuCategories={setMenuCategories} />} />
-
                 </Routes>
             </section>
 
@@ -43,10 +42,8 @@ function ManageMenuCategories({ userData, menuCategories, setTargetMenuCategory,
                     {menuCategories?.map((menuCategory) => (
                         <MenuCategoryRow
                             key={menuCategories.indexOf(menuCategory)}
-                            userData={userData}
                             menuCategory={menuCategory}
                             setTargetMenuCategory={setTargetMenuCategory}
-                            targetMenuCategory={targetMenuCategory}
                             menuCategories={menuCategories}
                             setMenuCategories={setMenuCategories}
                         />

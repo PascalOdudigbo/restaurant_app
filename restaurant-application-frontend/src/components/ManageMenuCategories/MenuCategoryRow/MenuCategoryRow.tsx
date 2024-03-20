@@ -4,7 +4,7 @@ import { SlOptions } from 'react-icons/sl'
 import { useNavigate } from 'react-router-dom'
 import { MenuCategoryRowProps, deleteMenuCategory } from '../../../utils/menuManagementUtils'
 
-function MenuCategoryRow({ userData, menuCategory, setTargetMenuCategory, targetMenuCategory, menuCategories, setMenuCategories }: MenuCategoryRowProps) {
+function MenuCategoryRow({ menuCategory, setTargetMenuCategory, menuCategories, setMenuCategories }: MenuCategoryRowProps) {
     // Declaring state variables to manage dropdown display
     const [dropdownDisplay, setDropdownDisplay] = useState<string>("none")
     // Declaring navigation variable function

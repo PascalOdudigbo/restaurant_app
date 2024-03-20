@@ -13,7 +13,7 @@ import { BookingsType, getAllBookings } from '../../utils/bookingsManagementUtil
 import { ManagerDashboard } from '../../components';
 import { User } from '../../utils/appUtils';
 import { RestaurantManagementProps, Table, getAllTables, getAllUsers } from '../../utils/restaurantManagementPortalUtils';
-import { MenuCategoryType, getAllMenuCategories } from '../../utils/menuManagementUtils';
+import { MenuCategoryType, MenuItemType, getAllMenuCategories, getAllMenuItems } from '../../utils/menuManagementUtils';
 
 
 
@@ -26,6 +26,8 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
   const [tables, setTables] = useState<Table[]>([])
   // Creating state variale to hold menu categories
   const [menuCategories, setMenuCategories] = useState<MenuCategoryType[]>([])
+  // Creating state variale to hold menu items
+  const [menuItems, setMenuItems] = useState<MenuItemType[]>([])
 
   // Declaring navigation variable function
   const navigate = useNavigate();
@@ -37,8 +39,10 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
     userData.role === "manager" && getAllBookings(setBookings);
     // Getting all Tables
     userData.role === "manager" && getAllTables(setTables);
-    // Getting all menuCatehories
+    // Getting all menuCategories
     userData.role === "manager" && getAllMenuCategories(setMenuCategories);
+    // Getting all menuItems
+    userData.role === "manager" && getAllMenuItems(setMenuItems);
 
   }, [userData])
 
@@ -112,7 +116,7 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
           <Route path='/users-management/*' element={<UsersManagement userData={userData} users={users} setUsers={setUsers} />} />
           <Route path='/bookings-management/*' element={<BookingsManagement userData={userData} bookings={bookings} setBookings={setBookings} />} />
           <Route path='/tables-management/*' element={<TablesManagement userData={userData} tables={tables} setTables={setTables} />} />
-          <Route path='/menu-management/*' element={<MenuManagement userData={userData} menuCategories={menuCategories} setMenuCategories={setMenuCategories}/>} />
+          <Route path='/menu-management/*' element={<MenuManagement userData={userData} menuCategories={menuCategories} setMenuCategories={setMenuCategories} menuItems={menuItems} setMenuItems={setMenuItems}/>} />
 
         </Routes>
       </section>
