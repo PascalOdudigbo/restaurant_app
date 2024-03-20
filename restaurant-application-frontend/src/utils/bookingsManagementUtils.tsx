@@ -86,6 +86,25 @@ export const getAllBookings = (setBookings: React.Dispatch<React.SetStateAction<
 
 }
 
+// Defining a function to get all bookings for a specific user
+export const getBookingsByUserId = (userId: number, setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
+    axios.get(`/bookings/user/${userId}`)
+    .then(response => {
+        // Setting bookings data to the state variable
+        setBookings(response.data)
+        localStorage.setItem("bookingsCount", response.data.length)
+    })
+    .catch(error => {
+        if (error.response.data) {
+            // Display the error message if it's sent from the backend
+            toast.error(error.response.data.error);
+        } else if (error) {
+            // If no error message is sent from backend display a generic message
+            toast.error(error.message);
+        }
+    })
+}
+
 // Defining a function to edit a booking
 export const editBooking = (e: React.FormEvent<HTMLFormElement>, targetBooking: BookingType, bookingDetails: BookingDetails, setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
     // Preventing form auto-refresh
@@ -157,32 +176,16 @@ export const searchBookings = (searchData: string, bookings: BookingsType, setBo
 }
 
 // Defining a function to handle filter bookings
-export const filterBookings = (filterData: string, bookings: BookingsType, setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
-    // if (filterData === "All") {
-    //     getAllBookings(setBookings)
-    // }
-    // else {
-    //     if (bookings.length < 1) {
-    //         getAllBookings(setBookings)
-
-    //     }
-    //     else {
-    //         // Filtering the bookings to get bookings where the status is equal to filter data
-    //         let filteredBookings = bookings.filter(booking => booking.status === filterData);
-    //         setBookings(filteredBookings);
-    //     }
-
-    // }
-
+export const filterBookings = (userData: User, filterData: string, bookings: BookingsType, setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
     const bookingsCountStr = localStorage.getItem("bookingsCount");
     const bookingsCount = bookingsCountStr ? parseInt(bookingsCountStr) : 0;
 
     if (filterData === "All") {
-        getAllBookings(setBookings);
+        userData.role === "client" ? getBookingsByUserId(userData.id, setBookings) : getAllBookings(setBookings);
     } else {
         let filteredBookings: BookingsType;
         if (bookings.length < bookingsCount) {
-            getAllBookings(setBookings);
+            userData.role === "client" ? getBookingsByUserId(userData.id, setBookings) : getAllBookings(setBookings);
             filteredBookings = bookings.filter(booking => booking.status === filterData);
         } else {
             filteredBookings = bookings.filter(booking => booking.status === filterData);

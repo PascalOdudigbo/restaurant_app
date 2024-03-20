@@ -35,7 +35,7 @@ function BookingsTable({ userData, bookings, setTargetBooking, targetBooking, se
                             buttonText={filterValue}
                             clickFunction={(data) => {
                                 setFilterValue(data)
-                                filterBookings(data.toString(), bookings, setBookings)
+                                filterBookings(userData, data.toString(), bookings, setBookings)
                             }}
                         />
 
@@ -47,9 +47,9 @@ function BookingsTable({ userData, bookings, setTargetBooking, targetBooking, se
             <table className="bookings_table">
                 <thead>
                     <tr className="table_headers_wrapper">
-                        <th className="p__inter table_header">NAME</th>
-                        <th className="p__inter table_header">EMAIL</th>
-                        <th className="p__inter table_header">MOBILE</th>
+                        {userData.role === "manager" && <th className="p__inter table_header">NAME</th>}
+                        {userData.role === "manager" && <th className="p__inter table_header">EMAIL</th>}
+                        {userData.role === "manager" && <th className="p__inter table_header">MOBILE</th>}
                         <th className="p__inter table_header">DATE</th>
                         <th className="p__inter table_header">GUESTS</th>
                         <th className="p__inter table_header">OCCASSIONS</th>
@@ -69,7 +69,7 @@ function BookingsTable({ userData, bookings, setTargetBooking, targetBooking, se
                             targetBooking={targetBooking}
                             bookings={bookings}
                             setBookings={setBookings}
-                            bookingStatus={bookingStatus} 
+                            bookingStatus={bookingStatus}
                             setBookingStatus={setBookingStatus}
                         />
                     ))}

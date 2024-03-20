@@ -21,3 +21,7 @@ export { default as TablesTable } from "./TablesTable/TablesTable";
 export { default as TableRow } from "./TablesTable/TableRow/TableRow";
 export { default as AddTable } from "./AddTable/AddTable";
 export { default as EditTable } from "./EditTable/EditTable";
+export { default as ManageMenuCategories } from "./ManageMenuCategories/ManageMenuCategories";
+export { default as MenuCategoryRow } from "./ManageMenuCategories/MenuCategoryRow/MenuCategoryRow";
+export { default as AddMenuCategory } from "./AddMenuCategory/AddMenuCategory";
+export { default as EditMenuCategory } from "./EditMenuCategory/EditMenuCategory";

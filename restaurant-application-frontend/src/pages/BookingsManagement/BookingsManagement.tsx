@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { BookingType, BookingsManagementProps, filterBookings, searchBookings } from '../../utils/bookingsManagementUtils'
+import React, { useEffect, useState } from 'react'
+import { BookingType, BookingsManagementProps, filterBookings, getBookingsByUserId, searchBookings } from '../../utils/bookingsManagementUtils'
 import { ApproveOrDeclineBooking, Booking, BookingsTable, Dropdown, EditBooking, Search } from '../../components'
 import { Route, Routes } from 'react-router-dom'
 import { IconContext } from 'react-icons'
@@ -30,6 +30,13 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
   const [filterValue, setFilterValue] = useState<string | number>("All")
   // Declaring state variables for for approving or declining bookings
   const [bookingStatus, setBookingStatus] = useState<boolean>(false)
+
+
+  useEffect(() => {
+    //Getting all client Bookings
+    userData.role === "client" && getBookingsByUserId(userData.id, setBookings);
+
+  }, [userData])
 
   // Defining a function to handle search input value change
   const handleBookingSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>, setSearchData: React.Dispatch<React.SetStateAction<string>>) => {
@@ -89,7 +96,7 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
                 buttonText={filterValue}
                 clickFunction={(data) => {
                   setFilterValue(data)
-                  filterBookings(data.toString(), bookings, setBookings)
+                  filterBookings(userData, data.toString(), bookings, setBookings)
                 }}
               />
             </section>

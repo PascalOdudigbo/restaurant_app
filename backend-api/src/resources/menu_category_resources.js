@@ -59,7 +59,7 @@ const save = (req, res) => {
                 console.error("Error saving menu category:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(201).json(results.rows[0]);
+            res.status(201).json({message: "Menu category created successfully!", menuCategory: results.rows[0]});
         });
     })
     
@@ -85,7 +85,7 @@ const update = (req, res) => {
                 console.error("Error updating menu category:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json(results.rows[0]);
+            res.status(200).json({message: "Menu category updated successfully", menuCategory: results.rows[0]});
         });
     });
 };
@@ -109,7 +109,7 @@ const destroy = (req, res) => {
                 console.error("Error deleting menu category:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json("Menu category deleted successfully");
+            res.status(200).json({message: "Menu category deleted successfully"});
         });
     });
 };

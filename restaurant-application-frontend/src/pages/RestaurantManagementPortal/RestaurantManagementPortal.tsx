@@ -8,11 +8,12 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { MdTableRestaurant } from "react-icons/md";
 import { MdMenuBook } from "react-icons/md";
 import { GiShoppingBag } from "react-icons/gi";
-import { BookingsManagement, TablesManagement, UsersManagement } from '../';
+import { BookingsManagement, MenuManagement, TablesManagement, UsersManagement } from '../';
 import { BookingsType, getAllBookings } from '../../utils/bookingsManagementUtils';
 import { ManagerDashboard } from '../../components';
 import { User } from '../../utils/appUtils';
 import { RestaurantManagementProps, Table, getAllTables, getAllUsers } from '../../utils/restaurantManagementPortalUtils';
+import { MenuCategoryType, getAllMenuCategories } from '../../utils/menuManagementUtils';
 
 
 
@@ -23,17 +24,21 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
   const [bookings, setBookings] = useState<BookingsType>([])
   // Creating state variables to hold tables
   const [tables, setTables] = useState<Table[]>([])
+  // Creating state variale to hold menu categories
+  const [menuCategories, setMenuCategories] = useState<MenuCategoryType[]>([])
 
   // Declaring navigation variable function
   const navigate = useNavigate();
 
   useEffect(() => {
-    //Getting all the users
+    // Getting all the users
     userData.role === "manager" && getAllUsers(setUsers);
-    //Getting all Bookings
+    // Getting all Bookings
     userData.role === "manager" && getAllBookings(setBookings);
-    //Getting all Tables
+    // Getting all Tables
     userData.role === "manager" && getAllTables(setTables);
+    // Getting all menuCatehories
+    userData.role === "manager" && getAllMenuCategories(setMenuCategories);
 
   }, [userData])
 
@@ -74,7 +79,7 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
         </Tooltip>
 
         <Tooltip title="Menu Management" arrow>
-          <Badge color="secondary" badgeContent={0} onClick={() => { }}>
+          <Badge color="secondary" badgeContent={0} onClick={() => { navigate("/restaurant-management/menu-management") }}>
             <IconContext.Provider value={{ className: "portal_navigation_icon" }}>
               <MdMenuBook />
             </IconContext.Provider>
@@ -98,15 +103,16 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
               userData={userData}
               totalBookings={bookings.length}
               totalClients={0}
-              totalMenuCategories={0}
+              totalMenuCategories={menuCategories.length}
               totalPendingBookings={0}
               totalMenuItems={0}
               totalOrders={0}
             />
           } />
           <Route path='/users-management/*' element={<UsersManagement userData={userData} users={users} setUsers={setUsers} />} />
-          <Route path='/bookings-management/*' element={<BookingsManagement userData={userData} bookings={bookings} setBookings={setBookings}/>} />
-          <Route path='/tables-management/*' element={<TablesManagement userData={userData} tables={tables} setTables={setTables}/>} />
+          <Route path='/bookings-management/*' element={<BookingsManagement userData={userData} bookings={bookings} setBookings={setBookings} />} />
+          <Route path='/tables-management/*' element={<TablesManagement userData={userData} tables={tables} setTables={setTables} />} />
+          <Route path='/menu-management/*' element={<MenuManagement userData={userData} menuCategories={menuCategories} setMenuCategories={setMenuCategories}/>} />
 
         </Routes>
       </section>
@@ -145,7 +151,7 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
         </Tooltip>
 
         <Tooltip title="Menu Management" arrow>
-          <Badge color="secondary" badgeContent={0} onClick={() => { }}>
+          <Badge color="secondary" badgeContent={0} onClick={() => { navigate("/restaurant-management/menu-management") }}>
             <IconContext.Provider value={{ className: "portal_navigation_icon" }}>
               <MdMenuBook />
             </IconContext.Provider>

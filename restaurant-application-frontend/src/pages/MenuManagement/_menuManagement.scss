@@ -1,0 +1,257 @@
+.menu_management{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+
+    .heading_wrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .menuManagementPage_heading{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .menu_management_menu_categories_and_items_nav_wrapper{
+        margin-bottom: 15px;
+        .menu_management_nav_link_1{
+            border-top-left-radius: 30px;  
+            border-bottom-left-radius: 30px;  
+            border-right: 1px solid black;
+            border-top-right-radius: none;
+            border-bottom-right-radius: none;
+            width: 260px;
+            padding: 1.6rem 0.5rem;
+            text-align: center;
+        }
+        .menu_management_nav_link_2{
+            border-top-left-radius: none;  
+            border-bottom-left-radius: none;  
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            width: 260px;
+            padding: 1.6rem 0.5rem;
+            text-align: center;
+
+        }
+    }
+
+    .menu_management_routes_wrapper{
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+
+@media screen and (min-width: 2000px) {
+    .app__homepage{
+
+        .app__homepage_image_and_text_wrapper{
+    
+            .app__homepage_text_section_wrapper{
+    
+                .app__homepage_text_section{
+    
+                    .app__homepage_text_section_logo{
+                        padding-left: 0.2em;
+                        font-size: 60px;
+                        margin-bottom: 2px;
+    
+                    }
+                    .app__homepage_text_section_purple_line{
+                        width: 80%;
+                    }
+    
+                    .app__homepage_text_section_motto{
+                        padding-left: 0.9em;
+                        font-size: 20px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                    }
+    
+                    .app__homepage_text_section_link{
+                        margin-left: 0.9em;
+                    }
+    
+                }
+    
+            }
+    
+        }
+    
+    }
+
+}
+
+@media screen and (max-width: 1150px) {
+    .app__homepage{
+
+        .app__homepage_image_and_text_wrapper{
+    
+            .app__homepage_text_section_wrapper{
+    
+                .app__homepage_text_section{
+    
+                    .app__homepage_text_section_logo{
+                        padding-left: 0.2em;
+                        font-size: 55px;
+                        margin-bottom: 2px;
+    
+                    }
+                    .app__homepage_text_section_purple_line{
+                        width: 100%;
+                    }
+    
+                    .app__homepage_text_section_motto{
+                        padding-left: 0.9em;
+                        font-size: 20px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                    }
+    
+                    .app__homepage_text_section_link{
+                        margin-left: 0.9em;
+                    }
+    
+                }
+    
+            }
+    
+        }
+    
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .menu_management{
+    
+        .heading_wrapper{
+    
+            .menuManagementPage_heading{
+                font-size: 50px;
+            }
+        }
+    
+        .menu_management_menu_categories_and_items_nav_wrapper{
+            width: 96%;
+            .menu_management_nav_link_1{
+                width: 160px;
+                font-size: 1em;
+                padding: 0.7rem 0.5rem;
+
+            }
+            .menu_management_nav_link_2{
+                width: 160px;
+                font-size: 1em;
+                padding: 0.7rem 0.5rem;            }
+        }
+    
+        .menu_management_routes_wrapper{
+            width: 96%;
+            margin-top: 20px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 650px) {
+    .menu_management{
+    
+        .heading_wrapper{
+    
+            .menuManagementPage_heading{
+                font-size: 30px;
+            }
+        }
+    
+        .menu_management_menu_categories_and_items_nav_wrapper{
+            width: 96%;
+            .menu_management_nav_link_1{
+                width: 160px;
+                font-size: 0.8em;
+                padding: 0.7rem 0.5rem;
+
+            }
+            .menu_management_nav_link_2{
+                width: 160px;
+                font-size: 0.8em;
+                padding: 0.7rem 0.5rem;            }
+        }
+    
+        .menu_management_routes_wrapper{
+            width: 96%;
+            margin-top: 20px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 450px) {
+    .menu_management{
+    
+        .heading_wrapper{
+    
+            .menuManagementPage_heading{
+                font-size: 30px;
+            }
+        }
+    
+        .menu_management_menu_categories_and_items_nav_wrapper{
+            width: 96%;
+            .menu_management_nav_link_1{
+                width: 160px;
+                font-size: 0.8em;
+                padding: 0.7rem 0.5rem;
+
+            }
+            .menu_management_nav_link_2{
+                width: 160px;
+                font-size: 0.8em;
+                padding: 0.7rem 0.5rem;            }
+        }
+    
+        .menu_management_routes_wrapper{
+            width: 96%;
+            margin-top: 20px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 360px) {
+    .menu_management{
+    
+        .heading_wrapper{
+    
+            .menuManagementPage_heading{
+                font-size: 30px;
+            }
+        }
+    
+        .menu_management_menu_categories_and_items_nav_wrapper{
+            width: 96%;
+            .menu_management_nav_link_1{
+                width: 160px;
+                font-size: 0.8em;
+                padding: 0.7rem 0.5rem;
+
+            }
+            .menu_management_nav_link_2{
+                width: 160px;
+                font-size: 0.8em;
+                padding: 0.7rem 0.5rem;            }
+        }
+    
+        .menu_management_routes_wrapper{
+            width: 96%;
+            margin-top: 20px;
+        }
+    }
+    
+}

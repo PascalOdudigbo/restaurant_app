@@ -6,3 +6,4 @@ export { default as BookingsManagement } from "./BookingsManagement/BookingsMana
 export { default as RestaurantManagementPortal } from "./RestaurantManagementPortal/RestaurantManagementPortal";
 export { default as UsersManagement } from "./UsersManagement/UsersManagement";
 export { default as TablesManagement } from "./TablesManagement/TablesManagement";
+export { default as MenuManagement } from "./MenuManagement/MenuManagement";
