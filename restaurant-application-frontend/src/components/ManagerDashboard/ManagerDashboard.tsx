@@ -6,10 +6,10 @@ import { FaUser } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 import { BiSolidDish } from "react-icons/bi";
 import { GiShoppingBag } from "react-icons/gi";
-import { ManagerDashboardProps } from '../../utils/restaurantManagementPortalUtils'
+import { ManagerDashboardProps, totalBookingsStatus } from '../../utils/restaurantManagementPortalUtils'
 import { PieChart } from '@mui/x-charts';
 
-function ManagerDashboard({ userData, totalBookings, totalClients, totalMenuCategories, totalPendingBookings, totalMenuItems, totalOrders }: ManagerDashboardProps) {
+function ManagerDashboard({ userData, totalBookings, totalClients, totalMenuCategories, totalPendingBookings, totalMenuItems, totalOrders, bookings }: ManagerDashboardProps) {
     return (
         <div className='managerDashboard_wrapper app__bg app__wrapper section_padding'>
             <section className='heading_wrapper'>
@@ -84,12 +84,14 @@ function ManagerDashboard({ userData, totalBookings, totalClients, totalMenuCate
                     series={[
                         {
                             data: [
-                                { id: 0, value: 10, label: 'Pending', color: 'gold' },
-                                { id: 1, value: 15, label: 'Approved', color: 'white' },
-                                { id: 2, value: 20, label: 'Denied', color: 'purple' },
+                                { id: 0, value: totalBookingsStatus(bookings, "Pending"), label: 'Pending', color: 'gold' },
+                                { id: 1, value: totalBookingsStatus(bookings, "Approved"), label: 'Approved', color: 'white' },
+                                { id: 2, value: totalBookingsStatus(bookings, "Declined"), label: 'Declined', color: 'purple' },
                             ],
                         },
                     ]}
+                    // width={300}
+                    height={200}
                 />
 
                 <p className='p__inter chart_title'>Bookings Chart</p>

@@ -7,3 +7,4 @@ export { default as RestaurantManagementPortal } from "./RestaurantManagementPor
 export { default as UsersManagement } from "./UsersManagement/UsersManagement";
 export { default as TablesManagement } from "./TablesManagement/TablesManagement";
 export { default as MenuManagement } from "./MenuManagement/MenuManagement";
+export { default as MenuPage } from "./MenuPage/MenuPage";

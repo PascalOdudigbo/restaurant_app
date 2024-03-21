@@ -12,7 +12,7 @@ import { BookingsManagement, MenuManagement, TablesManagement, UsersManagement }
 import { BookingsType, getAllBookings } from '../../utils/bookingsManagementUtils';
 import { ManagerDashboard } from '../../components';
 import { User } from '../../utils/appUtils';
-import { RestaurantManagementProps, Table, getAllTables, getAllUsers } from '../../utils/restaurantManagementPortalUtils';
+import { RestaurantManagementProps, Table, getAllTables, getAllUsers, totalClients, totalBookingsStatus } from '../../utils/restaurantManagementPortalUtils';
 import { MenuCategoryType, MenuItemType, getAllMenuCategories, getAllMenuItems } from '../../utils/menuManagementUtils';
 
 
@@ -67,7 +67,7 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
         </Tooltip>
 
         <Tooltip title="Bookings Management" arrow>
-          <Badge color="secondary" badgeContent={0} onClick={() => { navigate("/restaurant-management/bookings-management") }}>
+          <Badge color="secondary" badgeContent={totalBookingsStatus(bookings, "Pending")} onClick={() => { navigate("/restaurant-management/bookings-management") }}>
             <IconContext.Provider value={{ className: "portal_navigation_icon" }}>
               <FaCalendarAlt />
             </IconContext.Provider>
@@ -106,11 +106,12 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
             <ManagerDashboard
               userData={userData}
               totalBookings={bookings.length}
-              totalClients={0}
+              totalClients={totalClients(users)}
               totalMenuCategories={menuCategories.length}
-              totalPendingBookings={0}
-              totalMenuItems={0}
+              totalPendingBookings={totalBookingsStatus(bookings, "Pending")}
+              totalMenuItems={menuItems.length}
               totalOrders={0}
+              bookings={bookings}
             />
           } />
           <Route path='/users-management/*' element={<UsersManagement userData={userData} users={users} setUsers={setUsers} />} />

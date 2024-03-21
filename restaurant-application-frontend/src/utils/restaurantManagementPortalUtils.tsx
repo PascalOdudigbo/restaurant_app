@@ -1,6 +1,7 @@
 import axios from "axios";
 import { User, sendEmailNoNavigate } from "./appUtils"
 import { toast } from "react-toastify";
+import { BookingsType } from "./bookingsManagementUtils";
 // import { NavigateFunction } from "react-router-dom";
 
 export type ManagerDashboardProps = {
@@ -11,10 +12,29 @@ export type ManagerDashboardProps = {
     totalPendingBookings: number;
     totalMenuItems: number;
     totalOrders: number;
+    bookings: BookingsType;
 }
 
 export type RestaurantManagementProps = {
     userData: User
+}
+
+// A function to get the total clients count
+export const totalClients = (users: User[]) => {
+    let totalClients = 0;
+    users.forEach(user => {
+        user.role === 'client' && (totalClients += 1);
+    })
+    return totalClients;
+}
+
+// A function to get the total pending bookings count
+export const totalBookingsStatus = (bookings: BookingsType, status: String) => {
+    let totalBookings = 0;
+    bookings.forEach(booking => {
+        booking.status === status && (totalBookings += 1);
+    })
+    return totalBookings;
 }
 
 /********************************************USERS MANAGEMENT CODE START ************************************************************/

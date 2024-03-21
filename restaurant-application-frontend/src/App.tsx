@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
-import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement } from './pages';
+import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,6 +45,7 @@ function App() {
               theme="dark"
             />
             <HomePage setUserData={setUserData} />
+            <MenuPage/>
             <BookingPage userData={userData} />
             <ContactPage userData={userData} />
           </>

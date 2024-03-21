@@ -19,7 +19,7 @@ function EditMenuItem({ targetMenuItem, menuItems, setMenuItems, menuCategories,
         price: targetMenuItem.price ? targetMenuItem.price : 0,
         image: targetMenuItem.image ? targetMenuItem.image : imagePlaceHolder,
         image_public_id: targetMenuItem.image_public_id ? targetMenuItem.image_public_id : "",
-        is_available: targetMenuItem.is_available ? targetMenuItem.is_available : true
+        is_available: targetMenuItem.is_available ? targetMenuItem.is_available : false
     })
     // creating a state variable to hold imageFile 
     const [selectedImageFile, setSelectedImageFile] = useState<File | null>()

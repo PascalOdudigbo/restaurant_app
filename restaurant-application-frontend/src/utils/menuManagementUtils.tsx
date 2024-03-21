@@ -9,6 +9,7 @@ export type MenuCategoryType = {
     id: number;
     name: string;
     description: string;
+    menu_items?: MenuItemsType;
 }
 
 // Defining the menu categories type
