@@ -3,8 +3,14 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import { User, parseJwt, getUserData } from "./appUtils";
 import { NavigateFunction } from 'react-router-dom';
+import { OrderType } from './menuPageUtils';
 // import jwt_decode from 'jwt-decode';
 
+// Defining the login props
+export type LoginProps = {
+    setUserData: React.Dispatch<React.SetStateAction<User>>;
+    setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>;
+}
 
 // Defining the login form data type
 export type LoginFormData = {
@@ -16,7 +22,7 @@ export type LoginFormData = {
 type NavigateFunctionType = NavigateFunction
 
 // defining a function to login users
-export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormData, setUserData: React.Dispatch<React.SetStateAction<User>>, navigate: NavigateFunctionType) => {
+export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormData, setUserData: React.Dispatch<React.SetStateAction<User>>, navigate: NavigateFunctionType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
 
     // Preventing form reload 
     e.preventDefault();
@@ -41,7 +47,7 @@ export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormD
             const userId: number = parseJwt(token).userId;
            
             // Getting the userData
-            getUserData(`/users/${userId}`, setUserData)
+            getUserData(`/users/${userId}`, setUserData, setActiveOrder)
 
             // Navigate to homepage
             navigate("/")

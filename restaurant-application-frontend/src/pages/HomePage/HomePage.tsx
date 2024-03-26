@@ -3,18 +3,20 @@ import welcomeImage from "../../assets/welcome_image_2.jpg";
 import { Route, Routes } from 'react-router-dom';
 import { ForgotPassword, Login, Register } from '../../components';
 import {User} from "../../utils/appUtils";
+import { OrderType } from '../../utils/menuPageUtils';
 
 // Defining the homepage prop types
 type HomePageProps = {
   setUserData: React.Dispatch<React.SetStateAction<User>>
+  setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>; 
 }
 
-function HomePage({setUserData}: HomePageProps) {
+function HomePage({setUserData, setActiveOrder}: HomePageProps) {
   return (
     <div className='app__homepage app__bg app__wrapper section_padding flex__center' id='home'>
         <div className='app__homepage_login_and_register_wrapper flex__center'>
             <Routes>
-              <Route path="/login" element={<Login setUserData={setUserData}/>}/>
+              <Route path="/login" element={<Login setUserData={setUserData} setActiveOrder={setActiveOrder}/>}/>
               <Route path="/register" element={<Register/>}/>
               <Route path="/forgot-password" element={<ForgotPassword/>}/>
 

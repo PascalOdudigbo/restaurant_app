@@ -1,11 +1,13 @@
 import { NavigateFunction } from "react-router-dom";
 import { User } from "./appUtils"
 import { toast } from "react-toastify";
+import { OrderType } from "./menuPageUtils";
 
 // Defining the navbar props
 export type NavbarProps = {
     userData: User;
     setUserData: React.Dispatch<React.SetStateAction<User>>;
+    activeOrder: OrderType;
 }
 
 // Declaring the navigate function type

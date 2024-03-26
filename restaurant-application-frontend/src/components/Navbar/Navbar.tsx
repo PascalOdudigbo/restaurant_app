@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { NavbarProps, handleLogout } from '../../utils/navbarUtils';
 import { UserSignedInDropdown } from '../';
 
-function Navbar({ userData, setUserData }: NavbarProps) {
+function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
   //creating useState to display toggle menu
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   // defining the navigate variable function
@@ -57,7 +57,7 @@ function Navbar({ userData, setUserData }: NavbarProps) {
               {
                 userData.role === "client" && window.location.href.includes("orders") === false &&
                 <Tooltip title="Your Order" arrow>
-                  <Badge color="secondary" badgeContent={0} showZero onClick={() => { navigate("/orders") }}>
+                  <Badge color="secondary" badgeContent={activeOrder.order_items?.length ? activeOrder.order_items?.length : 0} showZero onClick={() => { navigate("/orders") }}>
                     <IconContext.Provider value={{ className: "cart_icon" }}>
                       <GiShoppingBag />
                     </IconContext.Provider>
@@ -97,7 +97,7 @@ function Navbar({ userData, setUserData }: NavbarProps) {
                   {userData.role === "client" && <li className='p__inter'><Link to='/bookings-management' onClick={() => { setToggleMenu(false) }}>BOOKINGS</Link></li>}
                   {
                     userData.role === "client" && window.location.href.includes("orders") === false &&
-                    <li className='p__inter'><Link to='/orders' onClick={() => { setToggleMenu(false) }} >{`CART(${2})`}</Link></li>
+                    <li className='p__inter'><Link to='/orders' onClick={() => { setToggleMenu(false) }} >{`CART(${activeOrder.order_items?.length ? activeOrder.order_items?.length : 0})`}</Link></li>
                   }
                   {
                     userData.id !== 0 &&

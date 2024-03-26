@@ -65,7 +65,7 @@ const save = (req, res) => {
                     console.error("Error saving order item:", error);
                     return res.status(500).json({ error: "Internal Server Error" });
                 }
-                res.status(201).json(results.rows[0]);
+                res.status(201).json({message: "Item added to cart successfully!", order_item: results.rows[0]});
             });
         }
     });

@@ -20,6 +20,7 @@ const { capitalize } = require("../utils/resource_utils");
 
 // Importing JWT for user login and authentication
 const jwt = require('jsonwebtoken');
+const { getOrdersByUserIdFunc } = require("./order_resources");
 
 // initializing JWT secretKey variable
 const secretKey = process.env.SESSION_SECRET_KEY;
@@ -46,7 +47,36 @@ const getById = (req, res) => {
         if (results.rows.length === 0) {
             return res.status(404).json({ error: "User not found." });
         }
-        res.status(200).json(results.rows[0]);
+        // res.status(200).json(results.rows[0]);
+        const userPromises = results.rows.map(user => {
+            return new Promise((resolve, reject) => {
+                getOrdersByUserIdFunc(user.id)
+                    .then(userOrders => {
+                        // Ensure that the userOrders are not null or undefined
+                        if (userOrders && userOrders.length > 0) {
+                            // Use map directly on userOrders and assign to userOrdersData
+                            const userOrdersData = userOrders.map(userOrder => userOrder);
+                            // Assign orderItemsData to order.order_items
+                            user.orders = userOrdersData;
+                        } else {
+                            // Assign an empty array if no order items are found
+                            user.orders = [];
+                        }
+                        resolve(user)
+                    })
+                    .catch(error => reject(error));
+            });
+        });
+
+        // Ensure userPromises resolves even if there are no orders
+        Promise.all(userPromises)
+            .then(userData => {
+                res.status(200).json( userData[0])
+            })
+            .catch(error => {
+                console.error("Error fetching user orders: ", error);
+                return res.status(500).json({ error: "Internal Server Error" });
+            });
     });
 };
 
@@ -100,12 +130,12 @@ const update = (req, res) => {
                         console.error("Error updating user:", error);
                         return res.status(500).json({ error: "Internal Server Error" });
                     }
-                    res.status(200).json({message: "Update Successful", user: results.rows[0]});
+                    res.status(200).json({ message: "Update Successful", user: results.rows[0] });
                 });
             });
         });
     }
-    else{
+    else {
         client.query(getUserById, [id], (error, results) => {
             if (error) {
                 console.error("Error checking user existence:", error);
@@ -119,7 +149,7 @@ const update = (req, res) => {
                     console.error("Error updating user:", error);
                     return res.status(500).json({ error: "Internal Server Error" });
                 }
-                res.status(200).json({message: "Update Successful", user: results.rows[0]});
+                res.status(200).json({ message: "Update Successful", user: results.rows[0] });
             });
         });
     }
@@ -141,7 +171,7 @@ const destroy = (req, res) => {
                 console.error("Error deleting user:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json({message: "User deleted successfully"});
+            res.status(200).json({ message: "User deleted successfully" });
         });
     });
 };
@@ -226,6 +256,7 @@ const getByEmail = (req, res) => {
         }
     })
 }
+
 
 module.exports = {
     listAll,

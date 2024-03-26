@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { User, isLoggedIn } from './utils/appUtils';
 import { BookingsType } from './utils/bookingsManagementUtils';
+import { OrderType } from './utils/menuPageUtils';
 
 
 function App() {
@@ -17,13 +18,23 @@ function App() {
     postcode: "",
     email: "",
     password: "",
-    role: ""
+    role: "",
+    orders: undefined
   })
   // Creating state variables to hold bookings
   const [bookings, setBookings] = useState<BookingsType>([])
+  // Creating state variables to hold users active order
+  const [activeOrder, setActiveOrder] = useState<OrderType>({
+    id: 0,
+    user_id: userData.id,
+    table_id: 0,
+    status: "",
+    order_items: undefined
+  })
 
   useEffect(() => {
-    isLoggedIn(setUserData);
+    // userData.id === 0 && 
+    isLoggedIn(setUserData, setActiveOrder);
   }, [])
 
   return (
@@ -31,7 +42,7 @@ function App() {
       <Routes>
         <Route path="/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} />
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -44,15 +55,15 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <HomePage setUserData={setUserData} />
-            <MenuPage/>
+            <HomePage setUserData={setUserData} setActiveOrder={setActiveOrder}/>
+            <MenuPage userData={userData} activeOrder={activeOrder} setActiveOrder={setActiveOrder}/>
             <BookingPage userData={userData} />
             <ContactPage userData={userData} />
           </>
         } />
         <Route path="/orders" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} />
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -70,7 +81,7 @@ function App() {
 
         <Route path="/profile-management" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} />
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -89,7 +100,7 @@ function App() {
 
         <Route path="/bookings-management/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} />
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -108,7 +119,7 @@ function App() {
 
         <Route path="/restaurant-management/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} />
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
             <ToastContainer
               position="top-center"
               autoClose={5000}

@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import { NavigateFunction } from 'react-router-dom';
 import axios from "axios";
+import { OrderType, getUsersActiveOrder } from "./menuPageUtils";
 
 // Creating the navigation function type
 type NavigateFunctionType = NavigateFunction;
@@ -17,6 +18,8 @@ export type User = {
     email: string;
     password: string;
     role: string;
+    orders?: OrderType[]
+
 }
 
 // Initializaing emailJs variables
@@ -88,7 +91,7 @@ export const sendEmailNoNavigate = (emailValues: EmailValues, successMessage: st
 
 
 // Function to check if user is logged in
-export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User>>): boolean => {
+export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User>>, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>): boolean => {
     // Retrieve token from local storage
     const token = localStorage.getItem('token');
     if (!token) {
@@ -106,7 +109,7 @@ export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User
     }
 
     // User is logged in get the userData
-    getUserData(`/users/${decodedToken.userId}`, setUserData)
+    getUserData(`/users/${decodedToken.userId}`, setUserData, setActiveOrder)
     return true
 };
 
@@ -121,12 +124,12 @@ export const parseJwt = (token: string) => {
 
 
 // A function to get user data 
-export const getUserData = (route: string, setUserData: React.Dispatch<React.SetStateAction<User>>) => {
+export const getUserData = (route: string, setUserData: React.Dispatch<React.SetStateAction<User>>, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
     axios.get(`${route}`)
         .then(response => {
             // Setting user data to the state variable
             setUserData(response.data)
-        
+            getUsersActiveOrder(response.data, setActiveOrder)
         })
         .catch(error => {
             if (error.response.data) {

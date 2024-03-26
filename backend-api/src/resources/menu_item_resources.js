@@ -44,7 +44,7 @@ const save = (req, res) => {
             console.error("Error saving menu item:", error);
             return res.status(500).json({ error: "Internal Server Error" });
         }
-        res.status(201).json(results.rows[0]);
+        res.status(201).json({message: "Menu item created successfully!", menuItem: results.rows[0]});
     });
 };
 
@@ -65,7 +65,7 @@ const update = (req, res) => {
                 console.error("Error updating menu item:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json(results.rows[0]);
+            res.status(200).json({message: "Menu item updated successfully!", menuItem: results.rows[0]});
         });
     });
 };
@@ -86,10 +86,11 @@ const destroy = (req, res) => {
                 console.error("Error deleting menu item:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json("Menu item deleted successfully");
+            res.status(200).json({message: "Menu item deleted successfully"});
         });
     });
 };
+
 
 module.exports = {
     listAll,

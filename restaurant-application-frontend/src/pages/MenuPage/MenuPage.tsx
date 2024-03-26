@@ -3,9 +3,11 @@ import { MenuCategoryType, MenuItemType, getAllMenuCategories } from '../../util
 import imagePlaceHolder from "../../assets/image_placeholder.png"
 import { IconContext } from 'react-icons';
 import { MdMenuBook } from 'react-icons/md';
+import { MenuPageProps, addToCart } from '../../utils/menuPageUtils';
 
 
-function MenuPage() {
+function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
+  console.log(userData)
   // Creating state variale to hold menu categories
   const [menuCategories, setMenuCategories] = useState<MenuCategoryType[]>([]);
   // Creating state variable to manage menu details display
@@ -49,11 +51,12 @@ function MenuPage() {
           <img className='item_image' src={targetMenuItem.image} alt={targetMenuItem.name} title={targetMenuItem.name} />
           <p className='p__inter item_name'>{targetMenuItem.name.toUpperCase()}</p>
           <p className='p__inter item_description'>{targetMenuItem.description}</p>
-          <button className='custom__button item_details_button'>ADD TO CART</button>
+          {userData.role === "client" && <button className='custom__button item_details_button' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>ADD TO CART</button>}
         </section>
 
         <section className='items_list_wrapper'>
           <h4 className='p__inter items_list_heading'><b>{targetMenuCategory?.name.toUpperCase()}</b></h4>
+          <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
             targetMenuCategory?.menu_items?.map(menu_item =>
               <div key={menu_item.id} className='item_list_name_and_price_wrapper' onClick={() => {
@@ -63,7 +66,7 @@ function MenuPage() {
                 <p className='p__inter item_name'>{menu_item.name.toUpperCase()}</p>
                 <div className='price_and_add_to_cart_button'>
                   <p className='p__inter item_price'>£{menu_item.price}</p>
-                  <p className='p__inter item_add_to_cart'>+</p>
+                  {userData.role === "client" &&<p className='p__inter item_add_to_cart' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>+</p>}
                 </div>
               </div>
             )
@@ -76,11 +79,12 @@ function MenuPage() {
           <img className='item_image_mobile' src={targetMenuItem.image} alt={targetMenuItem.name} title={targetMenuItem.name} />
           <p className='p__inter item_name_mobile'>{targetMenuItem.name.toUpperCase()}</p>
           <p className='p__inter item_description_mobile'>{targetMenuItem.description}</p>
-          <button className='custom__button item_details_button'>ADD TO CART</button>
+          {userData.role === "client" &&<button className='custom__button item_details_button' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>ADD TO CART</button>}
         </section>
 
         <section className='items_list_wrapper_mobile'>
           <h4 className='p__inter items_list_heading_mobile'><b>{targetMenuCategory?.name.toUpperCase()}</b></h4>
+          <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
             targetMenuCategory?.menu_items?.map(menu_item =>
               <div key={menu_item.id} className='item_list_name_and_price_wrapper_mobile' onClick={() => {
@@ -90,7 +94,7 @@ function MenuPage() {
                 <p className='p__inter item_name_mobile'>{menu_item.name.toUpperCase()}</p>
                 <div className='price_and_add_to_cart_button_mobile'>
                   <p className='p__inter item_price_mobile'>£{menu_item.price}</p>
-                  <p className='p__inter item_add_to_cart_mobile'>+</p>
+                  {userData.role === "client" &&<p className='p__inter item_add_to_cart_mobile' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>+</p>}
                 </div>
               </div>
             )

@@ -1,4 +1,4 @@
-const getAllMenuCategories = "SELECT * FROM menu_categories";
+const getAllMenuCategories = "SELECT * FROM menu_categories ORDER BY name";
 const getMenuCategoryById = "SELECT * FROM menu_categories WHERE id = $1";
 const getMenuCategoryByName = "SELECT * FROM menu_categories WHERE name = $1"
 const addMenuCategory = "INSERT INTO menu_categories (name, description) VALUES ($1, $2) RETURNING *";
