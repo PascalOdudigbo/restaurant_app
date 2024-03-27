@@ -7,7 +7,6 @@ import { MenuPageProps, addToCart } from '../../utils/menuPageUtils';
 
 
 function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
-  console.log(userData)
   // Creating state variale to hold menu categories
   const [menuCategories, setMenuCategories] = useState<MenuCategoryType[]>([]);
   // Creating state variable to manage menu details display
@@ -18,6 +17,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
   const [targetMenuCategory, setTargetMenuCategory] = useState<MenuCategoryType>()
   // Creating state variable to manage target menu item
   const [targetMenuItem, setTargetMenuItem] = useState<MenuItemType>({
+    id: 0,
     menu_category_id: 0,
     name: "MENU CATEGORY",
     description: "",
@@ -49,7 +49,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
 
         <section className='item_details_wrapper' style={{ display: menuItemDetailsDisplay }}>
           <img className='item_image' src={targetMenuItem.image} alt={targetMenuItem.name} title={targetMenuItem.name} />
-          <p className='p__inter item_name'>{targetMenuItem.name.toUpperCase()}</p>
+          <p className='p__playfair item_name'>{targetMenuItem.name.toUpperCase()}</p>
           <p className='p__inter item_description'>{targetMenuItem.description}</p>
           {userData.role === "client" && <button className='custom__button item_details_button' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>ADD TO CART</button>}
         </section>

@@ -28,6 +28,8 @@ export type OrderItemType = {
     menu_item: MenuItemType
 }
 
+
+
 // Defining a function to get a user's actve order
 export const getUsersActiveOrder = (userData: User, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
     // Looping through the userData orders to get the active order
@@ -39,7 +41,7 @@ export const getUsersActiveOrder = (userData: User, setActiveOrder: React.Dispat
 // Defining a function to add an item to cart 
 export const addToCart = (userData: User, activeOrder: OrderType, targetMenuItem: MenuItemType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
     // Check if user has an active order
-    if (activeOrder.id) {
+    if (activeOrder.id !== 0) {
         // Verify if the menu item already exists in the cart
         const existingOrderItem = activeOrder?.order_items?.filter(orderItem => orderItem.menu_item_id === targetMenuItem.id)[0];
         if (existingOrderItem !== undefined) {
@@ -90,6 +92,7 @@ export const incrementOrderItemQuantity = (existingOrderItem: OrderItemType, act
             toast.success("Item quantity increased!");
             // Get order by id the bookings data
             getOrderById(activeOrder, setActiveOrder);
+
         })
         .catch(error => {
             if (error.response.data) {
@@ -131,7 +134,7 @@ export const addOrderItemToCart = (activeOrder: OrderType, targetMenuItem: MenuI
 
 // A function to get order by ID
 export const getOrderById = (activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
-    axios.patch(`/order/${activeOrder.id}`)
+    axios.get(`/orders/${activeOrder.id}`)
         .then(response => {
             // Setting the active order 
             setActiveOrder(response.data)

@@ -55,9 +55,9 @@ function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
               <UserSignedInDropdown userData={userData} setUserData={setUserData} />
 
               {
-                userData.role === "client" && window.location.href.includes("orders") === false &&
+                userData.role === "client" && window.location.href.includes("cart") === false &&
                 <Tooltip title="Your Order" arrow>
-                  <Badge color="secondary" badgeContent={activeOrder.order_items?.length ? activeOrder.order_items?.length : 0} showZero onClick={() => { navigate("/orders") }}>
+                  <Badge color="secondary" badgeContent={activeOrder.order_items?.length ? activeOrder.order_items?.length : 0} showZero onClick={() => { navigate("/cart") }}>
                     <IconContext.Provider value={{ className: "cart_icon" }}>
                       <GiShoppingBag />
                     </IconContext.Provider>
@@ -96,8 +96,8 @@ function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
                   }
                   {userData.role === "client" && <li className='p__inter'><Link to='/bookings-management' onClick={() => { setToggleMenu(false) }}>BOOKINGS</Link></li>}
                   {
-                    userData.role === "client" && window.location.href.includes("orders") === false &&
-                    <li className='p__inter'><Link to='/orders' onClick={() => { setToggleMenu(false) }} >{`CART(${activeOrder.order_items?.length ? activeOrder.order_items?.length : 0})`}</Link></li>
+                    userData.role === "client" && window.location.href.includes("cart") === false &&
+                    <li className='p__inter'><Link to='/cart' onClick={() => { setToggleMenu(false) }} >{`CART(${activeOrder.order_items?.length ? activeOrder.order_items?.length : 0})`}</Link></li>
                   }
                   {
                     userData.id !== 0 &&

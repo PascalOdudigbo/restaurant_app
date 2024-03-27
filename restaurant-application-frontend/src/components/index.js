@@ -30,3 +30,4 @@ export { default as MenuItemRow } from "./ManageMenuItems/MenuItemRow/MenuItemRo
 export { default as AddMenuItem } from "./AddMenuItem/AddMenuItem";
 export { default as MenuItem } from "./MenuItem/MenuItem";
 export { default as EditMenuItem } from "./EditMenuItem/EditMenuItem";
+export { default as CartItem } from "./CartItem/CartItem";

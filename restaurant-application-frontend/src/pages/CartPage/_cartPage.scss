@@ -1,0 +1,418 @@
+.app__cart {
+    flex-direction: column;
+    align-items: center;
+
+    .cart_heading_wrapper {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        .menu_heading {}
+    }
+
+    .cart_select_table_wrapper{
+        flex-direction: column;
+        width: 100%;
+        z-index: 2;
+        position: absolute;
+        margin-top: 10%;
+
+
+        .checkout_wrapper{
+            flex-direction: column;
+            background-color: var(--color-grey);
+            width: 30%;
+            
+        
+            .checkout_header{
+                width: 100%;
+                padding: 0em 2em;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                background-color: var(--color-purple);
+        
+                .checkout_header_title{
+                    font-size: 30px;
+                }
+        
+                .checkout_header_close{
+                    font-size: 20px;
+        
+                    &:hover{
+                        color:red;
+                        cursor: pointer;
+                    }
+                }
+            }
+        
+            .checkout_form{
+                width: 90%;
+                margin-top: 15px;
+                display: flex;
+                flex-direction: column;
+        
+                .checkout_form_forgotpassword{
+                    margin-top: -10px;
+                    font-size: 12px;
+        
+                    &:hover{
+                        cursor: pointer;
+                        color: var(--color-purple);
+                    }
+                }
+        
+                .checkout_form_button{
+                    margin-top: 100px;
+                    margin-bottom: 20px;
+                }
+            } 
+        
+        }
+    }
+
+    .cart_body_wapper {
+        width: 98%;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(320px, 1fr));
+        grid-auto-rows: 1fr;
+        gap: 10px;
+        
+    }
+
+    .cart_subtotal_and_checkout_wrapper{
+        width: 96%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
+        margin-bottom: 10px;
+
+        .cart_subtotal{
+            font-size: 42px;
+        }
+
+        .cart_item_checkout_btn{
+            height: 50px;
+        }
+    }
+
+}
+
+
+@media screen and (min-width: 2000px) {
+  
+
+}
+
+@media screen and (max-width: 1150px) {
+    .app__cart {
+        
+    
+        .cart_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 50px;
+            }
+        }
+
+        .cart_select_table_wrapper{
+            .checkout_wrapper{
+                width: 45%;
+            
+                .checkout_header{
+        
+                    .checkout_header_title{
+                        font-size: 25px;
+                    }
+            
+                    .checkout_header_close{
+                        font-size: 18px;
+                    }
+                }
+            
+                .checkout_form{
+                    width: 90%;
+            
+                    .checkout_form_forgotpassword{
+                        font-size: 10px;
+                    }
+            
+                    .checkout_form_button{
+                        
+                    }
+                } 
+            
+            } 
+        }
+    
+        .cart_body_wapper {
+            grid-template-columns: repeat(3, minmax(320px, 1fr));
+            
+        }
+    
+        .cart_subtotal_and_checkout_wrapper{
+
+            .cart_subtotal{
+                font-size: 32px;
+            }
+    
+            .cart_item_checkout_btn{
+                height: 50px;
+                font-size: medium;
+            }
+        }
+    
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .app__cart {
+        
+    
+        .cart_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 50px;
+            }
+        }
+
+        .cart_select_table_wrapper{
+            .checkout_wrapper{
+                width: 45%;
+            
+                .checkout_header{
+        
+                    .checkout_header_title{
+                        font-size: 25px;
+                    }
+            
+                    .checkout_header_close{
+                        font-size: 18px;
+                    }
+                }
+            
+                .checkout_form{
+                    width: 90%;
+            
+                    .checkout_form_forgotpassword{
+                        font-size: 10px;
+                    }
+            
+                    .checkout_form_button{
+                       
+                    }
+                } 
+            
+            } 
+        }
+    
+        .cart_body_wapper {
+            grid-template-columns: repeat(2, minmax(320px, 1fr));
+            
+        }
+    
+        .cart_subtotal_and_checkout_wrapper{
+
+            .cart_subtotal{
+                font-size: 32px;
+            }
+    
+            .cart_item_checkout_btn{
+                height: 50px;
+                font-size: medium;
+            }
+        }
+    
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .app__cart {
+        
+    
+        .cart_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 35px;
+            }
+        }
+
+        .cart_select_table_wrapper{
+            .checkout_wrapper{
+                width: 65%;
+            
+                .checkout_header{
+        
+                    .checkout_header_title{
+                        font-size: 25px;
+                    }
+            
+                    .checkout_header_close{
+                        font-size: 18px;
+                    }
+                }
+            
+                .checkout_form{
+                    width: 90%;
+            
+                    .checkout_form_forgotpassword{
+                        font-size: 10px;
+                    }
+            
+                    .checkout_form_button{
+                    }
+                } 
+            
+            } 
+        }
+    
+        .cart_body_wapper {
+            grid-template-columns: repeat(1, minmax(320px, 1fr));
+            
+        }
+    
+        .cart_subtotal_and_checkout_wrapper{
+            flex-direction: column;
+            align-items: flex-end;
+            .cart_subtotal{
+                font-size: 22px;
+            }
+    
+            .cart_item_checkout_btn{
+                height: 50px;
+                font-size: medium;
+            }
+        }
+    
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .app__cart {
+        
+    
+        .cart_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 35px;
+            }
+        }
+
+        .cart_select_table_wrapper{
+            .checkout_wrapper{
+                width: 85%;
+            
+                .checkout_header{
+        
+                    .checkout_header_title{
+                        font-size: 25px;
+                    }
+            
+                    .checkout_header_close{
+                        font-size: 18px;
+                    }
+                }
+            
+                .checkout_form{
+                    width: 90%;
+            
+                    .checkout_form_forgotpassword{
+                        font-size: 10px;
+                    }
+            
+                    .checkout_form_button{
+                    }
+                } 
+            
+            } 
+        }
+    
+        .cart_body_wapper {
+            grid-template-columns: repeat(1, minmax(320px, 1fr));
+            
+        }
+    
+        .cart_subtotal_and_checkout_wrapper{
+            flex-direction: column;
+            align-items: flex-end;
+            .cart_subtotal{
+                font-size: 22px;
+            }
+    
+            .cart_item_checkout_btn{
+                height: 50px;
+                font-size: small;
+            }
+        }
+    
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .app__cart {
+        
+    
+        .cart_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 35px;
+            }
+        }
+    
+        .cart_select_table_wrapper{
+            .checkout_wrapper{
+                width: 85%;
+            
+                .checkout_header{
+        
+                    .checkout_header_title{
+                        font-size: 25px;
+                    }
+            
+                    .checkout_header_close{
+                        font-size: 18px;
+                    }
+                }
+            
+                .checkout_form{
+                    width: 90%;
+            
+                    .checkout_form_forgotpassword{
+                        font-size: 10px;
+                    }
+            
+                    .checkout_form_button{
+                    }
+                } 
+            
+            }
+        }
+
+        .cart_body_wapper {
+            grid-template-columns: repeat(1, minmax(320px, 1fr));
+            
+        }
+    
+        .cart_subtotal_and_checkout_wrapper{
+            flex-direction: column;
+            align-items: flex-end;
+            .cart_subtotal{
+                font-size: 22px;
+            }
+    
+            .cart_item_checkout_btn{
+                height: 50px;
+                font-size: small;
+            }
+        }
+    
+    }
+}

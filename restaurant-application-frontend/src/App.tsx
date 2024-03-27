@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
-import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage } from './pages';
+import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,7 +61,7 @@ function App() {
             <ContactPage userData={userData} />
           </>
         } />
-        <Route path="/orders" element={
+        <Route path="/cart/*" element={
           <>
             <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
             <ToastContainer
@@ -76,6 +76,7 @@ function App() {
               pauseOnHover
               theme="dark"
             />
+            <CartPage userData={userData} setUserData={setUserData} activeOrder={activeOrder} setActiveOrder={setActiveOrder}/>
           </>
         } />
 
