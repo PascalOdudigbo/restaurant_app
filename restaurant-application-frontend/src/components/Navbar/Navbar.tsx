@@ -91,6 +91,8 @@ function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
                   {userData.id !== 0 &&
                     <li className='p__inter'><Link to='/profile-management' onClick={() => { setToggleMenu(false) }} >YOUR PROFILE</Link></li>
                   }
+                  {userData.role === "chef" && <li className='p__inter'><Link to='/kitchen' onClick={() => { setToggleMenu(false) }}>KITCHEN</Link></li>}
+                  {userData.role === "attendant" && <li className='p__inter'><Link to='/service-station' onClick={() => { setToggleMenu(false) }}>SERVICE STATION</Link></li>}
                   {userData.role === "manager" &&
                     <li className='p__inter'><Link to='/restaurant-management' onClick={() => { setToggleMenu(false) }} >RESTAURANT MANAGEMENT</Link></li>
                   }
@@ -99,6 +101,7 @@ function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
                     userData.role === "client" && window.location.href.includes("cart") === false &&
                     <li className='p__inter'><Link to='/cart' onClick={() => { setToggleMenu(false) }} >{`CART(${activeOrder.order_items?.length ? activeOrder.order_items?.length : 0})`}</Link></li>
                   }
+                  {userData.role === "client" && <li className='p__inter'><Link to='/orders' onClick={() => { setToggleMenu(false) }}>ORDERS</Link></li>}
                   {
                     userData.id !== 0 &&
                     <li className='p__inter'><p onClick={() => { setToggleMenu(false); handleLogout(setUserData, navigate) }} >LOGOUT</p></li>

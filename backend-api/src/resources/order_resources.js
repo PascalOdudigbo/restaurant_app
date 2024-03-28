@@ -24,34 +24,58 @@ const listAll = (req, res) => {
             return res.status(500).json({ error: "Internal Server Error" });
         }
 
-        const orderPromises = results.rows.map(order => {
-            return new Promise((resolve, reject) => {
-                getOrderItemsByOrderIdFunc(order.id, getOrderItemsByOrderId)
-                    .then(orderItems => {
-                        // Ensure orderItems are not null or undefined
-                        if (orderItems && orderItems.length > 0) {
-                            // Use map directly on orderItems and assign to orderItemsData
-                            const orderItemsData = orderItems.map(orderItem => orderItem);
-                            // Assign orderItemsData to order.order_items
-                            order.order_items = orderItemsData;
-                        } else {
-                            // Assign an empty array if no order items are found
-                            order.order_items = [];
-                        }
-                        resolve(order)
-                    })
-                    .catch(error => reject(error));
-            });
+         // Map over order results to create promises for fetching order items
+         const orderPromises = results.rows.map(order => {
+            return getOrderItemsByOrderIdFunc(order.id, getOrderItemsByOrderId)
+                .then(orderItems => {
+                    // If no order items, assign empty array to order
+                    if (!orderItems || orderItems.length === 0) {
+                        order.order_items = [];
+                        return order;
+                    }
+
+                    // Map over order items to create promises for fetching menu items
+                    const orderItemsPromises = orderItems.map(orderItem => {
+                        return new Promise((resolve, reject) => {
+                            client.query(getMenuItemById, [orderItem.menu_item_id], (error, results) => {
+                                // Handle query error
+                                if (error) {
+                                    console.error("Error fetching order item's menu item:", error);
+                                    reject({ error: "Internal Server Error" });
+                                }
+                                // If menu item not found, resolve with null (or handle as necessary)
+                                if (results.rows.length === 0) {
+                                    console.error("Order item's menu item not found.");
+                                    resolve(null);
+                                }
+                                // Assign menu item to order item
+                                orderItem.menu_item = results.rows[0];
+                                resolve(orderItem);
+                            });
+                        });
+                    });
+
+                    // Resolve order items promises and assign to order
+                    return Promise.all(orderItemsPromises)
+                        .then(completedOrderItems => {
+                            order.order_items = completedOrderItems;
+                            return order;
+                        });
+                })
+                .catch(error => {
+                    console.error("Error fetching order items: ", error);
+                    reject({ error: "Internal Server Error" });
+                });
         });
 
-        // Ensure orderPromises resolves even if there are no order items
+        // Resolve all order promises
         Promise.all(orderPromises)
-            .then(allOrders => {
-                res.status(200).json(allOrders);
+            .then(userOrder => {
+                return res.status(200).json(userOrder);
             })
             .catch(error => {
                 console.error("Error fetching order items: ", error);
-                return res.status(500).json({ error: "Internal Server Error" });
+                reject({ error: "Internal Server Error" });
             });
     });
 };

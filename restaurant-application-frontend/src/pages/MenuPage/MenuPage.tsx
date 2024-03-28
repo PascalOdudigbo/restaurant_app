@@ -58,7 +58,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <h4 className='p__inter items_list_heading'><b>{targetMenuCategory?.name.toUpperCase()}</b></h4>
           <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
-            targetMenuCategory?.menu_items?.map(menu_item =>
+            targetMenuCategory?.menu_items?.map(menu_item => menu_item.is_available &&
               <div key={menu_item.id} className='item_list_name_and_price_wrapper' onClick={() => {
                 setTargetMenuItem(menu_item);
                 setMenuItemDetailsDisplay("block");
@@ -86,7 +86,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <h4 className='p__inter items_list_heading_mobile'><b>{targetMenuCategory?.name.toUpperCase()}</b></h4>
           <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
-            targetMenuCategory?.menu_items?.map(menu_item =>
+            targetMenuCategory?.menu_items?.map(menu_item => menu_item.is_available &&
               <div key={menu_item.id} className='item_list_name_and_price_wrapper_mobile' onClick={() => {
                 setTargetMenuItem(menu_item);
                 setMenuItemDetailsDisplay("block");

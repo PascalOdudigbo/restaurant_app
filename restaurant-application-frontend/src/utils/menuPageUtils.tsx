@@ -17,6 +17,7 @@ export type OrderType = {
     table_id: number | null;
     status: string;
     order_items?: OrderItemType[]
+    created_at?: string;
 }
 
 // Defining the order items type

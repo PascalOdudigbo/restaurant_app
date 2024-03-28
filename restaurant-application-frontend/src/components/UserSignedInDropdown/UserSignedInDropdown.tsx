@@ -36,7 +36,10 @@ function UserSignedInDropdown({ userData, setUserData }: UserSignedInDropdownPro
                 }
 
                 {
-                    (userData?.role === "chef" ||  userData?.role === "attendant") && <button className="dropdownBtn p__inter" onClick={() => navigate("/kitchen")}>Kitchen</button>
+                    userData?.role === "chef"  && <button className="dropdownBtn p__inter" onClick={() => navigate("/kitchen")}>Kitchen</button>
+                }
+                {
+                    userData?.role === "attendant" && <button className="dropdownBtn p__inter" onClick={() => navigate("/service-station")}>Service Station</button>
                 }
 
                 {

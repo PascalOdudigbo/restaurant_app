@@ -2,7 +2,8 @@
     position: relative;
     display: inline-block;
     margin-right: auto;
-    width: fit-content;
+    width: max-content;
+    min-width: 200px;
 
 
     &:hover .dropdownLinksContainer{
@@ -14,6 +15,7 @@
     .dropdownBtnAndNameContainer{
         display: flex;
         flex-direction: row;
+        min-width: 200px;
         width: fit-content;
         height: 40px;
         border: 1px solid var(--color-gold);
@@ -90,41 +92,3 @@
     }
 
 }
-
-
-// $phoneSmall: 320px;
-// $phoneLarge: 640px;
-// $tablet: 768px;
-// $desktop: 1024px;
-
-// @media screen and (min-width: $phoneSmall) and (max-width: $tablet){
-
-//     .dropdownContainer{
-//         margin-right: 10px;
-
-//         .dropdownBtnAndNameContainer{
-//             max-width: 100px;
-
-//             .dropdownName{
-//                 font-size: 0.5em;
-//             }
-    
-//         }
-    
-//         .dropdownLinksContainer{
-//             width: 100%;
-          
-//             .dropdownBtn{
-//                 font-size: 0.6em;
-//                 padding: 10px 14px;
-//             }
-    
-//             .dropdownLogoutBtn{
-//                 font-size: 0.6em;
-//                 padding: 10px 14px;
-//             }
-//         }
-    
-//     }
-
-// }

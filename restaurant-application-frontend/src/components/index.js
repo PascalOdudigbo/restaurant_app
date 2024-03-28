@@ -31,3 +31,5 @@ export { default as AddMenuItem } from "./AddMenuItem/AddMenuItem";
 export { default as MenuItem } from "./MenuItem/MenuItem";
 export { default as EditMenuItem } from "./EditMenuItem/EditMenuItem";
 export { default as CartItem } from "./CartItem/CartItem";
+export { default as Order } from "./Order/Order";
+export { default as OrderItemRow } from "./Order/OrderItemRow/OrderItemRow";

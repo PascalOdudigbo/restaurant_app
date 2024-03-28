@@ -1,4 +1,4 @@
-const getAllTables = "SELECT * FROM tables";
+const getAllTables = "SELECT * FROM tables ORDER BY id DESC";
 const getTableById = "SELECT * FROM tables WHERE id = $1";
 const getTableByNumber = "SELECT * FROM tables WHERE table_number = $1";
 const addTable = "INSERT INTO tables (table_number, is_occupied) VALUES ($1, $2) RETURNING *";

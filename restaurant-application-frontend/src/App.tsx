@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
-import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage } from './pages';
+import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage, KitchenPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { User, isLoggedIn } from './utils/appUtils';
 import { BookingsType } from './utils/bookingsManagementUtils';
 import { OrderType } from './utils/menuPageUtils';
+import { getAllOrders } from './utils/kitchenPageUtils';
 
 
 function App() {
@@ -30,11 +31,13 @@ function App() {
     table_id: 0,
     status: "",
     order_items: undefined
-  })
+  });
+  // Creating state variables to hold orders
+  const [orders, setOrders] = useState<OrderType[]>([]);
 
   useEffect(() => {
-    // userData.id === 0 && 
     isLoggedIn(setUserData, setActiveOrder);
+    getAllOrders(setOrders);
   }, [])
 
   return (
@@ -42,7 +45,7 @@ function App() {
       <Routes>
         <Route path="/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -55,15 +58,15 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <HomePage setUserData={setUserData} setActiveOrder={setActiveOrder}/>
-            <MenuPage userData={userData} activeOrder={activeOrder} setActiveOrder={setActiveOrder}/>
+            <HomePage setUserData={setUserData} setActiveOrder={setActiveOrder} />
+            <MenuPage userData={userData} activeOrder={activeOrder} setActiveOrder={setActiveOrder} />
             <BookingPage userData={userData} />
             <ContactPage userData={userData} />
           </>
         } />
         <Route path="/cart/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -76,13 +79,51 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <CartPage userData={userData} setUserData={setUserData} activeOrder={activeOrder} setActiveOrder={setActiveOrder}/>
+            <CartPage userData={userData} setUserData={setUserData} activeOrder={activeOrder} setActiveOrder={setActiveOrder} />
+          </>
+        } />
+
+        <Route path="/kitchen/" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <KitchenPage userData={userData} orders={orders} setOrders={setOrders} />
+          </>
+        } />
+
+        <Route path="/service-station/" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <KitchenPage userData={userData} orders={orders} setOrders={setOrders} />
           </>
         } />
 
         <Route path="/profile-management" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -101,7 +142,7 @@ function App() {
 
         <Route path="/bookings-management/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -114,13 +155,13 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <BookingsManagement userData={userData} bookings={bookings} setBookings={setBookings}/>
+            <BookingsManagement userData={userData} bookings={bookings} setBookings={setBookings} />
           </>
         } />
 
         <Route path="/restaurant-management/*" element={
           <>
-            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder}/>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -133,7 +174,7 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <RestaurantManagementPortal userData={userData}/>
+            <RestaurantManagementPortal userData={userData} />
           </>
         } />
 

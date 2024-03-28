@@ -1,0 +1,118 @@
+.row_wrapper_order {
+    font-family: var(--font-alt);
+    color: var(--color-black);
+
+    .row_cell_order {
+        padding: 15px;
+        text-align: left;
+        font-size: 0.9em;
+        border-bottom: 2px solid var(--color-black);
+
+    }
+
+}
+
+
+@media screen and (min-width: 2000px) {}
+
+@media screen and (max-width: 1150px) {}
+
+@media screen and (max-width: 850px) {
+
+}
+
+@media screen and (max-width: 650px) {
+    .row_wrapper {
+    
+        .row_cell_order {
+            font-size: 0.8em;
+          
+            .dropdown {
+                .dropdown_icon{
+                    width: 22px;
+                    height: 22px;        
+                }
+    
+                .dropdown_content {
+                  min-width: 80px;
+    
+                  .dropdown_item{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+    
+                  .delete_btn{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+                }
+          
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .row_wrapper {
+    
+        .row_cell_order {
+            font-size: 0.8em;
+          
+            .dropdown {
+                .dropdown_icon{
+                    width: 20px;
+                    height: 20px;        
+                }
+    
+                .dropdown_content {
+                  min-width: 80px;
+    
+                  .dropdown_item{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+    
+                  .delete_btn{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+                }
+          
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .row_wrapper {
+    
+        .row_cell_order {
+            font-size: 0.8em;
+          
+            .dropdown {
+                .dropdown_icon{
+                    width: 20px;
+                    height: 20px;        
+                }
+    
+                .dropdown_content {
+                  min-width: 70px;
+    
+                  .dropdown_item{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+    
+                  .delete_btn{
+                    font-size: 0.8em;
+                    padding: 10px 12px;
+                  }
+                }
+          
+            }
+        }
+
+    }
+}
