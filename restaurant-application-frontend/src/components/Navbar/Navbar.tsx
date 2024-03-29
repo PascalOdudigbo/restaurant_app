@@ -92,6 +92,7 @@ function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
                     <li className='p__inter'><Link to='/profile-management' onClick={() => { setToggleMenu(false) }} >YOUR PROFILE</Link></li>
                   }
                   {userData.role === "chef" && <li className='p__inter'><Link to='/kitchen' onClick={() => { setToggleMenu(false) }}>KITCHEN</Link></li>}
+                  {userData.role === "attendant" && <li className='p__inter'><Link to='/tables' onClick={() => { setToggleMenu(false) }}>TABLES</Link></li>}
                   {userData.role === "attendant" && <li className='p__inter'><Link to='/service-station' onClick={() => { setToggleMenu(false) }}>SERVICE STATION</Link></li>}
                   {userData.role === "manager" &&
                     <li className='p__inter'><Link to='/restaurant-management' onClick={() => { setToggleMenu(false) }} >RESTAURANT MANAGEMENT</Link></li>

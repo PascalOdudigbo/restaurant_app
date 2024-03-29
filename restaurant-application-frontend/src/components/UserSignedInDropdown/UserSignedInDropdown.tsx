@@ -24,11 +24,15 @@ function UserSignedInDropdown({ userData, setUserData }: UserSignedInDropdownPro
             </div>
 
             <div className='dropdownLinksContainer'>
-                
-                    <button className="dropdownBtn p__inter" onClick={() => navigate("/profile-management")}>Your Profile</button>
-                
+
+                <button className="dropdownBtn p__inter" onClick={() => navigate("/profile-management")}>Your Profile</button>
+
                 {
                     userData?.role === "client" && <button className="dropdownBtn p__inter" onClick={() => navigate("/bookings-management")}>Bookings</button>
+                }
+
+                {
+                    userData?.role === "client" && <button className="dropdownBtn p__inter" onClick={() => navigate("/orders")}>Orders</button>
                 }
 
                 {
@@ -36,7 +40,10 @@ function UserSignedInDropdown({ userData, setUserData }: UserSignedInDropdownPro
                 }
 
                 {
-                    userData?.role === "chef"  && <button className="dropdownBtn p__inter" onClick={() => navigate("/kitchen")}>Kitchen</button>
+                    userData?.role === "chef" && <button className="dropdownBtn p__inter" onClick={() => navigate("/kitchen")}>Kitchen</button>
+                }
+                {
+                    userData?.role === "attendant" && <button className="dropdownBtn p__inter" onClick={() => navigate("/tables")}>Tables</button>
                 }
                 {
                     userData?.role === "attendant" && <button className="dropdownBtn p__inter" onClick={() => navigate("/service-station")}>Service Station</button>

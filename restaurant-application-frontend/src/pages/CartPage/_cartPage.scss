@@ -85,6 +85,11 @@
         
     }
 
+    .empty_cart_text{
+        margin-top: 40px;
+        font-size: 35px;
+    }
+
     .cart_subtotal_and_checkout_wrapper{
         width: 96%;
         height: fit-content;
@@ -157,6 +162,10 @@
             grid-template-columns: repeat(3, minmax(320px, 1fr));
             
         }
+
+        .empty_cart_text{
+            font-size: 35px;
+        }
     
         .cart_subtotal_and_checkout_wrapper{
 
@@ -218,6 +227,10 @@
             grid-template-columns: repeat(2, minmax(320px, 1fr));
             
         }
+
+        .empty_cart_text{
+            font-size: 35px;
+        }
     
         .cart_subtotal_and_checkout_wrapper{
 
@@ -277,6 +290,10 @@
         .cart_body_wapper {
             grid-template-columns: repeat(1, minmax(320px, 1fr));
             
+        }
+
+        .empty_cart_text{
+            font-size: 20px;
         }
     
         .cart_subtotal_and_checkout_wrapper{

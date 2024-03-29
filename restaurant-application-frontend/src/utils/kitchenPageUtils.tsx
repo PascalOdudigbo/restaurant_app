@@ -3,11 +3,14 @@ import { User } from "./appUtils";
 import { OrderItemType, OrderType } from "./menuPageUtils"
 import { toast } from "react-toastify";
 import { Table } from "./restaurantManagementPortalUtils";
+import { NavigateFunctionType, makeTableUnoccupied } from "./cartPageUtils";
 
 // Defining the kitchen page props
 export type KitchenPageProps = {
     userData: User;
     orders: OrderType[];
+    tables: Table[]
+    setTables: React.Dispatch<React.SetStateAction<Table[]>>; 
     setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>;
 }
 
@@ -75,6 +78,8 @@ export const changeOrderStatus = (order: OrderType, setOrders: React.Dispatch<Re
     axios.patch(`/orders/${order.id}`, { status: newStatus })
         .then(() => {
             toast.success("Order status updated successfully!");
+            // If the order is completed make the table unoccupied
+            (newStatus === "Completed" && order.table_id) && makeTableUnoccupied(order.table_id)
             getAllOrders(setOrders)
         })
         .catch(error => {

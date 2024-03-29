@@ -30,7 +30,9 @@ function TablesManagement({ userData, tables, setTables }: TablesManagementProps
             <section className='heading_wrapper'>
                 <h1 className='headtext__playfair tablesManagementPage_heading'>{userData.role === "manager" ? "TABLES" : "MY TABLES"}</h1>
                 <section className='add_table_link_wrapper'>
-                    <Link to={"/restaurant-management/tables-management/add-table"} className='custom__button add_table_link'>+ ADD TABLE</Link>
+                    {
+                        userData.role === "manager" && <Link to={"/restaurant-management/tables-management/add-table"} className='custom__button add_table_link'>+ ADD TABLE</Link>
+                    }                
                 </section>
             </section>
             <section className='tables_management_edit_table_wrapper flex__center'>

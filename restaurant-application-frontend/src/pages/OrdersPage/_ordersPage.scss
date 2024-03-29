@@ -1,8 +1,8 @@
-.app__kitchen {
+.app__orders {
     flex-direction: column;
     align-items: center;
 
-    .kitchen_heading_wrapper{
+    .orders_heading_wrapper{
         width: 100%;
         height: fit-content;
         display: flex;
@@ -11,12 +11,12 @@
         margin-top: 5px;
         margin-bottom: 5px;
 
-        .kitchen_heading{
+        .orders_heading{
 
         }
     }
 
-    .kitchen_body{
+    .orders_body{
         width: 98%;
         margin-top: 25px;
         display: grid;
@@ -30,68 +30,68 @@
 @media screen and (min-width: 2000px) {}
 
 @media screen and (max-width: 1150px) {
-    .app__kitchen {
+    .app__orders {
     
-        .kitchen_heading_wrapper{
+        .orders_heading_wrapper{
            
     
-            .kitchen_heading{
+            .orders_heading{
                 font-size: 50px;
             }
         }
     
-        .kitchen_body{
+        .orders_body{
             grid-template-columns: repeat(3, minmax(320px, 1fr));
         }
     }
 }
 
 @media screen and (max-width: 850px) {
-    .app__kitchen {
+    .app__orders {
     
-        .kitchen_heading_wrapper{
+        .orders_heading_wrapper{
            
     
-            .kitchen_heading{
+            .orders_heading{
                 font-size: 50px;
             }
         }
     
-        .kitchen_body{
+        .orders_body{
             grid-template-columns: repeat(2, minmax(320px, 1fr));
         }
     }
 }
 
 @media screen and (max-width: 650px) {
-    .app__kitchen {
+    .app__orders {
     
-        .kitchen_heading_wrapper{
+        .orders_heading_wrapper{
            
     
-            .kitchen_heading{
+            .orders_heading{
                 font-size: 35px;
             }
         }
     
-        .kitchen_body{
+        .orders_body{
             grid-template-columns: repeat(1, minmax(320px, 1fr));
         }
     }
 }
 
 @media screen and (max-width: 450px) {
-    .app__kitchen {
+    .app__orders {
     
-        .kitchen_heading_wrapper{
+        .orders_heading_wrapper{
            
     
-            .kitchen_heading{
+            .orders_heading{
                 font-size: 30px;
             }
         }
     
-        .kitchen_body{
+        .orders_body{
             width: 96%;
             grid-template-columns: repeat(1, minmax(320px, 1fr));
         }
@@ -99,16 +99,16 @@
 }
 
 @media screen and (max-width: 360px) {
-    .app__kitchen {
-        .kitchen_heading_wrapper{
+    .app__orders {
+        .orders_heading_wrapper{
            
     
-            .kitchen_heading{
+            .orders_heading{
                 font-size: 30px;
             }
         }
     
-        .kitchen_body{
+        .orders_body{
             width: 96%;
             grid-template-columns: repeat(1, minmax(320px, 1fr));
         }

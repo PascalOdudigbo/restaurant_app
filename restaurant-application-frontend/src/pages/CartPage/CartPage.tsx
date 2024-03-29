@@ -33,9 +33,9 @@ function CartPage({ userData, setUserData, activeOrder, setActiveOrder }: CartPa
                 <h3 className='headtext__playfair checkout_header_title'>CHECKOUT</h3>
                 <Link to="/cart" className='headtext__playfair checkout_header_close'>X</Link>
               </header>
-              <form className='checkout_form' onSubmit={(e) => {  
-                handleCheckout(userData, setUserData, activeOrder, setActiveOrder, targetTable, navigate);
-                }}>
+              <form className='checkout_form' onSubmit={(e) => {
+                handleCheckout(e, userData, setUserData, activeOrder, setActiveOrder, targetTable.id, navigate);
+              }}>
 
                 <Dropdown
                   label='Table  *'
@@ -56,15 +56,20 @@ function CartPage({ userData, setUserData, activeOrder, setActiveOrder }: CartPa
         {
           activeOrder.id !== 0 &&
           activeOrder?.order_items?.map(orderItem => <CartItem key={activeOrder.order_items?.indexOf(orderItem)} cartItem={orderItem} activeOrder={activeOrder} setActiveOrder={setActiveOrder} />)
+
         }
       </section>
+      {
+        activeOrder.order_items &&
+        activeOrder?.order_items?.length < 1 && <h2 className='p__inter empty_cart_text'>Your Cart Is Empty</h2>
+      }
 
       <section className='cart_subtotal_and_checkout_wrapper'>
         <h3 className='headtext__playfair cart_subtotal'>SUBTOTAL: £{calculateCartSubtotal(activeOrder).toFixed(2)}</h3>
 
         <button className="custom__button cart_item_checkout_btn" onClick={() => {
           navigate("/cart/checkout");
-          window.scrollTo(0,0);
+          window.scrollTo(0, 0);
         }}>CHECKOUT</button>
       </section>
     </div>

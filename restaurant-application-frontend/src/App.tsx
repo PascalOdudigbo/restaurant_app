@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
-import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage, KitchenPage } from './pages';
+import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage, KitchenPage, TablesManagement, OrdersPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,6 +8,7 @@ import { User, isLoggedIn } from './utils/appUtils';
 import { BookingsType } from './utils/bookingsManagementUtils';
 import { OrderType } from './utils/menuPageUtils';
 import { getAllOrders } from './utils/kitchenPageUtils';
+import { Table, getAllTables } from './utils/restaurantManagementPortalUtils';
 
 
 function App() {
@@ -34,10 +35,13 @@ function App() {
   });
   // Creating state variables to hold orders
   const [orders, setOrders] = useState<OrderType[]>([]);
+  // Creating state variables to hold bookings
+  const [tables, setTables] = useState<Table[]>([])
 
   useEffect(() => {
     isLoggedIn(setUserData, setActiveOrder);
     getAllOrders(setOrders);
+    getAllTables(setTables)
   }, [])
 
   return (
@@ -83,7 +87,7 @@ function App() {
           </>
         } />
 
-        <Route path="/kitchen/" element={
+        <Route path="/kitchen" element={
           <>
             <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
             <ToastContainer
@@ -98,11 +102,11 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <KitchenPage userData={userData} orders={orders} setOrders={setOrders} />
+            <KitchenPage userData={userData} orders={orders} setOrders={setOrders} tables={tables} setTables={setTables} />
           </>
         } />
 
-        <Route path="/service-station/" element={
+        <Route path="/service-station" element={
           <>
             <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
             <ToastContainer
@@ -117,7 +121,26 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <KitchenPage userData={userData} orders={orders} setOrders={setOrders} />
+            <KitchenPage userData={userData} orders={orders} setOrders={setOrders} tables={tables} setTables={setTables} />
+          </>
+        } />
+
+        <Route path="/orders" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <OrdersPage userData={userData} orders={orders} setOrders={setOrders} tables={tables} setTables={setTables} />
           </>
         } />
 
@@ -175,6 +198,25 @@ function App() {
               theme="dark"
             />
             <RestaurantManagementPortal userData={userData} />
+          </>
+        } />
+
+        <Route path="/tables" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <TablesManagement userData={userData} tables={tables} setTables={setTables} />
           </>
         } />
 

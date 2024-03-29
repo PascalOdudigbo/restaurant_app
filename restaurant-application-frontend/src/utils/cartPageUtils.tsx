@@ -21,7 +21,7 @@ export type CartItemProps = {
 }
 
 // Creating the navigation function type
-type NavigateFunctionType = NavigateFunction;
+export type NavigateFunctionType = NavigateFunction;
 
 // A function to decrease item quantity
 export const decreaseOrderItemQuantity = (existingOrderItem: OrderItemType, activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
@@ -93,8 +93,8 @@ export const getTables = (setTables: React.Dispatch<React.SetStateAction<Table[]
 }
 
 // A function to make a table occupied
-export const makeTableOccupied = (targetTable: Table, userData: User, setUserData: React.Dispatch<React.SetStateAction<User>>, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>, navigate: NavigateFunctionType) => {
-    axios.patch(`/tables/${targetTable.id}`, {is_occupied: true})
+export const makeTableOccupied = (targetTableId: number, userData: User, setUserData: React.Dispatch<React.SetStateAction<User>>, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>, navigate: NavigateFunctionType) => {
+    axios.patch(`/tables/${targetTableId}`, {is_occupied: true})
     .then(() => {
        toast.success("Checkout successful, order sent to kitchen!");
        getUserData(`/users/${userData.id}`, setUserData, setActiveOrder);
@@ -111,11 +111,31 @@ export const makeTableOccupied = (targetTable: Table, userData: User, setUserDat
     })
 }
 
-// A function to handle checkout
-export const handleCheckout = (userData: User, setUserData: React.Dispatch<React.SetStateAction<User>>, activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>, targetTable: Table, navigate: NavigateFunctionType) => {
-    axios.patch(`/orders/${activeOrder.id}`, {table_id: targetTable.id, status: "Processing"})
+// A function to make a table unoccupied
+export const makeTableUnoccupied = (targetTableId: number) => {
+    axios.patch(`/tables/${targetTableId}`, {is_occupied: false})
     .then(() => {
-        makeTableOccupied(targetTable, userData, setUserData, setActiveOrder, navigate);
+       toast.success("Order completed, table set to unoccupied!");
+    })
+    .catch(error => {
+        if (error.response.data) {
+            // Display the error message if it's sent from the backend
+            toast.error(error.response.data.error);
+        } else if (error) {
+            // If no error message is sent from backend display a generic message
+            toast.error(error.message);
+        }
+    })
+}
+
+
+// A function to handle checkout
+export const handleCheckout = (e: React.FormEvent<HTMLFormElement>, userData: User, setUserData: React.Dispatch<React.SetStateAction<User>>, activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>, targetTableId: number, navigate: NavigateFunctionType) => {
+    // Preventing default form refresh
+    e.preventDefault()
+    axios.patch(`/orders/${activeOrder.id}`, {table_id: targetTableId, status: "Processing"})
+    .then(() => {
+        makeTableOccupied(targetTableId, userData, setUserData, setActiveOrder, navigate);
     })
     .catch(error => {
         if (error.response.data) {

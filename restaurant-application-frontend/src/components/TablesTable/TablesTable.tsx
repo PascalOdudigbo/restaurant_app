@@ -52,7 +52,7 @@ function TablesTable({ userData, tables, setTargetTable, targetTable, setTables,
                     <tr className="table_headers_wrapper">
                         <th className="p__inter table_header">TABLE NUMBER</th>
                         <th className="p__inter table_header">OCCUPIED</th>
-                        <th className="p__inter table_header">ACTION</th>
+                       {userData.role === "manager"  && <th className="p__inter table_header">ACTION</th>}
                     </tr>
                 </thead>
 
