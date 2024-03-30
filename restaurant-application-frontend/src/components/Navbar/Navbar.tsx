@@ -44,7 +44,7 @@ function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
           <li className='p__inter'><a href='/#home'>HOME</a></li>
           <li className='p__inter'><a href='/#menu'>MENU</a></li>
           <li className='p__inter'><a href='/#booking'>BOOKING</a></li>
-          <li className='p__inter'><a href='/#gallery'>GALLERY</a></li>
+          <li className='p__inter'><a href='/gallery'>GALLERY</a></li>
           <li className='p__inter'><a href='/#contactus'>CONTACT</a></li>
         </ul>
 
@@ -84,7 +84,7 @@ function Navbar({ userData, setUserData, activeOrder }: NavbarProps) {
                   <li className='p__inter'><a href='/#home' onClick={() => { setToggleMenu(false) }} >HOME</a></li>
                   <li className='p__inter'><a href='/#menu' onClick={() => { setToggleMenu(false) }} >MENU</a></li>
                   <li className='p__inter'><a href='/#booking' onClick={() => { setToggleMenu(false) }} >BOOKING</a></li>
-                  <li className='p__inter'><a href='/#gallery' onClick={() => { setToggleMenu(false) }} >GALLERY</a></li>
+                  <li className='p__inter'><a href='/gallery' onClick={() => { setToggleMenu(false) }} >GALLERY</a></li>
                   <li className='p__inter'><a href='/#contactus' onClick={() => { setToggleMenu(false) }} >CONTACT</a></li>
                   {userData.id === 0 && <li className='p__inter'><Link to='/login' onClick={() => { setToggleMenu(false) }} >LOGIN</Link></li>}
                   {userData.id === 0 && <li className='p__inter'><Link to='/register' onClick={() => { setToggleMenu(false) }} >REGISTER</Link></li>}

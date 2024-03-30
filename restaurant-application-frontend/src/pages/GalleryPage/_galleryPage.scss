@@ -1,0 +1,237 @@
+.app__gallery {
+    flex-direction: column;
+    align-items: center;
+
+    .gallery_heading_wrapper {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        .menu_heading {}
+    }
+
+    .gallery_body_wapper {
+        width: 98%;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+        grid-auto-rows: auto; /* Set to auto to maintain aspect ratio */
+        gap: 10px;
+
+        .menu_item_image{
+            width: 100%; /* Set the width to 100% of the container */
+            height: 100%; /* Let the height adjust proportionally based on the width */
+            object-fit: cover;
+        }
+        
+    }
+
+    .empty_gallery_text{
+        margin-top: 40px;
+        font-size: 35px;
+    }
+
+    
+}
+
+
+@media screen and (min-width: 2000px) {
+    .app__gallery {
+        
+    
+        .gallery_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 50px;
+            }
+        }
+
+        .gallery_body_wapper {
+            grid-template-columns: repeat(4, minmax(320px, 1fr));
+            
+        }
+
+        .empty_gallery_text{
+            font-size: 35px;
+        }
+    
+    }
+
+}
+
+@media screen and (max-width: 1150px) {
+    .app__gallery {
+        
+    
+        .gallery_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 50px;
+            }
+        }
+
+        .gallery_body_wapper {
+            grid-template-columns: repeat(3, minmax(320px, 1fr));
+            
+        }
+
+        .empty_gallery_text{
+            font-size: 35px;
+        }
+    
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .app__gallery {
+        
+    
+        .gallery_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 50px;
+            }
+        }
+    
+        .gallery_body_wapper {
+            grid-template-columns: repeat(2, minmax(320px, 1fr));
+                 
+        }
+
+        .empty_gallery_text{
+            font-size: 35px;
+        }    
+    
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .app__gallery {
+        
+    
+        .gallery_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 35px;
+            }
+        }
+
+        .gallery_select_table_wrapper{
+            .checkout_wrapper{
+                width: 65%;
+            
+                .checkout_header{
+        
+                    .checkout_header_title{
+                        font-size: 25px;
+                    }
+            
+                    .checkout_header_close{
+                        font-size: 18px;
+                    }
+                }
+            
+                .checkout_form{
+                    width: 90%;
+            
+                    .checkout_form_forgotpassword{
+                        font-size: 10px;
+                    }
+            
+                    .checkout_form_button{
+                    }
+                } 
+            
+            } 
+        }
+    
+        .gallery_body_wapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+ 
+             .menu_item_image{
+                 width: 96%;
+                 height: auto;
+                 object-fit: cover;
+                 margin-bottom: 10px;
+ 
+                 
+             }
+             
+         }
+
+        .empty_gallery_text{
+            font-size: 20px;
+        }
+    
+        
+    
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .app__gallery {
+        
+    
+        .gallery_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 35px;
+            }
+        }
+    
+        .gallery_body_wapper {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           width: 100%;
+
+            .menu_item_image{
+                width: 96%;
+                height: 360px;
+                margin-bottom: 10px;
+
+                
+            }
+            
+        }
+
+    
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .app__gallery {
+        
+    
+        .gallery_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 35px;
+            }
+        }
+
+        .gallery_body_wapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+ 
+             .menu_item_image{
+                 width: 96%;
+                 height: 360px;
+                 margin-bottom: 10px;
+ 
+                 
+             }
+             
+         }
+    
+    }
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components';
-import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage, KitchenPage, TablesManagement, OrdersPage } from './pages';
+import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage, KitchenPage, TablesManagement, OrdersPage, GalleryPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -83,7 +83,7 @@ function App() {
               pauseOnHover
               theme="dark"
             />
-            <CartPage userData={userData} setUserData={setUserData} activeOrder={activeOrder} setActiveOrder={setActiveOrder} />
+            <CartPage userData={userData} setUserData={setUserData} activeOrder={activeOrder} setActiveOrder={setActiveOrder} tables={tables} setTables={setTables} />
           </>
         } />
 
@@ -217,6 +217,25 @@ function App() {
               theme="dark"
             />
             <TablesManagement userData={userData} tables={tables} setTables={setTables} />
+          </>
+        } />
+
+        <Route path="/gallery" element={
+          <>
+            <Navbar userData={userData} setUserData={setUserData} activeOrder={activeOrder} />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <GalleryPage />
           </>
         } />
 

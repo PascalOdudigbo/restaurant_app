@@ -11,6 +11,8 @@ export type CartPageProps = {
     setUserData: React.Dispatch<React.SetStateAction<User>>
     activeOrder: OrderType;
     setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>;
+    tables: Table[];
+    setTables: React.Dispatch<React.SetStateAction<Table[]>>
 }
 
 // Defining the cart item props

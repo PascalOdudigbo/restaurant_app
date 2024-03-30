@@ -4,8 +4,7 @@ import { CartItem, Dropdown } from '../../components'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import { Table } from '../../utils/restaurantManagementPortalUtils'
 
-function CartPage({ userData, setUserData, activeOrder, setActiveOrder }: CartPageProps) {
-  const [tables, setTables] = useState<Table[]>([])
+function CartPage({ userData, setUserData, activeOrder, setActiveOrder, tables, setTables }: CartPageProps) {
   const [targetTable, setTargetTable] = useState<Table>({
     id: 0,
     table_number: "Select table",
