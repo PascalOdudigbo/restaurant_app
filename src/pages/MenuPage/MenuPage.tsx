@@ -110,7 +110,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <section className='categories_nav_wrapper_mobile' style={{ display: menuCategoryDisplay }}>
             <h4 className='p__inter categories_nav_heading_mobile'><b>CATEGORIES</b></h4>
             {
-              menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory?.name}</p>)
+              // menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory?.name}</p>)
             }
           </section>
         </section>
