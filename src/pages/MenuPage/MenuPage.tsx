@@ -43,7 +43,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
         <section className='categories_nav_wrapper'>
           <h4 className='p__inter categories_nav_heading'><b>CATEGORIES</b></h4>
           {
-            menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory?.name}</p>)
+            // menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory?.name}</p>)
           }
         </section>
 

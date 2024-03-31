@@ -1,6 +1,5 @@
 {
   "name": "restaurant-application-frontend",
-  "homepage": "https://restaurant-app-hyg2.onrender.com/",
   "version": "0.1.0",
   "private": true,
   "proxy": "https://restaurant-app-api-0mz5.onrender.com/",
