@@ -19,10 +19,10 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
     useEffect(() => {
         // Using the hook to make profile data refresh
         setProfileData({
-            name: userData.name,
-            email: userData.email,
-            mobile_number: userData.mobile_number,
-            postcode: userData.postcode,
+            name: userData?.name,
+            email: userData?.email,
+            mobile_number: userData?.mobile_number,
+            postcode: userData?.postcode,
             password: "",
             password_confirmation: ""
         })
@@ -38,7 +38,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                 <FormInput
                     label="Name"
                     inputType="text"
-                    inputValue={profileData.name}
+                    inputValue={profileData?.name}
                     required={false}
                     readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, name: e.target.value })}
@@ -46,7 +46,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                 <FormInput
                     label="Email"
                     inputType="email"
-                    inputValue={profileData.email}
+                    inputValue={profileData?.email}
                     required={false}
                     readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, email: e.target.value })}
@@ -55,7 +55,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                 <FormInput
                     label="Mobile Number"
                     inputType="text"
-                    inputValue={profileData.mobile_number}
+                    inputValue={profileData?.mobile_number}
                     required={false}
                     readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, mobile_number: e.target.value })}
@@ -64,7 +64,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                 <FormInput
                     label="Postcode"
                     inputType="text"
-                    inputValue={profileData.postcode}
+                    inputValue={profileData?.postcode}
                     required={false}
                     readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, postcode: e.target.value })}
@@ -73,7 +73,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                 <FormInput
                     label="Password"
                     inputType="password"
-                    inputValue={profileData.password}
+                    inputValue={profileData?.password}
                     required={false}
                     readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, password: e.target.value })}
@@ -82,7 +82,7 @@ function UserProfileManagement({ userData, setUserData }: UserProfileManagementP
                 <FormInput
                     label="Password Confirmation"
                     inputType="password"
-                    inputValue={profileData.password_confirmation}
+                    inputValue={profileData?.password_confirmation}
                     required={false}
                     readonly={false}
                     onChangeFunction={(e) => setProfileData({ ...profileData, password_confirmation: e.target.value })}

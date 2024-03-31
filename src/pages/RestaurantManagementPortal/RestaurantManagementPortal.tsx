@@ -34,15 +34,15 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
 
   useEffect(() => {
     // Getting all the users
-    userData.role === "manager" && getAllUsers(setUsers);
+    userData?.role === "manager" && getAllUsers(setUsers);
     // Getting all Bookings
-    userData.role === "manager" && getAllBookings(setBookings);
+    userData?.role === "manager" && getAllBookings(setBookings);
     // Getting all Tables
-    userData.role === "manager" && getAllTables(setTables);
+    userData?.role === "manager" && getAllTables(setTables);
     // Getting all menuCategories
-    userData.role === "manager" && getAllMenuCategories(setMenuCategories);
+    userData?.role === "manager" && getAllMenuCategories(setMenuCategories);
     // Getting all menuItems
-    userData.role === "manager" && getAllMenuItems(setMenuItems);
+    userData?.role === "manager" && getAllMenuItems(setMenuItems);
 
   }, [userData])
 
@@ -105,11 +105,11 @@ function RestaurantManagementPortal({ userData }: RestaurantManagementProps) {
           <Route path='/' element={
             <ManagerDashboard
               userData={userData}
-              totalBookings={bookings.length}
+              totalBookings={bookings?.length}
               totalClients={totalClients(users)}
-              totalMenuCategories={menuCategories.length}
+              totalMenuCategories={menuCategories?.length}
               totalPendingBookings={totalBookingsStatus(bookings, "Pending")}
-              totalMenuItems={menuItems.length}
+              totalMenuItems={menuItems?.length}
               totalOrders={0}
               bookings={bookings}
             />

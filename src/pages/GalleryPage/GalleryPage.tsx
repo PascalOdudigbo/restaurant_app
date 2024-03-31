@@ -20,7 +20,7 @@ function GalleryPage() {
 
             <section className='gallery_body_wapper'>
                 {
-                    menuItems?.map(menuItem => <img className='menu_item_image' key={menuItems?.indexOf(menuItem)} src={menuItem.image} alt={menuItem.name} title={menuItem.name}/>)
+                    menuItems?.map(menuItem => <img className='menu_item_image' key={menuItems?.indexOf(menuItem)} src={menuItem?.image} alt={menuItem?.name} title={menuItem?.name}/>)
                 }
             </section>
             {

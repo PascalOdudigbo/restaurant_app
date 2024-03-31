@@ -5,9 +5,9 @@ import { ContactPageProps, ContactDetails, contactUs } from '../../utils/contact
 function ContactPage({ userData }: ContactPageProps) {
     // Defining state variables for contact page form
     const [contactDetails, setContactDetails] = useState<ContactDetails>({
-        name: userData.id ? userData.name : "",
-        email: userData.id ? userData.email : "",
-        mobileNumber: userData.id ? userData.mobile_number : "",
+        name: userData?.id ? userData?.name : "",
+        email: userData?.id ? userData?.email : "",
+        mobileNumber: userData?.id ? userData?.mobile_number : "",
         message: "",
     })
 
@@ -17,15 +17,15 @@ function ContactPage({ userData }: ContactPageProps) {
 
         // Using the hook to make booking details data refresh
         setContactDetails({
-            name: userData.id ? userData.name : "",
-            email: userData.id ? userData.email : "",
-            mobileNumber: userData.id ? userData.mobile_number : "",
+            name: userData?.id ? userData?.name : "",
+            email: userData?.id ? userData?.email : "",
+            mobileNumber: userData?.id ? userData?.mobile_number : "",
             message: "",
         })
     }, [userData]);
 
     function initMap() {
-        if ((window as any).google) {
+        if ((window as any)?.google) {
             // Create your map and add markers, etc.
             new (window as any).google.maps.Map(document.getElementById("map"), {
                 center: { lat: 6.287082195281982, lng: -10.776318550109863 },
@@ -64,7 +64,7 @@ function ContactPage({ userData }: ContactPageProps) {
                             <FormInput
                                 label='Name  *'
                                 inputType='text'
-                                inputValue={contactDetails.name}
+                                inputValue={contactDetails?.name}
                                 required={true}
                                 readonly={false}
                                 onChangeFunction={(e) => { setContactDetails({ ...contactDetails, name: e.target.value }) }}
@@ -74,7 +74,7 @@ function ContactPage({ userData }: ContactPageProps) {
                             <FormInput
                                 label='Email  *'
                                 inputType='text'
-                                inputValue={contactDetails.email}
+                                inputValue={contactDetails?.email}
                                 required={true}
                                 readonly={false}
                                 onChangeFunction={(e) => { setContactDetails({ ...contactDetails, email: e.target.value }) }}
@@ -83,7 +83,7 @@ function ContactPage({ userData }: ContactPageProps) {
                             <FormInput
                                 label='Mobile Number  *'
                                 inputType='text'
-                                inputValue={contactDetails.mobileNumber}
+                                inputValue={contactDetails?.mobileNumber}
                                 required={true}
                                 readonly={false}
                                 onChangeFunction={(e) => { setContactDetails({ ...contactDetails, mobileNumber: e.target.value }) }}
@@ -92,7 +92,7 @@ function ContactPage({ userData }: ContactPageProps) {
 
                             <TextArea
                                 label='Message  *'
-                                inputValue={contactDetails.message}
+                                inputValue={contactDetails?.message}
                                 required={true}
                                 rows={4}
                                 cols={50}

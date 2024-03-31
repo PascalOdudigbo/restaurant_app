@@ -101,7 +101,7 @@ export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User
 
     // Check if token is expired
     const decodedToken: any = parseJwt(token);
-    if (!decodedToken || Date.now() >= decodedToken.exp * 1000) {
+    if (!decodedToken || Date.now() >= decodedToken?.exp * 1000) {
         // Token is expired remove expired token
         localStorage.removeItem('token'); 
         return false;
@@ -109,14 +109,14 @@ export const isLoggedIn = (setUserData: React.Dispatch<React.SetStateAction<User
     }
 
     // User is logged in get the userData
-    getUserData(`/users/${decodedToken.userId}`, setUserData, setActiveOrder)
+    getUserData(`/users/${decodedToken?.userId}`, setUserData, setActiveOrder)
     return true
 };
 
 // A function to decode JWT tokens manually
 export const parseJwt = (token: string) => {
     try {
-        return JSON.parse(atob(token.split('.')[1]));
+        return JSON.parse(atob(token?.split('.')[1]));
     } catch (e) {
         return null;
     }

@@ -34,7 +34,7 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
 
   useEffect(() => {
     //Getting all client Bookings
-    userData.role === "client" && getBookingsByUserId(userData.id, setBookings);
+    userData?.role === "client" && getBookingsByUserId(userData?.id, setBookings);
 
   }, [userData])
 
@@ -48,7 +48,7 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
   return (
     <div className='bookings_management app__bg app__wrapper section_padding flex__center'>
       <section className='heading_wrapper'>
-        <h1 className='headtext__playfair bookingsManagementPage_heading'>{userData.role === "manager" ? "BOOKINGS" : "MY BOOKINGS"}</h1>
+        <h1 className='headtext__playfair bookingsManagementPage_heading'>{userData?.role === "manager" ? "BOOKINGS" : "MY BOOKINGS"}</h1>
       </section>
       <section className='bookings_management_edit_booking_wrapper flex__center'>
         <Routes>
@@ -74,7 +74,7 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
       <section className='mobile_view_wrapper'>
         <div className="search_and_filter_wrapper">
           {
-            userData.role === "manager" &&
+            userData?.role === "manager" &&
             <section className='search_wrapper'>
               <Search
                 placeholderText={"Client name..."}
@@ -96,7 +96,7 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
                 buttonText={filterValue}
                 clickFunction={(data) => {
                   setFilterValue(data)
-                  filterBookings(userData, data.toString(), bookings, setBookings)
+                  filterBookings(userData, data?.toString(), bookings, setBookings)
                 }}
               />
             </section>
@@ -104,9 +104,9 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
         </div>
 
         <section className='mobile_bookings_wrapper'>
-          {bookings.map(booking =>
+          {bookings?.map(booking =>
             <Booking
-              key={bookings.indexOf(booking)}
+              key={bookings?.indexOf(booking)}
               userData={userData}
               booking={booking}
               setTargetBooking={setTargetBooking}

@@ -28,10 +28,10 @@ function TablesManagement({ userData, tables, setTables }: TablesManagementProps
     return (
         <div className='tables_management app__bg app__wrapper section_padding flex__center'>
             <section className='heading_wrapper'>
-                <h1 className='headtext__playfair tablesManagementPage_heading'>{userData.role === "manager" ? "TABLES" : "MY TABLES"}</h1>
+                <h1 className='headtext__playfair tablesManagementPage_heading'>{userData?.role === "manager" ? "TABLES" : "MY TABLES"}</h1>
                 <section className='add_table_link_wrapper'>
                     {
-                        userData.role === "manager" && <Link to={"/restaurant-management/tables-management/add-table"} className='custom__button add_table_link'>+ ADD TABLE</Link>
+                        userData?.role === "manager" && <Link to={"/restaurant-management/tables-management/add-table"} className='custom__button add_table_link'>+ ADD TABLE</Link>
                     }                
                 </section>
             </section>
@@ -56,7 +56,7 @@ function TablesManagement({ userData, tables, setTables }: TablesManagementProps
             <section className='mobile_view_wrapper'>
                 <div className="search_and_filter_wrapper">
                     {
-                        userData.role === "manager" &&
+                        userData?.role === "manager" &&
                         <section className='search_wrapper'>
                             <Search
                                 placeholderText={"Client name..."}
@@ -78,7 +78,7 @@ function TablesManagement({ userData, tables, setTables }: TablesManagementProps
                                 buttonText={filterValue}
                                 clickFunction={(data) => {
                                     setFilterValue(data)
-                                    filterTables(data.toString(), tables, setTables)
+                                    filterTables(data?.toString(), tables, setTables)
                                 }}
                             />
                         </section>

@@ -9,10 +9,10 @@ function BookingPage({userData} : BookingProps) {
   const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
     date: "",
     preferredGuests: "Select",
-    name: userData.id ? userData.name : "",
-    email: userData.id ? userData.email : "",
-    mobilenumber: userData.id ? userData.mobile_number : "",
-    postcode: userData.id ? userData.postcode : "",
+    name: userData?.id ? userData?.name : "",
+    email: userData?.id ? userData?.email : "",
+    mobilenumber: userData?.id ? userData?.mobile_number : "",
+    postcode: userData?.id ? userData?.postcode : "",
     occasion: "Select",
     message: "",
   })
@@ -24,10 +24,10 @@ function BookingPage({userData} : BookingProps) {
     setBookingDetails({
       date: "",
       preferredGuests: "Select",
-      name: userData.id ? userData.name : "",
-      email: userData.id ? userData.email : "",
-      mobilenumber: userData.id ? userData.mobile_number : "",
-      postcode: userData.id ? userData.postcode : "",
+      name: userData?.id ? userData?.name : "",
+      email: userData?.id ? userData?.email : "",
+      mobilenumber: userData?.id ? userData?.mobile_number : "",
+      postcode: userData?.id ? userData?.postcode : "",
       occasion: "Select",
       message: "",
     })
@@ -78,7 +78,7 @@ function BookingPage({userData} : BookingProps) {
                 <FormInputDate
                   label="Prefered date  *"
                   selectionLimit={30}
-                  defaultDate={bookingDetails.date === ""  ? currentDate() : bookingDetails.date}
+                  defaultDate={bookingDetails?.date === ""  ? currentDate() : bookingDetails?.date}
                   setDate={(e)=>{setBookingDetails({...bookingDetails, date: e.target.value})}}
                 />
               </div>
@@ -86,7 +86,7 @@ function BookingPage({userData} : BookingProps) {
                 <Dropdown
                   label='Prefered guests  *'
                   items={["select", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"]}
-                  buttonText={bookingDetails.preferredGuests}
+                  buttonText={bookingDetails?.preferredGuests}
                   clickFunction={(data) => { setBookingDetails({ ...bookingDetails, preferredGuests: data }) }}
                 />
               </div>
@@ -95,7 +95,7 @@ function BookingPage({userData} : BookingProps) {
                 <FormInput
                   label='Name  *'
                   inputType='text'
-                  inputValue={bookingDetails.name}
+                  inputValue={bookingDetails?.name}
                   required={true}
                   readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, name: e.target.value }) }}
@@ -108,7 +108,7 @@ function BookingPage({userData} : BookingProps) {
                 <FormInput
                   label='Email  *'
                   inputType='text'
-                  inputValue={bookingDetails.email}
+                  inputValue={bookingDetails?.email}
                   required={true}
                   readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, email: e.target.value }) }}
@@ -119,7 +119,7 @@ function BookingPage({userData} : BookingProps) {
                 <FormInput
                   label='Mobile Number  *'
                   inputType='text'
-                  inputValue={bookingDetails.mobilenumber}
+                  inputValue={bookingDetails?.mobilenumber}
                   required={true}
                   readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, mobilenumber: e.target.value }) }}
@@ -130,7 +130,7 @@ function BookingPage({userData} : BookingProps) {
                 <FormInput
                   label='Postcode  *'
                   inputType='text'
-                  inputValue={bookingDetails.postcode}
+                  inputValue={bookingDetails?.postcode}
                   required={true}
                   readonly={false}
                   onChangeFunction={(e) => { setBookingDetails({ ...bookingDetails, postcode: e.target.value }) }}
@@ -141,7 +141,7 @@ function BookingPage({userData} : BookingProps) {
                 <Dropdown
                   label='Occasion  *'
                   items={["Select", "Birthday", "Anniversary", "Family Reunion", "Friends Party", "Special Occasion", "Business Related", "Other"]}
-                  buttonText={bookingDetails.occasion}
+                  buttonText={bookingDetails?.occasion}
                   clickFunction={(data) => { setBookingDetails({ ...bookingDetails, occasion: data }) }}
                 />
               </div>
@@ -149,7 +149,7 @@ function BookingPage({userData} : BookingProps) {
               <div className='item8'>
                 <TextArea
                   label='Message  *'
-                  inputValue={bookingDetails.message}
+                  inputValue={bookingDetails?.message}
                   required={true}
                   rows={4}
                   cols={50}

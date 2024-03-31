@@ -43,30 +43,30 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
         <section className='categories_nav_wrapper'>
           <h4 className='p__inter categories_nav_heading'><b>CATEGORIES</b></h4>
           {
-            menuCategories.map(menuCategory => <p key={menuCategory.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory.name}</p>)
+            menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory?.name}</p>)
           }
         </section>
 
         <section className='item_details_wrapper' style={{ display: menuItemDetailsDisplay }}>
-          <img className='item_image' src={targetMenuItem.image} alt={targetMenuItem.name} title={targetMenuItem.name} />
-          <p className='p__playfair item_name'>{targetMenuItem.name.toUpperCase()}</p>
-          <p className='p__inter item_description'>{targetMenuItem.description}</p>
-          {userData.role === "client" && <button className='custom__button item_details_button' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>ADD TO CART</button>}
+          <img className='item_image' src={targetMenuItem?.image} alt={targetMenuItem?.name} title={targetMenuItem?.name} />
+          <p className='p__playfair item_name'>{targetMenuItem?.name?.toUpperCase()}</p>
+          <p className='p__inter item_description'>{targetMenuItem?.description}</p>
+          {userData?.role === "client" && <button className='custom__button item_details_button' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>ADD TO CART</button>}
         </section>
 
         <section className='items_list_wrapper'>
-          <h4 className='p__inter items_list_heading'><b>{targetMenuCategory?.name.toUpperCase()}</b></h4>
+          <h4 className='p__inter items_list_heading'><b>{targetMenuCategory?.name?.toUpperCase()}</b></h4>
           <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
-            targetMenuCategory?.menu_items?.map(menu_item => menu_item.is_available &&
-              <div key={menu_item.id} className='item_list_name_and_price_wrapper' onClick={() => {
+            targetMenuCategory?.menu_items?.map(menu_item => menu_item?.is_available &&
+              <div key={menu_item?.id} className='item_list_name_and_price_wrapper' onClick={() => {
                 setTargetMenuItem(menu_item);
                 setMenuItemDetailsDisplay("block");
               }}>
-                <p className='p__inter item_name'>{menu_item.name.toUpperCase()}</p>
+                <p className='p__inter item_name'>{menu_item?.name?.toUpperCase()}</p>
                 <div className='price_and_add_to_cart_button'>
-                  <p className='p__inter item_price'>£{menu_item.price}</p>
-                  {userData.role === "client" &&<p className='p__inter item_add_to_cart' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>+</p>}
+                  <p className='p__inter item_price'>£{menu_item?.price}</p>
+                  {userData?.role === "client" &&<p className='p__inter item_add_to_cart' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>+</p>}
                 </div>
               </div>
             )
@@ -76,25 +76,25 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
 
       <section className='menu_body_wapper_mobile'>
         <section className='item_details_wrapper_mobile' style={{ display: menuItemDetailsDisplay }}>
-          <img className='item_image_mobile' src={targetMenuItem.image} alt={targetMenuItem.name} title={targetMenuItem.name} />
-          <p className='p__inter item_name_mobile'>{targetMenuItem.name.toUpperCase()}</p>
-          <p className='p__inter item_description_mobile'>{targetMenuItem.description}</p>
-          {userData.role === "client" &&<button className='custom__button item_details_button' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>ADD TO CART</button>}
+          <img className='item_image_mobile' src={targetMenuItem?.image} alt={targetMenuItem?.name} title={targetMenuItem?.name} />
+          <p className='p__inter item_name_mobile'>{targetMenuItem?.name?.toUpperCase()}</p>
+          <p className='p__inter item_description_mobile'>{targetMenuItem?.description}</p>
+          {userData?.role === "client" &&<button className='custom__button item_details_button' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>ADD TO CART</button>}
         </section>
 
         <section className='items_list_wrapper_mobile'>
-          <h4 className='p__inter items_list_heading_mobile'><b>{targetMenuCategory?.name.toUpperCase()}</b></h4>
+          <h4 className='p__inter items_list_heading_mobile'><b>{targetMenuCategory?.name?.toUpperCase()}</b></h4>
           <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
-            targetMenuCategory?.menu_items?.map(menu_item => menu_item.is_available &&
-              <div key={menu_item.id} className='item_list_name_and_price_wrapper_mobile' onClick={() => {
+            targetMenuCategory?.menu_items?.map(menu_item => menu_item?.is_available &&
+              <div key={menu_item?.id} className='item_list_name_and_price_wrapper_mobile' onClick={() => {
                 setTargetMenuItem(menu_item);
                 setMenuItemDetailsDisplay("block");
               }}>
-                <p className='p__inter item_name_mobile'>{menu_item.name.toUpperCase()}</p>
+                <p className='p__inter item_name_mobile'>{menu_item?.name?.toUpperCase()}</p>
                 <div className='price_and_add_to_cart_button_mobile'>
-                  <p className='p__inter item_price_mobile'>£{menu_item.price}</p>
-                  {userData.role === "client" &&<p className='p__inter item_add_to_cart_mobile' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>+</p>}
+                  <p className='p__inter item_price_mobile'>£{menu_item?.price}</p>
+                  {userData?.role === "client" &&<p className='p__inter item_add_to_cart_mobile' onClick={() => {addToCart(userData, activeOrder, targetMenuItem, setActiveOrder)}}>+</p>}
                 </div>
               </div>
             )
@@ -110,7 +110,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <section className='categories_nav_wrapper_mobile' style={{ display: menuCategoryDisplay }}>
             <h4 className='p__inter categories_nav_heading_mobile'><b>CATEGORIES</b></h4>
             {
-              menuCategories.map(menuCategory => <p key={menuCategory.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory.name}</p>)
+              menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory?.name}</p>)
             }
           </section>
         </section>

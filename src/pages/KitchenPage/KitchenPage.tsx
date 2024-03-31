@@ -14,12 +14,12 @@ function KitchenPage({userData, orders, tables, setTables, setOrders}: KitchenPa
     return (
         <div className='app__kitchen app__bg app__wrapper section_padding'>
             <section className='kitchen_heading_wrapper'>
-                <h1 className='headtext__playfair kitchen_heading'>{userData.role === "chef" ? "KITCHEN": "SERVICE STATION"}</h1>
+                <h1 className='headtext__playfair kitchen_heading'>{userData?.role === "chef" ? "KITCHEN": "SERVICE STATION"}</h1>
             </section>
 
             <section className='kitchen_body'>
                 {
-                    kitchenOrders.map(kitchenOrder => <Order userData={userData} order={kitchenOrder} tables={tables} setOrders={setOrders}/>)
+                    kitchenOrders?.map(kitchenOrder => <Order userData={userData} order={kitchenOrder} tables={tables} setOrders={setOrders}/>)
                 }
             </section>
 

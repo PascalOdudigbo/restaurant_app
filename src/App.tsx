@@ -28,7 +28,7 @@ function App() {
   // Creating state variables to hold users active order
   const [activeOrder, setActiveOrder] = useState<OrderType>({
     id: 0,
-    user_id: userData.id,
+    user_id: userData?.id,
     table_id: 0,
     status: "",
     order_items: undefined

@@ -34,7 +34,7 @@ function UsersManagement({ userData, users, setUsers }: UsersManagementProps) {
     return (
         <div className='users_management app__bg app__wrapper section_padding flex__center'>
             <section className='heading_wrapper'>
-                <h1 className='headtext__playfair usersManagementPage_heading'>{userData.role === "manager" ? "USERS" : "MY USERS"}</h1>
+                <h1 className='headtext__playfair usersManagementPage_heading'>{userData?.role === "manager" ? "USERS" : "MY USERS"}</h1>
                 <section className='add_user_link_wrapper'>
                     <Link to={"/restaurant-management/users-management/add-user"} className='custom__button add_user_link'>+ ADD USER</Link>
                 </section>
@@ -60,7 +60,7 @@ function UsersManagement({ userData, users, setUsers }: UsersManagementProps) {
             <section className='mobile_view_wrapper'>
                 <div className="search_and_filter_wrapper">
                     {
-                        userData.role === "manager" &&
+                        userData?.role === "manager" &&
                         <section className='search_wrapper'>
                             <Search
                                 placeholderText={"User name..."}
@@ -82,7 +82,7 @@ function UsersManagement({ userData, users, setUsers }: UsersManagementProps) {
                                 buttonText={filterValue}
                                 clickFunction={(data) => {
                                     setFilterValue(data)
-                                    filterUsers(data.toString(), users, setUsers)
+                                    filterUsers(data?.toString(), users, setUsers)
                                 }}
                             />
                         </section>
@@ -90,10 +90,10 @@ function UsersManagement({ userData, users, setUsers }: UsersManagementProps) {
                 </div>
 
                 <section className='mobile_users_wrapper'>
-                    {users.map(user =>
-                        user.role !== "manager" &&
+                    {users?.map(user =>
+                        user?.role !== "manager" &&
                         <UserComponent
-                            key={users.indexOf(user)}
+                            key={users?.indexOf(user)}
                             userData={userData}
                             user={user}
                             setTargetUser={setTargetUser}
