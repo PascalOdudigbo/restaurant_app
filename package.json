@@ -2,7 +2,7 @@
   "name": "restaurant-application-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:10049",
+  "proxy": "https://restaurant-app-api-0mz5.onrender.com/",
   "dependencies": {
     "@emailjs/browser": "^4.2.0",
     "@emotion/react": "^11.11.4",
