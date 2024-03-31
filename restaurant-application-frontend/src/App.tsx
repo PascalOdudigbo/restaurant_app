@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar } from './components';
+import { Footer, Navbar } from './components';
 import { BookingPage, BookingsManagement, ContactPage, HomePage, RestaurantManagementPortal, UserProfileManagement, MenuPage, CartPage, KitchenPage, TablesManagement, OrdersPage, GalleryPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -66,6 +66,7 @@ function App() {
             <MenuPage userData={userData} activeOrder={activeOrder} setActiveOrder={setActiveOrder} />
             <BookingPage userData={userData} />
             <ContactPage userData={userData} />
+            <Footer/>
           </>
         } />
         <Route path="/cart/*" element={
@@ -84,6 +85,7 @@ function App() {
               theme="dark"
             />
             <CartPage userData={userData} setUserData={setUserData} activeOrder={activeOrder} setActiveOrder={setActiveOrder} tables={tables} setTables={setTables} />
+            <Footer/>
           </>
         } />
 
@@ -141,6 +143,7 @@ function App() {
               theme="dark"
             />
             <OrdersPage userData={userData} orders={orders} setOrders={setOrders} tables={tables} setTables={setTables} />
+            <Footer/>
           </>
         } />
 
@@ -160,6 +163,8 @@ function App() {
               theme="dark"
             />
             <UserProfileManagement userData={userData} setUserData={setUserData} />
+            <Footer/>
+
           </>
         } />
 
@@ -179,6 +184,7 @@ function App() {
               theme="dark"
             />
             <BookingsManagement userData={userData} bookings={bookings} setBookings={setBookings} />
+            <Footer/>
           </>
         } />
 
@@ -217,6 +223,7 @@ function App() {
               theme="dark"
             />
             <TablesManagement userData={userData} tables={tables} setTables={setTables} />
+            <Footer/>
           </>
         } />
 
@@ -236,6 +243,7 @@ function App() {
               theme="dark"
             />
             <GalleryPage />
+            <Footer/>
           </>
         } />
 

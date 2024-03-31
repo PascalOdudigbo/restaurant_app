@@ -33,3 +33,4 @@ export { default as EditMenuItem } from "./EditMenuItem/EditMenuItem";
 export { default as CartItem } from "./CartItem/CartItem";
 export { default as Order } from "./Order/Order";
 export { default as OrderItemRow } from "./Order/OrderItemRow/OrderItemRow";
+export { default as Footer } from "./Footer/Footer";
