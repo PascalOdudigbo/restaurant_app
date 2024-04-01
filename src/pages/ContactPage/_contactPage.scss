@@ -22,13 +22,6 @@
         margin-top: auto;
         margin-bottom: auto;
 
-        .app__bookingpage_map {
-            // width: 30%;
-            height: 240px;
-            border-radius: 10px;
-            display: none;
-        }
-
         .app__bookingpage_map_alt {
             width: 29.09%;
             height: 240px;
@@ -124,7 +117,7 @@
             flex-direction: row;
             width: 96%;
 
-            .app__bookingpage_map {
+            .app__bookingpage_map_alt {
                 width: 29.09%;
                 height: 340px;
             }
@@ -186,7 +179,7 @@
             flex-direction: row;
             width: 96%;
 
-            .app__bookingpage_map {
+            .app__bookingpage_map_alt {
                 width: 29.09%;
                 height: 340px;
             }
@@ -250,15 +243,11 @@
             flex-direction: column;
             width: 96%;
 
-            .app__bookingpage_map {
-                width: 100%;
+            .app__bookingpage_map_alt {
+                width: 98%;
                 height: 340px;
                 margin-bottom: 20px;
                 display: block;
-            }
-
-            .app__bookingpage_map_alt {
-                display: none;
             }
 
             .app__contactPage_contact_wrapper {
@@ -324,15 +313,11 @@
             flex-direction: column;
             width: 96%;
 
-            .app__bookingpage_map {
-                width: 100%;
+            .app__bookingpage_map_alt {
+                width: 98%;
                 height: 240px;
                 margin-bottom: 20px;
                 display: block;
-            }
-
-            .app__bookingpage_map_alt {
-                display: none;
             }
 
             .app__contactPage_contact_wrapper {
@@ -397,15 +382,11 @@
             flex-direction: column;
             width: 96%;
 
-            .app__bookingpage_map {
-                width: 100%;
+            .app__bookingpage_map_alt {        
+                width: 98%;
                 height: 240px;
                 margin-bottom: 20px;
                 display: block;
-            }
-
-            .app__bookingpage_map_alt {
-                display: none;
             }
 
             .app__contactPage_contact_wrapper {
@@ -470,15 +451,11 @@
             flex-direction: column;
             width: 96%;
 
-            .app__bookingpage_map {
-                width: 100%;
+            .app__bookingpage_map_alt {
+                width: 98%;
                 height: 240px;
                 margin-bottom: 20px;
                 display: block;
-            }
-
-            .app__bookingpage_map_alt {
-                display: none;
             }
 
             .app__contactPage_contact_wrapper {

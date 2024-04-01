@@ -12,9 +12,6 @@ function ContactPage({ userData }: ContactPageProps) {
     })
 
     useEffect(() => {
-        // Initialize the map when the component mounts
-        initMap();
-
         // Using the hook to make booking details data refresh
         setContactDetails({
             name: userData?.id ? userData?.name : "",
@@ -24,18 +21,6 @@ function ContactPage({ userData }: ContactPageProps) {
         })
     }, [userData]);
 
-    function initMap() {
-        if ((window as any)?.google) {
-            // Create your map and add markers, etc.
-            new (window as any).google.maps.Map(document.getElementById("map"), {
-                center: { lat: 6.287082195281982, lng: -10.776318550109863 },
-                zoom: 20,
-            });
-        } else {
-            console.error('Google Maps JavaScript API is not loaded.');
-        }
-
-    }
     return (
         <div className='app__contactPage_wrapper app__bg app__wrapper section_padding ' id='contactus'>
             <section className='app__bookingpage_heading_wrapper'>
@@ -43,8 +28,7 @@ function ContactPage({ userData }: ContactPageProps) {
             </section>
 
             <div className='app__bookingpage_map_contact_and_text_wrapper flex__center'>
-                <div id='map' className='app__bookingpage_map' />
-                <iframe title='Lila Brown Location' className='app__bookingpage_map_alt' src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAV-K1IlctPUELdwCyEdn6t44C6ZhvTuL0&q=6.287082195281982,-10.776318550109863" />
+                <iframe title='Lila Brown Location' className='app__bookingpage_map_alt' src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=6.287082195281982,-10.776318550109863`}/>
 
                 <section className='app__contactPage_contact_wrapper '>
                     <div className='app__contactPage_contact_instructions_wrapper'>

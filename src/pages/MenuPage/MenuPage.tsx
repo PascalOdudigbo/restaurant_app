@@ -14,7 +14,12 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
   // Creating state variable to manage menu category display on mobile
   const [menuCategoryDisplay, setMenuCategoryDisplay] = useState<string>("none");
   // Creating state variable to manage target menu category
-  const [targetMenuCategory, setTargetMenuCategory] = useState<MenuCategoryType>()
+  const [targetMenuCategory, setTargetMenuCategory] = useState<MenuCategoryType>({
+    id: 0,
+    name: "",
+    description: "",
+    menu_items: []
+  })
   // Creating state variable to manage target menu item
   const [targetMenuItem, setTargetMenuItem] = useState<MenuItemType>({
     id: 0,
@@ -43,7 +48,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
         <section className='categories_nav_wrapper'>
           <h4 className='p__inter categories_nav_heading'><b>CATEGORIES</b></h4>
           {
-            // menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory?.name}</p>)
+            menuCategories?.map((menuCategory: MenuCategoryType) => <p key={menuCategory?.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory?.name}</p>)
           }
         </section>
 
@@ -58,7 +63,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <h4 className='p__inter items_list_heading'><b>{targetMenuCategory?.name?.toUpperCase()}</b></h4>
           <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
-            targetMenuCategory?.menu_items?.map(menu_item => menu_item?.is_available &&
+            targetMenuCategory?.menu_items?.map((menu_item: MenuItemType) => menu_item?.is_available &&
               <div key={menu_item?.id} className='item_list_name_and_price_wrapper' onClick={() => {
                 setTargetMenuItem(menu_item);
                 setMenuItemDetailsDisplay("block");
@@ -86,7 +91,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <h4 className='p__inter items_list_heading_mobile'><b>{targetMenuCategory?.name?.toUpperCase()}</b></h4>
           <p className='p__inter items_list_description'>{targetMenuCategory?.description}</p>
           {
-            targetMenuCategory?.menu_items?.map(menu_item => menu_item?.is_available &&
+            targetMenuCategory?.menu_items?.map((menu_item: MenuItemType) => menu_item?.is_available &&
               <div key={menu_item?.id} className='item_list_name_and_price_wrapper_mobile' onClick={() => {
                 setTargetMenuItem(menu_item);
                 setMenuItemDetailsDisplay("block");
@@ -110,7 +115,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <section className='categories_nav_wrapper_mobile' style={{ display: menuCategoryDisplay }}>
             <h4 className='p__inter categories_nav_heading_mobile'><b>CATEGORIES</b></h4>
             {
-              // menuCategories?.map(menuCategory => <p key={menuCategory?.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory?.name}</p>)
+              menuCategories?.map((menuCategory: MenuCategoryType) => <p key={menuCategory?.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory?.name}</p>)
             }
           </section>
         </section>
