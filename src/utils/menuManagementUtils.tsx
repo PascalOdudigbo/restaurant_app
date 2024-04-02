@@ -68,12 +68,12 @@ export const getAllMenuCategories = (setMenuCategories: React.Dispatch<React.Set
             localStorage.setItem("menuCategoriesCount", response.data.length)
         })
         .catch(error => {
-            if (error.response.data) {
+            if (error?.response?.data) {
                 // Display the error message if it's sent from the backend
-                toast.error(error.response.data.error);
+                toast.error(error?.response?.data?.error);
             } else if (error) {
                 // If no error message is sent from backend display a generic message
-                toast.error(error.message);
+                toast.error(error?.message);
             }
         })
 
@@ -85,23 +85,23 @@ export const createMenuCategory = (e: React.FormEvent<HTMLFormElement>, menuCate
     e.preventDefault();
     // Organizing the post data
     const postData = {
-        name: menuCategoryData.name,
-        description: menuCategoryData.description,
+        name: menuCategoryData?.name,
+        description: menuCategoryData?.description,
     }
 
     // Sending menu category data to the backend
     axios.post("/menu-categories", postData)
         .then(response => {
             // Showing a success message
-            toast.success(response.data.message)
+            toast.success(response?.data?.message)
             // Adding the new user data to the users state
-            setMenuCategories([...menuCategories, response.data.menuCategory])
+            setMenuCategories([...menuCategories, response?.data?.menuCategory])
             navigate("/restaurant-management/menu-management/manage-categories")
         })
         .catch(error => {
-            if (error.response.data) {
+            if (error?.response?.data) {
                 // Display the error message if it's sent from the backend
-                toast.error(error.response.data.error);
+                toast.error(error?.response?.data?.error);
             } else if (error) {
                 toast.error("Something went wrong please try again!");
             }
@@ -115,26 +115,26 @@ export const editMenuCategory = (e: React.FormEvent<HTMLFormElement>, targetMenu
 
     // Defining the postData
     let postData = {
-        name: menuCategoryDetails.name,
-        description: menuCategoryDetails.description,
+        name: menuCategoryDetails?.name,
+        description: menuCategoryDetails?.description,
     }
 
 
-    axios.put(`/menu-categories/${targetMenuCategory.id}`, postData)
+    axios.put(`/menu-categories/${targetMenuCategory?.id}`, postData)
         .then(response => {
             // Showing a success message
-            toast.success(response.data.message)
+            toast.success(response?.data?.message)
             // Getting all the menu categories data
             getAllMenuCategories(setMenuCategories)
 
         })
         .catch(error => {
-            if (error.response.data) {
+            if (error?.response?.data) {
                 // Display the error message if it's sent from the backend
-                toast.error(error.response.data.error);
+                toast.error(error?.response?.data?.error);
             } else if (error) {
                 // If no error message is sent from backend display a generic message
-                toast.error(error.message);
+                toast.error(error?.message);
             }
         })
 }
@@ -145,20 +145,20 @@ export const deleteMenuCategory = (targetMenuCategory: MenuCategoryType, menuCat
     axios.delete(`/menu-categories/${targetMenuCategory.id}`)
         .then(response => {
             // Showing a success message
-            toast.success(response.data.message)
+            toast.success(response?.data?.message)
             // Removing the deleted menu category from the menu categories state 
-            const filteredMenuCategories = menuCategories.filter(menuCategory => menuCategory.id !== targetMenuCategory.id)
+            const filteredMenuCategories = menuCategories?.filter(menuCategory => menuCategory.id !== targetMenuCategory.id)
             // Setting the filtered menu categories
             setMenuCategories(filteredMenuCategories)
 
         })
         .catch(error => {
-            if (error.response.data) {
+            if (error?.response?.data) {
                 // Display the error message if it's sent from the backend
-                toast.error(error.response.data.error);
+                toast.error(error?.response?.data?.error);
             } else if (error) {
                 // If no error message is sent from backend display a generic message
-                toast.error(error.message);
+                toast.error(error?.message);
             }
         })
 }
@@ -170,7 +170,7 @@ export const searchMenuCategories = (searchData: string, menuCategories: MenuCat
     }
     else {
         // Filtering the menu categories to get menu categories where the name is similar to search input
-        let filteredData = menuCategories.filter(menuCategory => menuCategory.name.toLowerCase().includes(searchData.toLowerCase()));
+        let filteredData = menuCategories?.filter(menuCategory => menuCategory?.name?.toLowerCase()?.includes(searchData?.toLowerCase()));
         setMenuCategories(filteredData);
     }
 }

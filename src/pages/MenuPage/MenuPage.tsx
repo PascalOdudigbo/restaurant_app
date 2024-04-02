@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { MenuCategoryType, MenuItemType, getAllMenuCategories } from '../../utils/menuManagementUtils'
 import imagePlaceHolder from "../../assets/image_placeholder.png"
 import { IconContext } from 'react-icons';
 import { MdMenuBook } from 'react-icons/md';
 import { MenuPageProps, addToCart } from '../../utils/menuPageUtils';
+import { MenuCategoryType, MenuItemType, getAllMenuCategories } from '../../utils/menuManagementUtils';
 
 
 function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
@@ -48,7 +48,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
         <section className='categories_nav_wrapper'>
           <h4 className='p__inter categories_nav_heading'><b>CATEGORIES</b></h4>
           {
-            menuCategories?.map((menuCategory: MenuCategoryType) => <p key={menuCategory?.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory?.name}</p>)
+            Array.from(menuCategories)?.map((menuCategory: MenuCategoryType) => <p key={menuCategory?.id} className='p__inter categories_nav_item' onClick={() => { setTargetMenuCategory(menuCategory) }}>{menuCategory?.name}</p>)
           }
         </section>
 
@@ -115,7 +115,7 @@ function MenuPage({userData, activeOrder, setActiveOrder}: MenuPageProps) {
           <section className='categories_nav_wrapper_mobile' style={{ display: menuCategoryDisplay }}>
             <h4 className='p__inter categories_nav_heading_mobile'><b>CATEGORIES</b></h4>
             {
-              menuCategories?.map((menuCategory: MenuCategoryType) => <p key={menuCategory?.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory?.name}</p>)
+               Array.from(menuCategories)?.map((menuCategory: MenuCategoryType) => <p key={menuCategory?.id} className='p__inter categories_nav_item_mobile' onClick={() => { setTargetMenuCategory(menuCategory); setMenuCategoryDisplay("none") }}>{menuCategory?.name}</p>)
             }
           </section>
         </section>
