@@ -1,5 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
-import { User } from "./appUtils";
+import { API_BASE_URL, User } from "./appUtils";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -61,7 +61,7 @@ export type EditMenuCategoryProps = {
 
 // Defining a function to get all menu categories 
 export const getAllMenuCategories = (setMenuCategories: React.Dispatch<React.SetStateAction<MenuCategoriesType>>) => {
-    axios.get("/menu-categories")
+    axios.get(API_BASE_URL + "/menu-categories")
         .then(response => {
             // Setting menu categories data to the state variable
             setMenuCategories(response.data)
@@ -90,7 +90,7 @@ export const createMenuCategory = (e: React.FormEvent<HTMLFormElement>, menuCate
     }
 
     // Sending menu category data to the backend
-    axios.post("/menu-categories", postData)
+    axios.post(API_BASE_URL + "/menu-categories", postData)
         .then(response => {
             // Showing a success message
             toast.success(response?.data?.message)
@@ -119,7 +119,7 @@ export const editMenuCategory = (e: React.FormEvent<HTMLFormElement>, targetMenu
         description: menuCategoryDetails?.description,
     }
 
-    axios.put(`/menu-categories/${targetMenuCategory?.id}`, postData)
+    axios.put(API_BASE_URL + `/menu-categories/${targetMenuCategory?.id}`, postData)
         .then(response => {
             // Showing a success message
             toast.success(response?.data?.message)
@@ -141,7 +141,7 @@ export const editMenuCategory = (e: React.FormEvent<HTMLFormElement>, targetMenu
 // Defining a function to handle deleting menu category
 export const deleteMenuCategory = (targetMenuCategory: MenuCategoryType, menuCategories: MenuCategoriesType, setMenuCategories: React.Dispatch<React.SetStateAction<MenuCategoriesType>>) => {
 
-    axios.delete(`/menu-categories/${targetMenuCategory.id}`)
+    axios.delete(API_BASE_URL + `/menu-categories/${targetMenuCategory.id}`)
         .then(response => {
             // Showing a success message
             toast.success(response?.data?.message)
@@ -234,7 +234,7 @@ export type EditMenuItemProps = {
 
 // Defining a function to get all menu items 
 export const getAllMenuItems = (setMenuItems: React.Dispatch<React.SetStateAction<MenuItemsType>>) => {
-    axios.get("/menu-items")
+    axios.get(API_BASE_URL + "/menu-items")
         .then(response => {
             // Setting menu items data to the state variable
             setMenuItems(response.data)
@@ -387,7 +387,7 @@ export const createMenuItem = (e: React.FormEvent<HTMLFormElement>, menuItemData
     }
 
     // Sending menu item data to the backend
-    axios.post("/menu-items", postData)
+    axios.post(API_BASE_URL + "/menu-items", postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -427,7 +427,7 @@ export const editMenuItem = (e: React.FormEvent<HTMLFormElement>, targetMenuItem
     }
 
 
-    axios.put(`/menu-items/${targetMenuItem.id}`, postData)
+    axios.put(API_BASE_URL + `/menu-items/${targetMenuItem.id}`, postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -449,7 +449,7 @@ export const editMenuItem = (e: React.FormEvent<HTMLFormElement>, targetMenuItem
 // Defining a function to handle deleting menu item
 export const deleteMenuItem = (targetMenuItem: MenuItemType, menuItems: MenuItemsType, setMenuItems: React.Dispatch<React.SetStateAction<MenuItemsType>>) => {
 
-    axios.delete(`/menu-items/${targetMenuItem.id}`)
+    axios.delete(API_BASE_URL + `/menu-items/${targetMenuItem.id}`)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)

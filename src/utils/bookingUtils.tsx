@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { User, sendEmail } from "./appUtils";
+import { API_BASE_URL, User, sendEmail } from "./appUtils";
 import { NavigateFunction } from "react-router-dom";
 
 // Defining the Booking Props
@@ -43,7 +43,7 @@ export const makeBooking = (e: React.FormEvent<HTMLFormElement>, bookingDetails:
   }
 
   // Sending Booking data to the backend
-  axios.post(`/bookings`, postData)
+  axios.post(API_BASE_URL + `/bookings`, postData)
     .then(response => {
       // Displaying success message
       toast.success(response.data.message);

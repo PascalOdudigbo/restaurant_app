@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User, sendEmailNoNavigate } from "./appUtils"
+import { API_BASE_URL, User, sendEmailNoNavigate } from "./appUtils"
 import { toast } from "react-toastify";
 import { BookingsType } from "./bookingsManagementUtils";
 // import { NavigateFunction } from "react-router-dom";
@@ -97,7 +97,7 @@ export type EditUserFormType = {
 
 // Defining a function to get all users 
 export const getAllUsers = (setUsers: React.Dispatch<React.SetStateAction<User[]>>) => {
-    axios.get("/users")
+    axios.get(API_BASE_URL + "/users")
         .then(response => {
             // Setting users data to the state variable
             setUsers(response.data)
@@ -130,7 +130,7 @@ export const editUser = (e: React.FormEvent<HTMLFormElement>, targetUser: User, 
     }
 
 
-    axios.put(`/users/${targetUser.id}`, postData)
+    axios.put(API_BASE_URL + `/users/${targetUser.id}`, postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -152,7 +152,7 @@ export const editUser = (e: React.FormEvent<HTMLFormElement>, targetUser: User, 
 // Defining a function to handle deleting user
 export const deleteUser = (targetUser: User, users: User[], setUsers: React.Dispatch<React.SetStateAction<User[]>>) => {
 
-    axios.delete(`/users/${targetUser.id}`)
+    axios.delete(API_BASE_URL + `/users/${targetUser.id}`)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -219,7 +219,7 @@ export const createUser = (e: React.FormEvent<HTMLFormElement>, userData: AddUse
         role: userData.role.toLowerCase()
     }
     // Sending user data to the backend
-    axios.post("/users", postData)
+    axios.post(API_BASE_URL + "/users", postData)
         .then(response => {
             // Showing a success message
             toast.success("User saved successfully")
@@ -304,7 +304,7 @@ export type EditTableFormType = {
 
 // Defining a function to get all tables 
 export const getAllTables = (setTables: React.Dispatch<React.SetStateAction<Table[]>>) => {
-    axios.get("/tables")
+    axios.get(API_BASE_URL + "/tables")
         .then(response => {
             // Setting tables data to the state variable
             setTables(response.data)
@@ -333,7 +333,7 @@ export const editTable = (e: React.FormEvent<HTMLFormElement>, targetTable: Tabl
         is_occupied: tableData.is_occupied
     }
 
-    axios.put(`/tables/${targetTable.id}`, postData)
+    axios.put(API_BASE_URL + `/tables/${targetTable.id}`, postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -355,7 +355,7 @@ export const editTable = (e: React.FormEvent<HTMLFormElement>, targetTable: Tabl
 // Defining a function to handle deleting table
 export const deleteTable = (targetTable: Table, tables: Table[], setTables: React.Dispatch<React.SetStateAction<Table[]>>) => {
 
-    axios.delete(`/tables/${targetTable.id}`)
+    axios.delete(API_BASE_URL + `/tables/${targetTable.id}`)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -418,7 +418,7 @@ export const createTable = (e: React.FormEvent<HTMLFormElement>, tableData: AddT
         is_occupied: tableData.is_occupied
     }
     // Sending table data to the backend
-    axios.post("/tables", postData)
+    axios.post(API_BASE_URL + "/tables", postData)
         .then(response => {
             // Showing a success message
             toast.success("Table saved successfully")

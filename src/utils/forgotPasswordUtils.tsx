@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify"
-import { User, sendEmail } from "./appUtils";
+import { API_BASE_URL, User, sendEmail } from "./appUtils";
 import { NavigateFunction } from 'react-router-dom';
 
 // Creating the navigation function type
@@ -20,7 +20,7 @@ export const forgotPassword = (e: React.FormEvent<HTMLFormElement>, formData: Fo
     // Preventing auto refresh
     e.preventDefault();
 
-    axios.post("/users/recover-account", formData)
+    axios.post(API_BASE_URL + "/users/recover-account", formData)
         .then(response => {
             // Showing success message when user email is found
             toast.success(response.data.message);

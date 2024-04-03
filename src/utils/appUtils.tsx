@@ -8,6 +8,8 @@ import { OrderType, getUsersActiveOrder } from "./menuPageUtils";
 // Creating the navigation function type
 type NavigateFunctionType = NavigateFunction;
 
+// Declaring the base url 
+export const API_BASE_URL = "http://127.0.0.1:10049"
 
 // Defining the user type
 export type User = {
@@ -125,7 +127,7 @@ export const parseJwt = (token: string) => {
 
 // A function to get user data 
 export const getUserData = (route: string, setUserData: React.Dispatch<React.SetStateAction<User>>, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
-    axios.get(`${route}`)
+    axios.get(API_BASE_URL + `${route}`)
         .then(response => {
             // Setting user data to the state variable
             setUserData(response.data)

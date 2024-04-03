@@ -9,7 +9,7 @@ function KitchenPage({userData, orders, tables, setTables, setOrders}: KitchenPa
     
     useEffect(() => {
         handleFilterOrders(userData, orders, setKitchenOrders)
-    }, [orders])
+    }, [userData, orders])
     
     return (
         <div className='app__kitchen app__bg app__wrapper section_padding'>

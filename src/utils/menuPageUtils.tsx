@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User } from "./appUtils"
+import { API_BASE_URL, User } from "./appUtils"
 import { MenuItemType } from "./menuManagementUtils";
 import { toast } from "react-toastify";
 
@@ -69,7 +69,7 @@ export const createAnOrder = (userData: User, targetMenuItem: MenuItemType, setA
         status: "Active"
     }
     // add the new order item to cart
-    axios.post(`/orders`, postData)
+    axios.post(API_BASE_URL + `/orders`, postData)
         .then(response => {
             // Get order by id the bookings data
             addOrderItemToCart(response.data, targetMenuItem, setActiveOrder)
@@ -87,7 +87,7 @@ export const createAnOrder = (userData: User, targetMenuItem: MenuItemType, setA
 
 // A function to increment item quantity
 export const incrementOrderItemQuantity = (existingOrderItem: OrderItemType, activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
-    axios.patch(`/order-items/${existingOrderItem.id}`, { quantity: existingOrderItem.quantity + 1 })
+    axios.patch(API_BASE_URL + `/order-items/${existingOrderItem.id}`, { quantity: existingOrderItem.quantity + 1 })
         .then(response => {
             // Showing a success message
             toast.success("Item quantity increased!");
@@ -115,7 +115,7 @@ export const addOrderItemToCart = (activeOrder: OrderType, targetMenuItem: MenuI
         quantity: 1
     }
     // add the new order item to cart
-    axios.post(`/order-items`, postData)
+    axios.post(API_BASE_URL + `/order-items`, postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message);
@@ -135,7 +135,7 @@ export const addOrderItemToCart = (activeOrder: OrderType, targetMenuItem: MenuI
 
 // A function to get order by ID
 export const getOrderById = (activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
-    axios.get(`/orders/${activeOrder.id}`)
+    axios.get(API_BASE_URL + `/orders/${activeOrder.id}`)
         .then(response => {
             // Setting the active order 
             setActiveOrder(response.data)

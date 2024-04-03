@@ -1,5 +1,5 @@
 import { toast } from "react-toastify"
-import { User } from "./appUtils"
+import { API_BASE_URL, User } from "./appUtils"
 import axios from "axios"
 
 export type UserProfileManagementProps = {
@@ -55,7 +55,7 @@ export const updateProfile = (e: React.FormEvent<HTMLFormElement>, profileData: 
         }
     }
    
-    axios.put(`/users/${userData.id}`, postData)
+    axios.put(API_BASE_URL + `/users/${userData.id}`, postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)

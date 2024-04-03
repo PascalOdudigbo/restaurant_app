@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MenuItemType, getAllMenuCategories, getAllMenuItems } from '../../utils/menuManagementUtils';
+import { MenuItemType, getAllMenuItems } from '../../utils/menuManagementUtils';
 
 function GalleryPage() {
 

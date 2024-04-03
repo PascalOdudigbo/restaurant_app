@@ -36,7 +36,7 @@ function BookingsManagement({ userData, bookings, setBookings }: BookingsManagem
     //Getting all client Bookings
     userData?.role === "client" && getBookingsByUserId(userData?.id, setBookings);
 
-  }, [userData])
+  }, [userData, setBookings])
 
   // Defining a function to handle search input value change
   const handleBookingSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>, setSearchData: React.Dispatch<React.SetStateAction<string>>) => {

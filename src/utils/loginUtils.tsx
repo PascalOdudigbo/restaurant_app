@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import { toast } from 'react-toastify';
-import { User, parseJwt, getUserData } from "./appUtils";
+import { User, parseJwt, getUserData, API_BASE_URL } from "./appUtils";
 import { NavigateFunction } from 'react-router-dom';
 import { OrderType } from './menuPageUtils';
 // import jwt_decode from 'jwt-decode';
@@ -32,7 +32,7 @@ export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormD
         password: loginData.password,
     }
     // Sending user data to the backend
-    axios.post("/users/login", postData)
+    axios.post(API_BASE_URL + "/users/login", postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)

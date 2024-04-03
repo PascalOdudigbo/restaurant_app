@@ -16,7 +16,7 @@ function CartPage({ userData, setUserData, activeOrder, setActiveOrder, tables, 
 
   useEffect(() => {
     getTables(setTables)
-  }, [])
+  }, [setTables])
 
   return (
     <div className='app__cart app__bg app__wrapper section_padding'>

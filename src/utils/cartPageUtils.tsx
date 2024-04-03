@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User, getUserData } from "./appUtils";
+import { API_BASE_URL, User, getUserData } from "./appUtils";
 import { OrderItemType, OrderType, getOrderById } from "./menuPageUtils";
 import { toast } from "react-toastify";
 import { Table } from "./restaurantManagementPortalUtils";
@@ -27,7 +27,7 @@ export type NavigateFunctionType = NavigateFunction;
 
 // A function to decrease item quantity
 export const decreaseOrderItemQuantity = (existingOrderItem: OrderItemType, activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
-    axios.patch(`/order-items/${existingOrderItem.id}`, { quantity: existingOrderItem.quantity - 1 })
+    axios.patch(API_BASE_URL + `/order-items/${existingOrderItem.id}`, { quantity: existingOrderItem.quantity - 1 })
         .then(() => {
             // Showing a success message
             toast.success("Item quantity decreased!");
@@ -48,7 +48,7 @@ export const decreaseOrderItemQuantity = (existingOrderItem: OrderItemType, acti
 
 // A function to remove an order item
 export const removeOrderItem = (existingOrderItem: OrderItemType, activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>) => {
-    axios.delete(`/order-items/${existingOrderItem.id}`)
+    axios.delete(API_BASE_URL + `/order-items/${existingOrderItem.id}`)
         .then(() => {
             // Showing a success message
             toast.success("Item removed successfully!");
@@ -79,7 +79,7 @@ export const calculateCartSubtotal = (activeOrder: OrderType) => {
 
 // A function to get tables
 export const getTables = (setTables: React.Dispatch<React.SetStateAction<Table[]>>) => {
-    axios.get("/tables")
+    axios.get(API_BASE_URL + "/tables")
         .then((response) => {
             setTables(response.data);
         })
@@ -96,7 +96,7 @@ export const getTables = (setTables: React.Dispatch<React.SetStateAction<Table[]
 
 // A function to make a table occupied
 export const makeTableOccupied = (targetTableId: number, userData: User, setUserData: React.Dispatch<React.SetStateAction<User>>, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>, navigate: NavigateFunctionType) => {
-    axios.patch(`/tables/${targetTableId}`, {is_occupied: true})
+    axios.patch(API_BASE_URL + `/tables/${targetTableId}`, {is_occupied: true})
     .then(() => {
        toast.success("Checkout successful, order sent to kitchen!");
        getUserData(`/users/${userData.id}`, setUserData, setActiveOrder);
@@ -115,7 +115,7 @@ export const makeTableOccupied = (targetTableId: number, userData: User, setUser
 
 // A function to make a table unoccupied
 export const makeTableUnoccupied = (targetTableId: number) => {
-    axios.patch(`/tables/${targetTableId}`, {is_occupied: false})
+    axios.patch(API_BASE_URL + `/tables/${targetTableId}`, {is_occupied: false})
     .then(() => {
        toast.success("Order completed, table set to unoccupied!");
     })
@@ -135,7 +135,7 @@ export const makeTableUnoccupied = (targetTableId: number) => {
 export const handleCheckout = (e: React.FormEvent<HTMLFormElement>, userData: User, setUserData: React.Dispatch<React.SetStateAction<User>>, activeOrder: OrderType, setActiveOrder: React.Dispatch<React.SetStateAction<OrderType>>, targetTableId: number, navigate: NavigateFunctionType) => {
     // Preventing default form refresh
     e.preventDefault()
-    axios.patch(`/orders/${activeOrder.id}`, {table_id: targetTableId, status: "Processing"})
+    axios.patch(API_BASE_URL + `/orders/${activeOrder.id}`, {table_id: targetTableId, status: "Processing"})
     .then(() => {
         makeTableOccupied(targetTableId, userData, setUserData, setActiveOrder, navigate);
     })

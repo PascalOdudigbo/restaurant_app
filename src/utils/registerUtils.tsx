@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { API_BASE_URL } from './appUtils';
 
 // Defining the registerFormData type
 export type RegisterFormData = {
@@ -26,7 +27,7 @@ export const registerUser = (e: React.FormEvent<HTMLFormElement>, registerData: 
         role: "client"
     }
     // Sending user data to the backend
-    axios.post("/users", postData)
+    axios.post(API_BASE_URL + "/users", postData)
         .then(response => {
             // Showing a success message
             toast.success("Registration Success!")

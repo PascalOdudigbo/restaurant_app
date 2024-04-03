@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User, sendEmail } from "./appUtils";
+import { API_BASE_URL, User, sendEmail } from "./appUtils";
 import { toast } from "react-toastify";
 import { BookingDetails } from "./bookingUtils";
 import { NavigateFunction } from "react-router-dom";
@@ -68,7 +68,7 @@ export type ApproveOrDeclineBookingProps = {
 
 // Defining a function to get all bookings 
 export const getAllBookings = (setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
-    axios.get("/bookings")
+    axios.get(API_BASE_URL + "/bookings")
         .then(response => {
             // Setting bookings data to the state variable
             setBookings(response.data)
@@ -88,7 +88,7 @@ export const getAllBookings = (setBookings: React.Dispatch<React.SetStateAction<
 
 // Defining a function to get all bookings for a specific user
 export const getBookingsByUserId = (userId: number, setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
-    axios.get(`/bookings/user/${userId}`)
+    axios.get(API_BASE_URL + `/bookings/user/${userId}`)
     .then(response => {
         // Setting bookings data to the state variable
         setBookings(response.data)
@@ -119,7 +119,7 @@ export const editBooking = (e: React.FormEvent<HTMLFormElement>, targetBooking: 
     }
 
 
-    axios.put(`/bookings/${targetBooking.id}`, postData)
+    axios.put(API_BASE_URL + `/bookings/${targetBooking.id}`, postData)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -141,7 +141,7 @@ export const editBooking = (e: React.FormEvent<HTMLFormElement>, targetBooking: 
 // Defining a function to handle deleting booking
 export const deleteBooking = (targetBooking: BookingType, bookings: BookingsType, setBookings: React.Dispatch<React.SetStateAction<BookingsType>>) => {
 
-    axios.delete(`/bookings/${targetBooking.id}`)
+    axios.delete(API_BASE_URL + `/bookings/${targetBooking.id}`)
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
@@ -205,7 +205,7 @@ export const approveOrDeclineBooking = (e: React.FormEvent<HTMLFormElement>, tar
     }
 
 
-    axios.patch(`/bookings/${targetBooking.id}`, postData)
+    axios.patch(API_BASE_URL + `/bookings/${targetBooking.id}`, postData)
         .then(response => {
             // Showing a success message
             toast.success(status ? "Booking approved successfully!" : "Booking declined successfully!")

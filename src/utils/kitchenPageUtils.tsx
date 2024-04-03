@@ -1,16 +1,16 @@
 import axios from "axios";
-import { User } from "./appUtils";
+import { API_BASE_URL, User } from "./appUtils";
 import { OrderItemType, OrderType } from "./menuPageUtils"
 import { toast } from "react-toastify";
 import { Table } from "./restaurantManagementPortalUtils";
-import { NavigateFunctionType, makeTableUnoccupied } from "./cartPageUtils";
+import { makeTableUnoccupied } from "./cartPageUtils";
 
 // Defining the kitchen page props
 export type KitchenPageProps = {
     userData: User;
     orders: OrderType[];
     tables: Table[]
-    setTables: React.Dispatch<React.SetStateAction<Table[]>>; 
+    setTables: React.Dispatch<React.SetStateAction<Table[]>>;
     setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>;
 }
 
@@ -29,7 +29,7 @@ export type OrderItemRowProps = {
 
 // Defining a function to get all orders
 export const getAllOrders = (setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>) => {
-    axios.get("/orders")
+    axios.get(API_BASE_URL + "/orders")
         .then((response) => {
             setOrders(response.data);
         })
@@ -75,7 +75,7 @@ export const changeOrderStatus = (order: OrderType, setOrders: React.Dispatch<Re
             break;
     }
 
-    axios.patch(`/orders/${order.id}`, { status: newStatus })
+    axios.patch(API_BASE_URL + `/orders/${order.id}`, { status: newStatus })
         .then(() => {
             toast.success("Order status updated successfully!");
             // If the order is completed make the table unoccupied
