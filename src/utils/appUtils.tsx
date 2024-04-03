@@ -9,7 +9,7 @@ import { OrderType, getUsersActiveOrder } from "./menuPageUtils";
 type NavigateFunctionType = NavigateFunction;
 
 // Declaring the base url 
-export const API_BASE_URL = "http://127.0.0.1:10049"
+export const API_BASE_URL = "https://restaurant-app-api-0mz5.onrender.com"
 
 // Defining the user type
 export type User = {
