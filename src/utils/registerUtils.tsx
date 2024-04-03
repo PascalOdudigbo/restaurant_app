@@ -31,7 +31,6 @@ export const registerUser = (e: React.FormEvent<HTMLFormElement>, registerData: 
             // Showing a success message
             toast.success("Registration Success!")
             console.log(response)
-
         })
         .catch(error => {
             if (error.response.data) {

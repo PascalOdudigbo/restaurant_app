@@ -119,7 +119,6 @@ export const editMenuCategory = (e: React.FormEvent<HTMLFormElement>, targetMenu
         description: menuCategoryDetails?.description,
     }
 
-
     axios.put(`/menu-categories/${targetMenuCategory?.id}`, postData)
         .then(response => {
             // Showing a success message

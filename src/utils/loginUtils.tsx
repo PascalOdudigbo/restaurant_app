@@ -36,19 +36,14 @@ export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormD
         .then(response => {
             // Showing a success message
             toast.success(response.data.message)
-            
             // Saving the response token in localStorage
             const token = response.data.user;
-
             // Store the token in local storage
             localStorage.setItem('token', token);
-
             // Decode the token to get user ID
             const userId: number = parseJwt(token).userId;
-           
             // Getting the userData
             getUserData(`/users/${userId}`, setUserData, setActiveOrder)
-
             // Navigate to homepage
             navigate("/")
         })
@@ -61,7 +56,6 @@ export const login = (e: React.FormEvent<HTMLFormElement>, loginData: LoginFormD
                 toast.error(error.message);
             }
         })
-
 
 }
 

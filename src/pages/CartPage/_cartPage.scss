@@ -113,7 +113,68 @@
 
 
 @media screen and (min-width: 2000px) {
-  
+    .app__cart {
+        
+    
+        .cart_heading_wrapper {
+    
+            .menu_heading {
+                font-size: 50px;
+            }
+        }
+
+        .cart_select_table_wrapper{
+            .checkout_wrapper{
+                width: 45%;
+            
+                .checkout_header{
+        
+                    .checkout_header_title{
+                        font-size: 25px;
+                    }
+            
+                    .checkout_header_close{
+                        font-size: 18px;
+                    }
+                }
+            
+                .checkout_form{
+                    width: 90%;
+            
+                    .checkout_form_forgotpassword{
+                        font-size: 10px;
+                    }
+            
+                    .checkout_form_button{
+                        
+                    }
+                } 
+            
+            } 
+        }
+    
+        .cart_body_wapper {
+            grid-template-columns: repeat(4, minmax(320px, 1fr));
+            
+        }
+
+        .empty_cart_text{
+            font-size: 35px;
+        }
+    
+        .cart_subtotal_and_checkout_wrapper{
+
+            .cart_subtotal{
+                font-size: 32px;
+            }
+    
+            .cart_item_checkout_btn{
+                height: 50px;
+                font-size: medium;
+            }
+        }
+    
+    }
 
 }
 
