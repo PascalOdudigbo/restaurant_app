@@ -1,12 +1,13 @@
 .cart_item_wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+        width: 320px; /* Set a fixed width for consistent sizing */
     background-color: var(--color-white);
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .productImage {
         width: 96%;

@@ -4,6 +4,19 @@
 
 The Restaurant Management System is a web application developed as a part of the Modern Web Technologies module at Coventry University. It aims to streamline restaurant operations and enhance customer service by leveraging modern web technologies.
 
+![Homepage](https://res.cloudinary.com/dr8mwphvk/image/upload/v1712175667/restaurant_app/github%20images/a47ga0qawrkrf0jet5og.png)
+
+
+![Menupage](https://res.cloudinary.com/dr8mwphvk/image/upload/v1712175667/restaurant_app/github%20images/hyhrzqnnc13hq0tvlywk.png)
+
+
+![Bookingpage](https://res.cloudinary.com/dr8mwphvk/image/upload/v1712175667/restaurant_app/github%20images/sysz4lgsweyvqipkllww.png)
+
+
+![Contactpage](https://res.cloudinary.com/dr8mwphvk/image/upload/v1712176018/restaurant_app/github%20images/co7mf9so3tupvgsyvktu.png)
+
+
+![Mobile](https://res.cloudinary.com/dr8mwphvk/image/upload/v1712175667/restaurant_app/github%20images/hbifq3hqgll08boldsmz.png)
 ## Features
 
 - **User Management:** Register, login, and manage user accounts with role-based access control.
@@ -42,6 +55,57 @@ The Restaurant Management System is a web application developed as a part of the
 5. Access the application at `http://localhost:4000` in your web browser.
 
 6. User accounts.
+
+## User accounts
+
+1. client
+
+```
+    {
+     email: "client@gmail.com",
+     password: "1234567890"
+    
+    }
+
+```
+
+2. manager
+
+```
+    {
+     email: "manager@gmail.com",
+     password: "1234567890"
+    
+    }
+
+```
+
+3. chef
+
+```
+    {
+     email: "chef@gmail.com",
+     password: "1234567890"
+    
+    }
+
+```
+
+4. attendant
+
+```
+    {
+     email: "attendant@gmail.com",
+     password: "1234567890"
+    
+    }
+
+```
+
+## Live Link
+
+[project live link!](https://restaurant-app-hyg2.onrender.com)
+
 
 ## Contributing
 
