@@ -4,8 +4,8 @@ const express = require('express');
 // Import the database connection
 const client = require("./db");
 
-// Importing express session
-// const session = require("express-session")
+// Importing CORS
+const cors = require('cors');
 
 // Importing all the route files
 const userRoutes = require('./src/routes/user_routes');
@@ -15,7 +15,6 @@ const menuItemRoutes = require('./src/routes/menu_item_routes');
 const tableRoutes = require('./src/routes/table_routes');
 const orderRoutes = require('./src/routes/order_routes');
 const orderItemRoutes = require('./src/routes/order_item_routes');
-
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,17 +27,30 @@ client.connect()
         console.error('Error connecting to the PostgreSQL database:', err);
     });
 
+// Define the list of allowed origins
+const allowedOrigins = ['http://localhost:3000/', 'http://localhost:3000/', 'https://restaurant-app-hyg2.onrender.com/'];
+
+// Configure CORS options with allowed origins
+const corsOptions = {
+   origin: function(origin, callback) {
+      // Check if the origin is in the list of allowed origins or if it's a CORS preflight request
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+         callback(null, true);
+      } else {
+         callback(new Error('Not allowed by CORS'));
+      }
+   },
+   optionsSuccessStatus: 200
+};
+
+// Enable CORS for all origins
+app.use(cors());
+
 // Define routes
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-// Set up session middleware
-// app.use(session({
-//     secret: process.env.SESSION_SECRET_KEY,
-//     resave: true,
-//     saveUninitialized: false
-// }));
 
 // Setup the backend to receive JSON data
 app.use(express.json());
