@@ -17,7 +17,7 @@ const orderRoutes = require('./src/routes/order_routes');
 const orderItemRoutes = require('./src/routes/order_item_routes');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 client.connect()
     .then(() => {
