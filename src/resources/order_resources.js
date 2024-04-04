@@ -167,7 +167,7 @@ const save = (req, res) => {
                 console.error("Error saving order:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(201).json(results.rows[0]);
+            res.status(201).json({message: 'Order submitted successfully!', order: results.rows[0]});
         });
     });
 };
@@ -238,7 +238,7 @@ const destroy = (req, res) => {
                 console.error("Error deleting order:", error);
                 return res.status(500).json({ error: "Internal Server Error" });
             }
-            res.status(200).json("Order deleted successfully");
+            res.status(200).json({message: "Order deleted successfully!"});
         });
     });
 };

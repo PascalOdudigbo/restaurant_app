@@ -17,7 +17,7 @@ const orderRoutes = require('./src/routes/order_routes');
 const orderItemRoutes = require('./src/routes/order_item_routes');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 client.connect()
     .then(() => {
@@ -81,3 +81,6 @@ app.use('/order-items', orderItemRoutes);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+// Export the app instance
+module.exports = app;
