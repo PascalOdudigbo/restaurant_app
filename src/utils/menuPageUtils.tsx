@@ -72,7 +72,7 @@ export const createAnOrder = (userData: User, targetMenuItem: MenuItemType, setA
     axios.post(API_BASE_URL + `/orders`, postData)
         .then(response => {
             // Get order by id the bookings data
-            addOrderItemToCart(response.data, targetMenuItem, setActiveOrder)
+            addOrderItemToCart(response.data.order, targetMenuItem, setActiveOrder)
         })
         .catch(error => {
             if (error.response.data) {

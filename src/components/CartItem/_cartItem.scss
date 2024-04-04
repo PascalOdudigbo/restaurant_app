@@ -1,5 +1,5 @@
 .cart_item_wrapper {
-        width: 320px; /* Set a fixed width for consistent sizing */
+    width: 320px;
     background-color: var(--color-white);
     margin-bottom: 20px;
     margin-left: auto;
@@ -36,7 +36,7 @@
             font-size: medium;
             font-weight: 700;
         }
-    }    
+    }
 
     .cart_item_description {
         width: 96%;
@@ -55,27 +55,27 @@
         margin-bottom: 10px;
         margin-top: auto;
 
-        .cart_item_quantity_buttons_wrapper{
+        .cart_item_quantity_buttons_wrapper {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             width: 40%;
 
-            .cart_item_decrement_btn{
+            .cart_item_decrement_btn {
                 width: fit-content;
                 height: fit-content;
                 padding: 0.5rem 1.2rem;
                 border-radius: 100%;
             }
 
-            .cart_item_quantity{
+            .cart_item_quantity {
                 font-size: 12px;
                 font-weight: 600;
                 color: var(--color-black);
             }
 
-            .cart_item_increment_button{
+            .cart_item_increment_button {
                 width: fit-content;
                 height: fit-content;
                 padding: 0.5rem 1.2rem;
@@ -102,7 +102,7 @@
         width: 90%;
 
         .cart_item_buttons_wrapper {
-    
+
             .cart_item_remove_btn {
                 font-size: medium;
             }
@@ -115,7 +115,7 @@
         width: 90%;
 
         .cart_item_buttons_wrapper {
-    
+
             .cart_item_remove_btn {
                 font-size: medium;
             }
@@ -128,7 +128,7 @@
         width: 90%;
 
         .cart_item_buttons_wrapper {
-    
+
             .cart_item_remove_btn {
                 font-size: medium;
             }
@@ -141,12 +141,12 @@
         width: 90%;
 
         .cart_item_buttons_wrapper {
-    
-            .cart_item_quantity_buttons_wrapper{
+
+            .cart_item_quantity_buttons_wrapper {
                 width: 50%;
-    
+
             }
-    
+
             .cart_item_remove_btn {
                 font-size: small;
             }
@@ -159,12 +159,12 @@
         width: 90%;
 
         .cart_item_buttons_wrapper {
-    
-            .cart_item_quantity_buttons_wrapper{
+
+            .cart_item_quantity_buttons_wrapper {
                 width: 50%;
-    
+
             }
-    
+
             .cart_item_remove_btn {
                 font-size: small;
             }

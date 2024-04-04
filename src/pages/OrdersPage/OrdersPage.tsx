@@ -11,7 +11,7 @@ function OrdersPage({userData, tables, setTables, setOrders}: KitchenPageProps) 
 
             <section className='orders_body'>
                 {
-                    userData?.orders?.map(order => order?.status !== "Active" && <Order userData={userData} order={order} tables={tables} setOrders={setOrders}/>)
+                    userData?.orders?.map(order => order?.status !== "Active" && <Order key={order.id} userData={userData} order={order} tables={tables} setOrders={setOrders}/>)
                 }
             </section>
 
